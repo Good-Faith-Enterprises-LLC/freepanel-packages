@@ -36,7 +36,8 @@
 #      (it installs gpg from the system's own repositories if it is not);
 #   2. decides what to install. With no component flags that is the panel
 #      and its services on AlmaLinux, Rocky Linux or RHEL 9 (websites,
-#      databases with their admin tool, DNS, mail, webmail, FTP, and login
+#      databases with their admin tool, DNS, mail, webmail with calendars and
+#      contacts, FTP, and login
 #      protection when the firewall is running), and the panel alone on
 #      Ubuntu 24.04. The
 #      server's own name is the hostname, if it is a full name such as
@@ -95,7 +96,7 @@ WORK_BASES=(/var/tmp /root)                    # test hook; where the private fo
 # installer opens that port with the panels' under --open-firewall (41-2),
 # which a plain run gives. That is the owner's choice (Oct 29, 21:50Z): the
 # database admin tool is in a plain install and its port is open.
-FULL_FLAGS=(--web --mysql --postgres --dns --mail --spam --dbadmin --webmail --ftp)
+FULL_FLAGS=(--web --mysql --postgres --dns --mail --spam --dbadmin --webmail --dav --ftp)
 
 # gpg never fetches or imports a key by itself: the keyring is the pinned key.
 GPG=(gpg --batch --no-tty --no-auto-key-import --no-auto-key-retrieve)
@@ -197,7 +198,7 @@ Choices (optional; they go after "bash -s --"):
   --no-firewall      leave the firewall alone (the default opens the panel's
                      ports and the services' ports)
   --php 8.3          the PHP version new sites start with
-  --web --mysql --postgres --dns --mail --spam --dbadmin --webmail --ftp --protect
+  --web --mysql --postgres --dns --mail --spam --dbadmin --webmail --dav --ftp --protect
                      choose the components yourself: the installer is then
                      given your flags (and --hostname) and nothing is added
 
@@ -315,7 +316,7 @@ plan() {
   local a prev="" own=0 has_host=0 has_fw=0 family wants="" skipped=""
   for a in "$@"; do
     case "$a" in
-      --web | --mysql | --postgres | --dns | --mail | --spam | --dbadmin | --webmail | --ftp | --protect) own=1 ;;
+      --web | --mysql | --postgres | --dns | --mail | --spam | --dbadmin | --webmail | --dav | --ftp | --protect) own=1 ;;
       --hostname) has_host=1 ;;
       --open-firewall | --no-firewall) has_fw=1 ;;
     esac
@@ -343,7 +344,7 @@ plan() {
   fi
   if [ "$family" = el ]; then
     ARGV+=("${FULL_FLAGS[@]}")
-    wants="websites, databases and their admin tool (port 7445), DNS, mail, webmail and FTP"
+    wants="websites, databases and their admin tool (port 7445), DNS, mail, webmail with calendars and contacts, and FTP"
     # Like the installer: protection needs a firewall that is already running,
     # and cannot go with --no-firewall.
     if command -v firewall-cmd >/dev/null 2>&1 && firewall-cmd --state >/dev/null 2>&1 && ! has_arg --no-firewall "$@"; then
