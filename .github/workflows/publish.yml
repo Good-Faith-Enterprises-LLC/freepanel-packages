@@ -3,9 +3,17 @@
 # freePanel repository; do not edit it here, change it there and export
 # again.
 #
-# By hand only, with the ID of the httpd-build run (in Good-Faith-Enterprises-LLC/freepanel) whose
-# packages to publish. The job runs only from main and waits for the owner's
-# approval on the "publish" environment, which holds the two secrets:
+# By hand only, with the IDs of the runs (in Good-Faith-Enterprises-LLC/freepanel) whose output to
+# publish, any of them, at least one:
+#   httpd_run     an httpd-build run: the Apache RPMs;
+#   radicale_run  a radicale-build run: the Radicale (calendar and contacts) RPM;
+#   release_run   a release-build run: the production tarball customers'
+#                 one-line installer downloads, and the installer script.
+# Each run is checked (publisher/check_run.py): the right workflow, on main,
+# finished successfully, at a commit main holds, and all of them must name the
+# same signing key in packaging/repo/repo.conf. The job runs only from main
+# and waits for the owner's approval on the "publish" environment, which
+# holds the two secrets:
 #   FP_REPO_SIGNING_SUBKEY  the armored signing subkey of the key whose
 #                           fingerprint packaging/repo/repo.conf pins
 #                           (gpg --export-secret-subkeys), no passphrase,
@@ -22,8 +30,17 @@ on:
   workflow_dispatch:
     inputs:
       httpd_run:
-        description: ID of the httpd-build run in Good-Faith-Enterprises-LLC/freepanel whose packages to publish
-        required: true
+        description: ID of the httpd-build run in Good-Faith-Enterprises-LLC/freepanel whose packages to publish (or empty)
+        type: string
+        default: ""
+      radicale_run:
+        description: ID of the radicale-build run in Good-Faith-Enterprises-LLC/freepanel whose package to publish (or empty)
+        type: string
+        default: ""
+      release_run:
+        description: ID of the release-build run in Good-Faith-Enterprises-LLC/freepanel whose tarball and installer script to publish (or empty)
+        type: string
+        default: ""
       resign:
         description: After rotating the signing subkey, sign the published packages again
         type: boolean
@@ -50,34 +67,75 @@ jobs:
     container:
       image: almalinux:9@sha256:9819dc675b67b595c2b59e42be7763fca1a8bb217fa5944e04daa22e9a64db16
     steps:
-      - name: Check the run ID
+      - name: Check the run IDs
         env:
           HTTPD_RUN: ${{ inputs.httpd_run }}
+          RADICALE_RUN: ${{ inputs.radicale_run }}
+          RELEASE_RUN: ${{ inputs.release_run }}
         run: |
-          case "$HTTPD_RUN" in
-            ""|*[!0-9]*) echo "httpd_run must be a run ID (digits only)" >&2; exit 1 ;;
-          esac
+          [ -n "$HTTPD_RUN$RADICALE_RUN$RELEASE_RUN" ] || { echo "give at least one run ID" >&2; exit 1; }
+          for id in "$HTTPD_RUN" "$RADICALE_RUN" "$RELEASE_RUN"; do
+            case "$id" in
+              *[!0-9]*) echo "a run ID is digits only" >&2; exit 1 ;;
+            esac
+          done
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
         with:
           persist-credentials: false
       - run: dnf -y -q install rpm-build rpm-sign createrepo_c gnupg2 git-core tar findutils python3
-      # Only packages httpd-build built from main get signed. The fingerprint
-      # to sign for is the one in repo.conf at that commit, the one servers
-      # pin.
-      - name: Check the run
+      # Only output of runs on main gets signed. The fingerprint to sign for
+      # is the one in repo.conf at that commit, the one servers pin; runs at
+      # different commits must agree on it.
+      - name: Check the runs
         id: run
         env:
           HTTPD_RUN: ${{ inputs.httpd_run }}
+          RADICALE_RUN: ${{ inputs.radicale_run }}
+          RELEASE_RUN: ${{ inputs.release_run }}
           GITHUB_TOKEN: ${{ secrets.FP_SOURCE_TOKEN }}
         run: |
-          sha=$(python3 -I publisher/check_run.py "$SOURCE_REPO" "$HTTPD_RUN" "$RUNNER_TEMP/repo.conf")
-          echo "sha=$sha" >> "$GITHUB_OUTPUT"
+          fpr_of() { sed -n 's/^fingerprint=//p' "$1" | tail -n 1; }
+          conf=""
+          shas=""
+          for pair in "release-build:$RELEASE_RUN" "httpd-build:$HTTPD_RUN" "radicale-build:$RADICALE_RUN"; do
+            wf=${pair%%:*}
+            id=${pair#*:}
+            [ -n "$id" ] || continue
+            sha=$(python3 -I publisher/check_run.py --workflow "$wf" "$SOURCE_REPO" "$id" "$RUNNER_TEMP/repo.$wf.conf")
+            shas="$shas $wf@${sha:0:12}"
+            if [ -z "$conf" ]; then
+              conf="$RUNNER_TEMP/repo.$wf.conf"
+              cp "$conf" "$RUNNER_TEMP/repo.conf"
+            elif [ "$(fpr_of "$RUNNER_TEMP/repo.$wf.conf")" != "$(fpr_of "$RUNNER_TEMP/repo.conf")" ]; then
+              echo "the runs name different signing keys in repo.conf: publish them one at a time" >&2
+              exit 1
+            fi
+          done
+          echo "runs:$shas"
+          echo "shas=${shas# }" >> "$GITHUB_OUTPUT"
       - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4.3.0
+        if: inputs.httpd_run != ''
         with:
           name: httpd-rpms
           path: /tmp/rpms
           repository: ${{ env.SOURCE_REPO }}
           run-id: ${{ inputs.httpd_run }}
+          github-token: ${{ secrets.FP_SOURCE_TOKEN }}
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4.3.0
+        if: inputs.radicale_run != ''
+        with:
+          name: radicale-rpms
+          path: /tmp/rpms
+          repository: ${{ env.SOURCE_REPO }}
+          run-id: ${{ inputs.radicale_run }}
+          github-token: ${{ secrets.FP_SOURCE_TOKEN }}
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4.3.0
+        if: inputs.release_run != ''
+        with:
+          name: freepanel-release
+          path: /tmp/release
+          repository: ${{ env.SOURCE_REPO }}
+          run-id: ${{ inputs.release_run }}
           github-token: ${{ secrets.FP_SOURCE_TOKEN }}
       - name: Signing subkey
         env:
@@ -94,7 +152,9 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ github.token }}
           HTTPD_RUN: ${{ inputs.httpd_run }}
-          SHA: ${{ steps.run.outputs.sha }}
+          RADICALE_RUN: ${{ inputs.radicale_run }}
+          RELEASE_RUN: ${{ inputs.release_run }}
+          RUNS: ${{ steps.run.outputs.shas }}
           FP_RESIGN: ${{ inputs.resign && 'yes' || 'no' }}
         run: |
           export GNUPGHOME="$RUNNER_TEMP/gnupg"
@@ -112,14 +172,22 @@ jobs:
             git init --quiet --initial-branch gh-pages "$site"
             git -C "$site" remote add origin "$url"
           fi
-          publisher/publish-repo.sh "$RUNNER_TEMP/repo.conf" /tmp/rpms "$site"
+          # Packages first: the release step needs the published key.
+          if [ -n "$HTTPD_RUN$RADICALE_RUN" ]; then
+            publisher/publish-repo.sh "$RUNNER_TEMP/repo.conf" /tmp/rpms "$site"
+          fi
+          if [ -n "$RELEASE_RUN" ]; then
+            publisher/publish-release.sh "$RUNNER_TEMP/repo.conf" /tmp/release "$site"
+          fi
+          big=$(find "$site" -path "$site/.git" -prune -o -type f -size +95M -print)
+          [ -z "$big" ] || { echo "too large for GitHub Pages: $big" >&2; exit 1; }
           git -C "$site" add -A
           if git -C "$site" diff --cached --quiet; then
             echo "nothing changed"
             exit 0
           fi
           git -C "$site" -c user.name="freePanel packages" -c user.email="packages@freepanel.invalid" \
-            commit --quiet -m "Publish packages built from $SHA (httpd-build run $HTTPD_RUN)"
+            commit --quiet -m "Publish $RUNS (runs: httpd-build ${HTTPD_RUN:--}, radicale-build ${RADICALE_RUN:--}, release-build ${RELEASE_RUN:--})"
           git -C "$site" push --quiet origin gh-pages
       - if: always()
         run: rm -rf "$RUNNER_TEMP/gnupg"
