@@ -5,8 +5,10 @@
 #
 # By hand only, with the IDs of the runs (in Good-Faith-Enterprises-LLC/freepanel) whose output to
 # publish, any of them, at least one:
-#   httpd_run     an httpd-build run: the Apache RPMs;
-#   radicale_run  a radicale-build run: the Radicale (calendar and contacts) RPM;
+#   httpd_run     an httpd-build run: the Apache RPMs (dnf, el9/) and .debs
+#                 (apt, apt/ for Ubuntu 24.04);
+#   radicale_run  a radicale-build run: the Radicale (calendar and contacts) RPM
+#                 and .deb;
 #   release_run   a release-build run: the production tarball customers'
 #                 one-line installer downloads, and the installer script.
 # Each run is checked (publisher/check_run.py): the right workflow, on main,
@@ -82,7 +84,7 @@ jobs:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
         with:
           persist-credentials: false
-      - run: dnf -y -q install rpm-build rpm-sign createrepo_c gnupg2 git-core tar findutils python3
+      - run: dnf -y -q install rpm-build rpm-sign createrepo_c gnupg2 git-core tar findutils python3 zstd
       # Only output of runs on main gets signed. The fingerprint to sign for
       # is the one in repo.conf at that commit, the one servers pin; runs at
       # different commits must agree on it.
@@ -120,6 +122,22 @@ jobs:
           path: /tmp/rpms
           repository: ${{ env.SOURCE_REPO }}
           run-id: ${{ inputs.httpd_run }}
+          github-token: ${{ secrets.FP_SOURCE_TOKEN }}
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4.3.0
+        if: inputs.httpd_run != ''
+        with:
+          name: httpd-debs
+          path: /tmp/debs
+          repository: ${{ env.SOURCE_REPO }}
+          run-id: ${{ inputs.httpd_run }}
+          github-token: ${{ secrets.FP_SOURCE_TOKEN }}
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4.3.0
+        if: inputs.radicale_run != ''
+        with:
+          name: radicale-debs
+          path: /tmp/debs
+          repository: ${{ env.SOURCE_REPO }}
+          run-id: ${{ inputs.radicale_run }}
           github-token: ${{ secrets.FP_SOURCE_TOKEN }}
       - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4.3.0
         if: inputs.radicale_run != ''
@@ -175,6 +193,8 @@ jobs:
           # Packages first: the release step needs the published key.
           if [ -n "$HTTPD_RUN$RADICALE_RUN" ]; then
             publisher/publish-repo.sh "$RUNNER_TEMP/repo.conf" /tmp/rpms "$site"
+            # The same runs' Ubuntu 24.04 packages, into the apt repository.
+            publisher/publish-apt.py "$RUNNER_TEMP/repo.conf" /tmp/debs "$site"
           fi
           if [ -n "$RELEASE_RUN" ]; then
             publisher/publish-release.sh "$RUNNER_TEMP/repo.conf" /tmp/release "$site"
