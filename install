@@ -38,8 +38,8 @@
 #      and its services on AlmaLinux, Rocky Linux or RHEL 9 (websites,
 #      databases with their admin tool, DNS, mail, webmail with calendars and
 #      contacts, FTP, and login
-#      protection when the firewall is running), and the panel alone on
-#      Ubuntu 24.04. The
+#      protection when the firewall is running) on AlmaLinux, Rocky Linux or
+#      RHEL 9, and the same with login protection on Ubuntu 24.04. The
 #      server's own name is the hostname, if it is a full name such as
 #      server.example.com; if it is not, the script stops and says so;
 #   3. asks $BASE/releases/latest which release is the newest. Only a
@@ -326,9 +326,9 @@ plan() {
   ARGV=("$@")
 
   case "$(os_field ID):$(os_field VERSION_ID)" in
-    almalinux:9* | rocky:9* | rhel:9*) family=el ;;
+    almalinux:9* | rocky:9* | rhel:9* | cloudlinux:9*) family=el ;;
     ubuntu:24.04) family=ubuntu ;;
-    *) die "freePanel installs on AlmaLinux, Rocky Linux or RHEL 9 and on Ubuntu 24.04; this server runs $(os_field PRETTY_NAME)" ;;
+    *) die "freePanel installs on AlmaLinux, Rocky Linux, RHEL or CloudLinux 9 and on Ubuntu 24.04; this server runs $(os_field PRETTY_NAME)" ;;
   esac
 
   if [ "$has_host" = 0 ]; then
@@ -342,21 +342,27 @@ plan() {
     WHAT="what you asked for"
     return 0
   fi
-  if [ "$family" = el ]; then
-    ARGV+=("${FULL_FLAGS[@]}")
-    wants="websites, databases and their admin tool (port 7445), DNS, mail, webmail with calendars and contacts, and FTP"
-    # Like the installer: protection needs a firewall that is already running,
-    # and cannot go with --no-firewall.
-    if command -v firewall-cmd >/dev/null 2>&1 && firewall-cmd --state >/dev/null 2>&1 && ! has_arg --no-firewall "$@"; then
+  ARGV+=("${FULL_FLAGS[@]}")
+  wants="websites, databases and their admin tool (port 7445), DNS, mail, webmail with calendars and contacts, and FTP"
+  if [ "$family" = ubuntu ]; then
+    # Ubuntu: the installer's deny list and fail2ban's bans are nftables
+    # tables of their own, which drop only the addresses they name, so no
+    # firewall needs to be running first. --no-firewall still rules it out.
+    if has_arg --no-firewall "$@"; then
+      skipped="; login protection is left off with --no-firewall"
+    else
       ARGV+=(--protect)
       wants="$wants, and login protection"
-    else
-      skipped="; login protection needs the firewall (firewalld) running"
     fi
-    WHAT="the panel with $wants$skipped"
+  # Like the installer: on EL protection needs a firewall that is already
+  # running, and cannot go with --no-firewall.
+  elif command -v firewall-cmd >/dev/null 2>&1 && firewall-cmd --state >/dev/null 2>&1 && ! has_arg --no-firewall "$@"; then
+    ARGV+=(--protect)
+    wants="$wants, and login protection"
   else
-    WHAT="the panel (websites, mail and the other services need AlmaLinux, Rocky Linux or RHEL 9)"
+    skipped="; login protection needs the firewall (firewalld) running"
   fi
+  WHAT="the panel with $wants$skipped"
   [ "$has_fw" = 1 ] || ARGV+=(--open-firewall)
 }
 
