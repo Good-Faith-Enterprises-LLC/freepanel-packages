@@ -1,0 +1,13 @@
+Origin: freePanel
+Label: freePanel
+Suite: bookworm
+Codename: bookworm
+Date: Mon, 09 Nov 2026 04:58:54 UTC
+Architectures: amd64
+Components: main
+Description: freePanel packages for Debian 12
+Acquire-By-Hash: no
+SHA256:
+ 84bf1c6a896c1a4dce59fd76325ee68bec7e1c93baf9e3168e2b3b89f3a8fc0c 20064 main/binary-amd64/Packages
+ 8809f0d297312df38d1139ca66b23686fb306863ac5fde8c2c7d0c88d0833055 7309 main/binary-amd64/Packages.gz
+ c5cdfb272f40bd02e971137fe0753a91d3364e66e8fba0cbe79fa93b4558582c 89 main/binary-amd64/Release

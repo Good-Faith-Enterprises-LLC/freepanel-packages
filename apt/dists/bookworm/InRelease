@@ -1,0 +1,32 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA512
+
+Origin: freePanel
+Label: freePanel
+Suite: bookworm
+Codename: bookworm
+Date: Mon, 09 Nov 2026 04:58:54 UTC
+Architectures: amd64
+Components: main
+Description: freePanel packages for Debian 12
+Acquire-By-Hash: no
+SHA256:
+ 84bf1c6a896c1a4dce59fd76325ee68bec7e1c93baf9e3168e2b3b89f3a8fc0c 20064 main/binary-amd64/Packages
+ 8809f0d297312df38d1139ca66b23686fb306863ac5fde8c2c7d0c88d0833055 7309 main/binary-amd64/Packages.gz
+ c5cdfb272f40bd02e971137fe0753a91d3364e66e8fba0cbe79fa93b4558582c 89 main/binary-amd64/Release
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAEBCgAdFiEEQ533bDstW8zqJfZS+7kTCOyPYakFAmrxUw4ACgkQ+7kTCOyP
+YalOZg//Sf6LApe0siBqg0kr3oT6lNS3BKyymBfdWWlTKSQtghQULgDPmokKHoWK
+6LiKSoO9bOL6VC08f4U+n5/jnRHSR6RW0DXhZdUURwU1G4jt0SSPCstwrCEyeTHU
+DcB62mGn5pbxljNCf1xRW5P7wYa43iT7NGgffl7rG2Osnffrpz6m1pKqM73H6rZj
+4JZIAFkaJ1jDzLAdDPcV/bRcrx2s1cFalO5b7XGAEoww5ukxtsb3+6m38nvS390x
+8wBfd8WT0CBpqUPdrJWHaO1rJUQtwTuNuVVvBVTu7ERBzqoS2ejEu1XBQPZoCGbw
+5HMyZ+T6ZdCBMWmG/KV9PA9CiDTX9Nm8alRPG6XRgYOb6N+3jIhe2FAYcd2rNghu
+1QOezZdT2eqEZw3mIpJrME5gA9hK6A1hsG9qAr0uVcARwUNIveBua0hYDroqz6uy
+GFTbmS6DY94aARanQ67XnzZIjRXj8ew3QwXXIPN4OeLvibtJYMPNTEVwb4JwMky5
+r1JQkBgzqv9u9KS7mJZ862jXXLiUAgcAXApxfcAI5rg+O8O22MuybOOKKz+6yEBO
+fVS7g5UXq2Vuq9mAKKqWsU4xEHrYzDlP0dqwFXVyyeSzMU5x8aUyWUZuzRe9RToF
+b32rAeZKXB6lGO97AJNjRKKHyCCdFxbeoBo+v3fRtFWujzeu7Kg=
+=WSja
+-----END PGP SIGNATURE-----

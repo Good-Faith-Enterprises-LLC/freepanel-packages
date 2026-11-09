@@ -1,0 +1,32 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA512
+
+Origin: freePanel
+Label: freePanel
+Suite: resolute
+Codename: resolute
+Date: Mon, 09 Nov 2026 04:58:54 UTC
+Architectures: amd64
+Components: main
+Description: freePanel packages for Ubuntu 26.04
+Acquire-By-Hash: no
+SHA256:
+ 6180d6096d87aadad7a09d2f4510f1e84f5d00605c4709ab60408e907c6e2b6b 19746 main/binary-amd64/Packages
+ e11c7d6ea97f7d1d3b4ba4dda679c4f49f640d921e5a271ac985b9e135f29003 7125 main/binary-amd64/Packages.gz
+ d3b68d33a28585b0c280bd2dfe2e8b0ca5dc59fe78256b4b77e0c29604330ad1 89 main/binary-amd64/Release
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAEBCgAdFiEEQ533bDstW8zqJfZS+7kTCOyPYakFAmrxUw4ACgkQ+7kTCOyP
+YamIxRAAmKQRpSxjE0Igpgv6nOgLqwTnD5Xk1cwbkkVR0Z1yUQZ92rR/OCDOZomt
+wDaf7sulVJjUJ/6p6aXEwEtFKxYGXvluV/g9vQDXy+efv2UU391NlYjHxSwkZh05
+lE7qNb5o3TVYy/nx9iSrH1ucplQ/BbLnJ5E0gZMBq3xL20kTWh2iTNcw9OMxlmnl
+F8Kjs9dvHbkS+onyPj+M/XnDgLdzcS0fHZNYCw9ixhIvAQ3yiALxBjQ5rb0lpuHI
+bHqQCL4fJvVZBoFSI4BhRYA27bJFnrjemszgytN+TYYFg5oi0lSUa5emVzcqK/fS
+0T+gGmFSv2N9lacJqkOw3BqcH+qI6yo3l93OONAxG1MD5zwN7wSvtNJORK6fszZZ
+FbXHKPd8O4vR/Ce/+7UxtIh3Ck2J7PbrHjQlBmDvps1hmrSIA8crUFa4OK8U3S5k
+6Y2otbSQLwOpIrql0+a5zcdq61dutSibv7/V9roAHo0xkozdKohcm1WLRWmWKhht
+Q0WwIYRZy37rKvJN7cAMLAsQ7MTBFOdVKH+Hrw3HcxQZR8t9bB1nRYvGIMX1fjB8
+QFmyKlxtL1htjEoYbI6eo/nOfHAybnQsfvbGxauVY3sGeTczecYkC8uyf5z9UUkz
+sZwwf9d0J4zxwjej0B6DSXYHVVnbIDhfdo3sFd9Ges2EkT9aXcM=
+=lnq4
+-----END PGP SIGNATURE-----
