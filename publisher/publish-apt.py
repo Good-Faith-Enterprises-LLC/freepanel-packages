@@ -1,15 +1,18 @@
 #!/usr/bin/python3 -I
 """Adds new .deb packages to the published apt repository and signs it again.
 
-    publish-apt.py CONF DEBDIR SITEDIR
+    publish-apt.py CONF DEBDIR SITEDIR [SUITE]
 
-The apt twin of publish-repo.sh, for Ubuntu 24.04 (noble). SITEDIR is a
-checkout of what is served (the Pages branch); the apt repository is its
-apt/ folder:
+The apt twin of publish-repo.sh, for Ubuntu 24.04 (SUITE noble, the default),
+Ubuntu 26.04 (SUITE resolute) and Debian 12 (SUITE bookworm). SITEDIR is a checkout of what is served (the
+Pages branch); the apt repository is its apt/ folder, one pool per suite
+(noble's is the first one, kept where it always was):
 
-    apt/pool/main/<package>/<file>.deb
-    apt/dists/noble/main/binary-amd64/Packages, Packages.gz
-    apt/dists/noble/Release, Release.gpg, InRelease
+    apt/pool/main/<package>/<file>.deb               (noble)
+    apt/pool/bookworm/main/<package>/<file>.deb      (bookworm)
+    apt/pool/resolute/main/<package>/<file>.deb      (resolute)
+    apt/dists/SUITE/main/binary-amd64/Packages, Packages.gz
+    apt/dists/SUITE/Release, Release.gpg, InRelease
 
 Packages already published are never replaced: a .deb with a file name that
 is already in the pool is left out, so a server that has it keeps the same
@@ -42,6 +45,9 @@ import sys
 import tarfile
 import tempfile
 
+# Each suite and the system it is for. noble's pool is apt/pool/main, as it
+# was before there was more than one suite; the others' are apt/pool/SUITE/main.
+SUITES = {"noble": "Ubuntu 24.04", "resolute": "Ubuntu 26.04", "bookworm": "Debian 12"}
 SUITE = "noble"
 COMPONENT = "main"
 ARCH = "amd64"
@@ -180,9 +186,14 @@ def stanza(apt, path):
 
 
 def main():
-    if len(sys.argv) != 4:
-        die("usage: publish-apt.py CONF DEBDIR SITEDIR")
+    global SUITE
+    if len(sys.argv) not in (4, 5):
+        die("usage: publish-apt.py CONF DEBDIR SITEDIR [SUITE]")
     conf, src, site = sys.argv[1], os.path.realpath(sys.argv[2]), os.path.realpath(sys.argv[3])
+    if len(sys.argv) == 5:
+        SUITE = sys.argv[4]
+    if SUITE not in SUITES:
+        die("unknown suite %s; one of %s" % (SUITE, " ".join(sorted(SUITES))))
     fpr = fingerprint(conf)
     work = tempfile.mkdtemp()
     try:
@@ -190,7 +201,10 @@ def main():
         stage = os.path.join(work, "site")
         shutil.copytree(site, stage, ignore=shutil.ignore_patterns(".git"), symlinks=False)
         apt = os.path.join(stage, "apt")
-        pool = os.path.join(apt, "pool", COMPONENT)
+        if SUITE == "noble":
+            pool = os.path.join(apt, "pool", COMPONENT)
+        else:
+            pool = os.path.join(apt, "pool", SUITE, COMPONENT)
         os.makedirs(pool, exist_ok=True)
         published = {f for _, _, fs in os.walk(pool) for f in fs if f.endswith(".deb")}
 
@@ -244,7 +258,7 @@ def main():
         now = datetime.datetime.now(datetime.timezone.utc).strftime("%a, %d %b %Y %H:%M:%S UTC")
         rel = ["Origin: freePanel", "Label: freePanel", "Suite: " + SUITE, "Codename: " + SUITE,
                "Date: " + now, "Architectures: " + ARCH, "Components: " + COMPONENT,
-               "Description: freePanel packages for Ubuntu 24.04", "Acquire-By-Hash: no", "SHA256:"]
+               "Description: freePanel packages for " + SUITES[SUITE], "Acquire-By-Hash: no", "SHA256:"]
         for name in files:
             p = os.path.join(idx, name)
             rel.append(" %s %d %s" % (digest(p, "sha256"), os.path.getsize(p), os.path.join(idx_rel, name)))
