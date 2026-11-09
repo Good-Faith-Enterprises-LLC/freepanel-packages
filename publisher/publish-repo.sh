@@ -1,7 +1,12 @@
 #!/bin/bash
 # Adds new packages to the published repository's files and signs it again.
 #
-#   publish-repo.sh CONF RPMDIR SITEDIR
+#   [FP_EL=10] publish-repo.sh CONF RPMDIR SITEDIR
+#
+# FP_EL=10 publishes RPMDIR's packages (built in an EL10 build root) into
+# el10/ beside el9/, signed with the same key; unset, they go to el9/ as
+# before. Each run checks and signs its own tree only, so EL9's files are
+# left exactly as they are by an EL10 publish, and the other way round.
 #
 # SITEDIR is a checkout of what is served (the Pages branch). Packages
 # already published are never replaced: one with the same file name is
@@ -21,6 +26,11 @@ CONF=${1:?usage: publish-repo.sh CONF RPMDIR SITEDIR}
 IN=$(realpath "${2:?usage: publish-repo.sh CONF RPMDIR SITEDIR}")
 SITE=$(realpath "${3:?usage: publish-repo.sh CONF RPMDIR SITEDIR}")
 HERE=$(dirname "$(realpath "$0")")
+EL=${FP_EL:-9}
+case "$EL" in
+    9 | 10) ;;
+    *) echo "FP_EL must be 9 or 10, not $EL" >&2; exit 1 ;;
+esac
 
 fpr=$(sed -n 's/^fingerprint=//p' "$CONF" | tail -n 1 | tr 'a-f' 'A-F')
 [ -n "$fpr" ] || { echo "repo.conf has no fingerprint: nothing can be signed yet" >&2; exit 1; }
@@ -32,7 +42,7 @@ n=0
 for f in "$IN"/*.rpm; do
     [ -e "$f" ] || break
     case "$f" in *.src.rpm) continue ;; esac
-    if compgen -G "$SITE/el9/*/Packages/$(basename "$f")" >/dev/null; then
+    if compgen -G "$SITE/el$EL/*/Packages/$(basename "$f")" >/dev/null; then
         echo "already published, left as it is: $(basename "$f")"
         continue
     fi
@@ -62,7 +72,7 @@ if [ -e "$old" ]; then
 fi
 verifies() { rpmkeys --dbpath "$1" --checksig "$2" | grep -q ': digests signatures OK$'; }
 again=0
-for f in "$work"/site/el9/*/Packages/*.rpm; do
+for f in "$work"/site/el"$EL"/*/Packages/*.rpm; do
     [ -e "$f" ] || break
     verifies "$work/now.db" "$f" && continue
     if [ "${FP_RESIGN:-}" = yes ] && [ -e "$old" ] && verifies "$work/old.db" "$f"; then
@@ -83,7 +93,7 @@ if [ "$n" -eq 0 ] && [ "$again" -eq 0 ]; then
     echo "nothing new to publish"
     exit 0
 fi
-FP_SIGN_KEY=$fpr "$HERE/build-repo.sh" "$work/new" "$work/site"
+FP_SIGN_KEY=$fpr FP_EL=$EL "$HERE/build-repo.sh" "$work/new" "$work/site"
 
 got=$(gpg --batch --with-colons --import-options show-only --import "$work/site/RPM-GPG-KEY-freepanel" 2>/dev/null \
     | awk -F: '$1=="pub"{p=1} $1=="fpr" && p {print $10; p=0}')

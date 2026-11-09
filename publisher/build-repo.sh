@@ -1,7 +1,7 @@
 #!/bin/bash
 # Signs RPMs and builds a dnf repository from them.
 #
-#   FP_SIGN_KEY=FINGERPRINT build-repo.sh RPMDIR OUTDIR
+#   FP_SIGN_KEY=FINGERPRINT [FP_EL=10] build-repo.sh RPMDIR OUTDIR
 #
 # RPMDIR holds the binary RPMs (source RPMs are left out). OUTDIR gets
 # el9/x86_64/ (or whatever architectures the packages are) with every
@@ -11,6 +11,9 @@
 # passphrase prompt; CI imports a signing subkey from a secret. Every
 # package is checked against the exported public key before the metadata
 # is written, so an unsigned or wrongly signed package never gets in.
+# FP_EL=10 puts them in el10/ instead, the tree EL10 servers read (packages
+# built in an EL10 build root); unset, it is el9/, as it always was. Each run
+# touches its own tree only.
 set -euo pipefail
 
 IN=$(realpath "${1:?usage: build-repo.sh RPMDIR OUTDIR}")
@@ -20,6 +23,11 @@ case "$KEY" in
     *[!0-9A-Fa-f]*|"") echo "FP_SIGN_KEY must be a full hex fingerprint" >&2; exit 1 ;;
 esac
 [ "${#KEY}" -eq 40 ] || [ "${#KEY}" -eq 64 ] || { echo "FP_SIGN_KEY must be a full fingerprint, not a short id" >&2; exit 1; }
+EL=${FP_EL:-9}
+case "$EL" in
+    9 | 10) ;;
+    *) echo "FP_EL must be 9 or 10, not $EL" >&2; exit 1 ;;
+esac
 for tool in rpmsign rpmkeys createrepo_c gpg; do
     command -v "$tool" >/dev/null || { echo "$tool is not installed" >&2; exit 1; }
 done
@@ -42,7 +50,7 @@ for f in "$IN"/*.rpm; do
     case "$f" in *.src.rpm) continue ;; esac
     arch=$(rpm -qp --qf '%{ARCH}' "$f" 2>/dev/null)
     case "$arch" in noarch) arch=x86_64 ;; esac
-    dest="$OUT/el9/$arch/Packages"
+    dest="$OUT/el$EL/$arch/Packages"
     mkdir -p "$dest"
     cp "$f" "$dest/"
     rpmsign --addsign --define "_gpg_name $KEY" --define "__gpg /usr/bin/gpg" "$dest/$(basename "$f")" >/dev/null
@@ -52,7 +60,7 @@ for f in "$IN"/*.rpm; do
 done
 [ "$n" -gt 0 ] || { echo "no binary packages in $IN" >&2; exit 1; }
 
-for repo in "$OUT"/el9/*/; do
+for repo in "$OUT"/el"$EL"/*/; do
     # Every package the metadata will list, not only the new ones, so a file
     # put there by other means never gets signed metadata.
     for f in "$repo"Packages/*.rpm; do
