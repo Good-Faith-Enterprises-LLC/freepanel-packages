@@ -1,4 +1,4 @@
-from the freePanel commit d67b929ef675be148d1372774109042fa96d3737
+from the freePanel commit 3d8cd544b5b092480d36b0a5d48d8ea5ba97cedb
 6c087ffed62825dade721bf55efc3de38e70e2fa0e1ec323674c709861154c1d  .github/workflows/publish.yml
 4b2032c8892f6b51890740a81544b172039f818d746b212b0f8ee31d693fc8a7  publisher/build-repo.sh
 eed34d80ab73b862e5d7670f984a8196c8ad6774f47e65e540d810a9cb224eb7  publisher/publish-repo.sh
