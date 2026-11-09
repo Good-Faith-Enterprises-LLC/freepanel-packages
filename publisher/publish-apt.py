@@ -3,13 +3,14 @@
 
     publish-apt.py CONF DEBDIR SITEDIR [SUITE]
 
-The apt twin of publish-repo.sh, for Ubuntu 24.04 (SUITE noble, the default)
-and Debian 12 (SUITE bookworm). SITEDIR is a checkout of what is served (the
+The apt twin of publish-repo.sh, for Ubuntu 24.04 (SUITE noble, the default),
+Ubuntu 26.04 (SUITE resolute) and Debian 12 (SUITE bookworm). SITEDIR is a checkout of what is served (the
 Pages branch); the apt repository is its apt/ folder, one pool per suite
 (noble's is the first one, kept where it always was):
 
     apt/pool/main/<package>/<file>.deb               (noble)
     apt/pool/bookworm/main/<package>/<file>.deb      (bookworm)
+    apt/pool/resolute/main/<package>/<file>.deb      (resolute)
     apt/dists/SUITE/main/binary-amd64/Packages, Packages.gz
     apt/dists/SUITE/Release, Release.gpg, InRelease
 
@@ -46,7 +47,7 @@ import tempfile
 
 # Each suite and the system it is for. noble's pool is apt/pool/main, as it
 # was before there was more than one suite; the others' are apt/pool/SUITE/main.
-SUITES = {"noble": "Ubuntu 24.04", "bookworm": "Debian 12"}
+SUITES = {"noble": "Ubuntu 24.04", "resolute": "Ubuntu 26.04", "bookworm": "Debian 12"}
 SUITE = "noble"
 COMPONENT = "main"
 ARCH = "amd64"

@@ -157,6 +157,24 @@ jobs:
           repository: ${{ env.SOURCE_REPO }}
           run-id: ${{ inputs.radicale_run }}
           github-token: ${{ secrets.FP_SOURCE_TOKEN }}
+      # Ubuntu 26.04's (resolute) builds of the same Apache and Radicale, for
+      # their own suite.
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4.3.0
+        if: inputs.httpd_run != ''
+        with:
+          name: httpd-debs-resolute
+          path: /tmp/debs-resolute
+          repository: ${{ env.SOURCE_REPO }}
+          run-id: ${{ inputs.httpd_run }}
+          github-token: ${{ secrets.FP_SOURCE_TOKEN }}
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4.3.0
+        if: inputs.radicale_run != ''
+        with:
+          name: radicale-debs-resolute
+          path: /tmp/debs-resolute
+          repository: ${{ env.SOURCE_REPO }}
+          run-id: ${{ inputs.radicale_run }}
+          github-token: ${{ secrets.FP_SOURCE_TOKEN }}
       - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4.3.0
         if: inputs.radicale_run != ''
         with:
@@ -216,6 +234,10 @@ jobs:
             # And Debian 12's, into the bookworm suite.
             if [ -d /tmp/debs-bookworm ]; then
               publisher/publish-apt.py "$RUNNER_TEMP/repo.conf" /tmp/debs-bookworm "$site" bookworm
+            fi
+            # And Ubuntu 26.04's, into the resolute suite.
+            if [ -d /tmp/debs-resolute ]; then
+              publisher/publish-apt.py "$RUNNER_TEMP/repo.conf" /tmp/debs-resolute "$site" resolute
             fi
           fi
           if [ -n "$RELEASE_RUN" ]; then
