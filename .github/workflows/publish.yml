@@ -11,6 +11,11 @@
 #                 and .deb;
 #   release_run   a release-build run: the production tarball customers'
 #                 one-line installer downloads, and the installer script.
+# With el10 set, the httpd and radicale runs' EL10 RPMs (artifacts
+# httpd-rpms-el10, crs-rpms-el10 and radicale-rpms-el10, built in an
+# AlmaLinux 10 build root)
+# are published too, into el10/ beside el9/, signed with the same key. Unset,
+# nothing is read or written for el10/.
 # Each run is checked (publisher/check_run.py): the right workflow, on main,
 # finished successfully, at a commit main holds, and all of them must name the
 # same signing key in packaging/repo/repo.conf. The job runs only from main
@@ -45,6 +50,10 @@ on:
         default: ""
       resign:
         description: After rotating the signing subkey, sign the published packages again
+        type: boolean
+        default: false
+      el10:
+        description: Also publish the runs' EL10 RPMs (httpd-rpms-el10, crs-rpms-el10, radicale-rpms-el10) into el10/
         type: boolean
         default: false
 
@@ -184,6 +193,31 @@ jobs:
           run-id: ${{ inputs.radicale_run }}
           github-token: ${{ secrets.FP_SOURCE_TOKEN }}
       - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4.3.0
+        if: inputs.el10 && inputs.httpd_run != ''
+        with:
+          name: httpd-rpms-el10
+          path: /tmp/rpms-el10
+          repository: ${{ env.SOURCE_REPO }}
+          run-id: ${{ inputs.httpd_run }}
+          github-token: ${{ secrets.FP_SOURCE_TOKEN }}
+      # OWASP CRS (mod_security_crs) for EL10, built by the same httpd run.
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4.3.0
+        if: inputs.el10 && inputs.httpd_run != ''
+        with:
+          name: crs-rpms-el10
+          path: /tmp/rpms-el10
+          repository: ${{ env.SOURCE_REPO }}
+          run-id: ${{ inputs.httpd_run }}
+          github-token: ${{ secrets.FP_SOURCE_TOKEN }}
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4.3.0
+        if: inputs.el10 && inputs.radicale_run != ''
+        with:
+          name: radicale-rpms-el10
+          path: /tmp/rpms-el10
+          repository: ${{ env.SOURCE_REPO }}
+          run-id: ${{ inputs.radicale_run }}
+          github-token: ${{ secrets.FP_SOURCE_TOKEN }}
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4.3.0
         if: inputs.release_run != ''
         with:
           name: freepanel-release
@@ -210,6 +244,7 @@ jobs:
           RELEASE_RUN: ${{ inputs.release_run }}
           RUNS: ${{ steps.run.outputs.shas }}
           FP_RESIGN: ${{ inputs.resign && 'yes' || 'no' }}
+          EL10: ${{ inputs.el10 && 'yes' || 'no' }}
         run: |
           export GNUPGHOME="$RUNNER_TEMP/gnupg"
           # git gets the token for github.com only, from the environment.
@@ -229,6 +264,10 @@ jobs:
           # Packages first: the release step needs the published key.
           if [ -n "$HTTPD_RUN$RADICALE_RUN" ]; then
             publisher/publish-repo.sh "$RUNNER_TEMP/repo.conf" /tmp/rpms "$site"
+            # The same runs' EL10 RPMs, into el10/ (el9/ is left as it is).
+            if [ "$EL10" = yes ]; then
+              FP_EL=10 publisher/publish-repo.sh "$RUNNER_TEMP/repo.conf" /tmp/rpms-el10 "$site"
+            fi
             # The same runs' Ubuntu 24.04 packages, into the apt repository.
             publisher/publish-apt.py "$RUNNER_TEMP/repo.conf" /tmp/debs "$site"
             # And Debian 12's, into the bookworm suite.
