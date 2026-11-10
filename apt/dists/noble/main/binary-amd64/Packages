@@ -24,6 +24,32 @@ Description: Apache HTTP Server (modules and other binary files)
  web-server instance. Install the "apache2" package to get a fully working
  instance.
 
+Package: apache2-bin
+Source: apache2
+Version: 2.4.58-1ubuntu8.18+fp5
+Architecture: amd64
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 5036
+Depends: perl:any, libapr1t64 (>= 1.7.0), libaprutil1-dbd-sqlite3 | libaprutil1-dbd-mysql | libaprutil1-dbd-odbc | libaprutil1-dbd-pgsql | libaprutil1-dbd-freetds, libaprutil1-ldap, libaprutil1t64 (>= 1.6.0), libbrotli1 (>= 0.6.0), libc6 (>= 2.38), libcrypt1 (>= 1:4.1.0), libcurl4t64 (>= 7.28.0), libjansson4 (>= 2.14), libldap2 (>= 2.6.2), liblua5.4-0 (>= 5.4.6), libnghttp2-14 (>= 1.50.0), libpcre2-8-0 (>= 10.22), libssl3t64 (>= 3.0.0), libxml2 (>= 2.7.4), zlib1g (>= 1:1.1.4)
+Suggests: apache2-doc, apache2-suexec-pristine | apache2-suexec-custom, www-browser
+Provides: apache2-api-20120211, apache2-api-20120211-openssl1.1
+Section: httpd
+Priority: optional
+Homepage: https://httpd.apache.org/
+Original-Maintainer: Debian Apache Maintainers <debian-apache@lists.debian.org>
+Filename: pool/main/apache2-bin/apache2-bin_2.4.58-1ubuntu8.18+fp5_amd64.deb
+Size: 1341406
+MD5sum: 7e64764c81eb60d6fff2bcbece8c8626
+SHA256: 664100182c23053f422bbb9e20ce1ed0d38eb1d7ed45cb91e618d8907e48437a
+Description: Apache HTTP Server (modules and other binary files)
+ The Apache HTTP Server Project's goal is to build a secure, efficient and
+ extensible HTTP server as standards-compliant open source software. The
+ result has long been the number one web server on the Internet.
+ .
+ This package contains the binaries only and does not set up a working
+ web-server instance. Install the "apache2" package to get a fully working
+ instance.
+
 Package: apache2-data
 Source: apache2
 Version: 2.4.58-1ubuntu8.17+fp5
@@ -39,6 +65,29 @@ Filename: pool/main/apache2-data/apache2-data_2.4.58-1ubuntu8.17+fp5_all.deb
 Size: 172370
 MD5sum: 58d6a446c2d5e24ed19c9903342373f1
 SHA256: b6e9ea6dedad87244849c805263af1d67f5d4d68689cee6782d622c3b4be70b9
+Description: Apache HTTP Server (common files)
+ The Apache HTTP Server Project's goal is to build a secure, efficient and
+ extensible HTTP server as standards-compliant open source software. The
+ result has long been the number one web server on the Internet.
+ .
+ This package contains architecture-independent common files such as icons,
+ error pages and static index files.
+
+Package: apache2-data
+Source: apache2
+Version: 2.4.58-1ubuntu8.18+fp5
+Architecture: all
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 857
+Section: httpd
+Priority: optional
+Multi-Arch: foreign
+Homepage: https://httpd.apache.org/
+Original-Maintainer: Debian Apache Maintainers <debian-apache@lists.debian.org>
+Filename: pool/main/apache2-data/apache2-data_2.4.58-1ubuntu8.18+fp5_all.deb
+Size: 172374
+MD5sum: 1c1e250038626c25e8792bae794d0acc
+SHA256: 31056714b0e41ee8a4e4d5ac50948d5945a900d78746f76005303a6d37f88282
 Description: Apache HTTP Server (common files)
  The Apache HTTP Server Project's goal is to build a secure, efficient and
  extensible HTTP server as standards-compliant open source software. The
@@ -78,6 +127,37 @@ Description: Apache HTTP Server (development headers)
   - Site configuration files
   - Global configuration files
 
+Package: apache2-dev
+Source: apache2
+Version: 2.4.58-1ubuntu8.18+fp5
+Architecture: amd64
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 1000
+Depends: debhelper (>= 10), libapr1-dev, libaprutil1-dev, libpcre2-dev, openssl, perl:any
+Provides: dh-apache2, dh-sequence-apache2
+Section: httpd
+Priority: optional
+Homepage: https://httpd.apache.org/
+Original-Maintainer: Debian Apache Maintainers <debian-apache@lists.debian.org>
+Filename: pool/main/apache2-dev/apache2-dev_2.4.58-1ubuntu8.18+fp5_amd64.deb
+Size: 204694
+MD5sum: d1ddd9197a9ebe06329ca6ccb2c2e409
+SHA256: f89820de56971e1da508dcddf02a45fae759d4e790cd20a8f2fd30642736b9eb
+Description: Apache HTTP Server (development headers)
+ The Apache HTTP Server Project's goal is to build a secure, efficient and
+ extensible HTTP server as standards-compliant open source software. The
+ result has long been the number one web server on the Internet.
+ .
+ This package provides development headers and the apxs2 binary for the Apache
+ 2 HTTP server, useful to develop and link third party additions to the Debian
+ Apache HTTP server package.
+ .
+ It also provides dh_apache2 and dh sequence addons useful to install various
+ Debian Apache2 extensions with debhelper. It supports
+  - Apache 2 module configurations and shared objects
+  - Site configuration files
+  - Global configuration files
+
 Package: apache2-doc
 Source: apache2
 Version: 2.4.58-1ubuntu8.17+fp5
@@ -93,6 +173,30 @@ Filename: pool/main/apache2-doc/apache2-doc_2.4.58-1ubuntu8.17+fp5_all.deb
 Size: 3900752
 MD5sum: 773fcb228a840c3d47a9ab56783186e2
 SHA256: 75dbb6d26a3adc8a5a201308f34a05ca31682ddf70a95fd45e024be4f1c6c36c
+Description: Apache HTTP Server (on-site documentation)
+ The Apache HTTP Server Project's goal is to build a secure, efficient and
+ extensible HTTP server as standards-compliant open source software. The
+ result has long been the number one web server on the Internet.
+ .
+ This package provides the documentation for the Apache 2 HTTP server. The
+ documentation is shipped in HTML format and can be accessed from a local
+ running Apache HTTP server instance or by browsing the file system directly.
+
+Package: apache2-doc
+Source: apache2
+Version: 2.4.58-1ubuntu8.18+fp5
+Architecture: all
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 25127
+Recommends: apache2
+Section: doc
+Priority: optional
+Homepage: https://httpd.apache.org/
+Original-Maintainer: Debian Apache Maintainers <debian-apache@lists.debian.org>
+Filename: pool/main/apache2-doc/apache2-doc_2.4.58-1ubuntu8.18+fp5_all.deb
+Size: 3901556
+MD5sum: b184695f552f0fb460e52ce0e002df29
+SHA256: 412e38ac19a6aeacc39200e5dc368386f77796e4461f7020d913650f9ef7b3cf
 Description: Apache HTTP Server (on-site documentation)
  The Apache HTTP Server Project's goal is to build a secure, efficient and
  extensible HTTP server as standards-compliant open source software. The
@@ -126,6 +230,30 @@ Description: Apache HTTP Server (mod_ssl development headers)
  This package provides the development header and the dependencies for
  modules that interact with mod_ssl's internal openssl state.
 
+Package: apache2-ssl-dev
+Source: apache2
+Version: 2.4.58-1ubuntu8.18+fp5
+Architecture: amd64
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 13
+Depends: apache2-dev (= 2.4.58-1ubuntu8.18+fp5), libssl-dev
+Section: httpd
+Priority: optional
+Multi-Arch: same
+Homepage: https://httpd.apache.org/
+Original-Maintainer: Debian Apache Maintainers <debian-apache@lists.debian.org>
+Filename: pool/main/apache2-ssl-dev/apache2-ssl-dev_2.4.58-1ubuntu8.18+fp5_amd64.deb
+Size: 2988
+MD5sum: 0f20da7f2da4d6d51aa93a792613a821
+SHA256: 964c779adec773937812417ab2ce72f4a7803386d4ba6a8237b5ccba3b47f40a
+Description: Apache HTTP Server (mod_ssl development headers)
+ The Apache HTTP Server Project's goal is to build a secure, efficient and
+ extensible HTTP server as standards-compliant open source software. The
+ result has long been the number one web server on the Internet.
+ .
+ This package provides the development header and the dependencies for
+ modules that interact with mod_ssl's internal openssl state.
+
 Package: apache2-suexec-custom
 Source: apache2
 Version: 2.4.58-1ubuntu8.17+fp5
@@ -142,6 +270,31 @@ Filename: pool/main/apache2-suexec-custom/apache2-suexec-custom_2.4.58-1ubuntu8.
 Size: 30566
 MD5sum: ece9c0164ee911a3516fb555a5785fd1
 SHA256: 4e4e6dbb5048ce6cdd9360fc91e75e904001378e83c9ac0e488b7fac1e6b6d4b
+Description: Apache HTTP Server configurable suexec program for mod_suexec
+ Provides a customizable version of the suexec helper program for mod_suexec.
+ This is not the version from upstream, but can be configured with a
+ configuration file.
+ .
+ If you do not need non-standard document root or userdir settings, it is
+ recommended that you use the standard suexec helper program from the
+ apache2-suexec-pristine package instead.
+
+Package: apache2-suexec-custom
+Source: apache2
+Version: 2.4.58-1ubuntu8.18+fp5
+Architecture: amd64
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 83
+Depends: apache2-bin, libc6 (>= 2.38)
+Provides: apache2-suexec
+Section: httpd
+Priority: optional
+Homepage: https://httpd.apache.org/
+Original-Maintainer: Debian Apache Maintainers <debian-apache@lists.debian.org>
+Filename: pool/main/apache2-suexec-custom/apache2-suexec-custom_2.4.58-1ubuntu8.18+fp5_amd64.deb
+Size: 30724
+MD5sum: f8bf11c437455cc333277de8d2db98cd
+SHA256: cbfa4842dae26ff60def457c0a733bb6967b2f5c603207743a5a14f64df70e5f
 Description: Apache HTTP Server configurable suexec program for mod_suexec
  Provides a customizable version of the suexec helper program for mod_suexec.
  This is not the version from upstream, but can be configured with a
@@ -172,6 +325,27 @@ Description: Apache HTTP Server standard suexec program for mod_suexec
  compiled with document root /var/www and userdir suffix public_html. If you
  need different settings, use the package apache2-suexec-custom.
 
+Package: apache2-suexec-pristine
+Source: apache2
+Version: 2.4.58-1ubuntu8.18+fp5
+Architecture: amd64
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 73
+Depends: apache2-bin, libc6 (>= 2.38)
+Provides: apache2-suexec
+Section: httpd
+Priority: optional
+Homepage: https://httpd.apache.org/
+Original-Maintainer: Debian Apache Maintainers <debian-apache@lists.debian.org>
+Filename: pool/main/apache2-suexec-pristine/apache2-suexec-pristine_2.4.58-1ubuntu8.18+fp5_amd64.deb
+Size: 29216
+MD5sum: a08edbab9a3e38cf180ae87dd73091aa
+SHA256: abc086400416f49dbdfbf9852e62eb7c76518f890d23a56d9abdd3e542d7ff30
+Description: Apache HTTP Server standard suexec program for mod_suexec
+ Provides the standard suexec helper program for mod_suexec. This version is
+ compiled with document root /var/www and userdir suffix public_html. If you
+ need different settings, use the package apache2-suexec-custom.
+
 Package: apache2-utils
 Source: apache2
 Version: 2.4.58-1ubuntu8.17+fp5
@@ -188,6 +362,37 @@ Filename: pool/main/apache2-utils/apache2-utils_2.4.58-1ubuntu8.17+fp5_amd64.deb
 Size: 100498
 MD5sum: 2adfad7cf9fd7d77676320fb6a3700f9
 SHA256: 78dae53af0b2866faebcfa0703e9d3f01cce340f87637f00b11b0db3758f0ccb
+Description: Apache HTTP Server (utility programs for web servers)
+ Provides some add-on programs useful for any web server.  These include:
+  - ab (Apache benchmark tool)
+  - fcgistarter (Start a FastCGI program)
+  - logresolve (Resolve IP addresses to hostnames in logfiles)
+  - htpasswd (Manipulate basic authentication files)
+  - htdigest (Manipulate digest authentication files)
+  - htdbm (Manipulate basic authentication files in DBM format, using APR)
+  - htcacheclean (Clean up the disk cache)
+  - rotatelogs (Periodically stop writing to a logfile and open a new one)
+  - split-logfile (Split a single log including multiple vhosts)
+  - checkgid (Checks whether the caller can setgid to the specified group)
+  - check_forensic (Extract mod_log_forensic output from Apache log files)
+  - httxt2dbm (Generate dbm files for use with RewriteMap)
+
+Package: apache2-utils
+Source: apache2
+Version: 2.4.58-1ubuntu8.18+fp5
+Architecture: amd64
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 328
+Depends: libapr1t64 (>= 1.4.8-2~), libaprutil1t64 (>= 1.5.0), libc6 (>= 2.38), libcrypt1 (>= 1:4.1.0), libssl3t64 (>= 3.0.0)
+Section: httpd
+Priority: optional
+Multi-Arch: foreign
+Homepage: https://httpd.apache.org/
+Original-Maintainer: Debian Apache Maintainers <debian-apache@lists.debian.org>
+Filename: pool/main/apache2-utils/apache2-utils_2.4.58-1ubuntu8.18+fp5_amd64.deb
+Size: 100614
+MD5sum: 8f5e8fad40d5db31dbff02c306560022
+SHA256: 7feb08ee994d4d1c24c29f1676e0f2534f18da07baecc9f28a1ab0bb68f39c98
 Description: Apache HTTP Server (utility programs for web servers)
  Provides some add-on programs useful for any web server.  These include:
   - ab (Apache benchmark tool)
@@ -229,6 +434,32 @@ Description: Apache HTTP Server
  Installing this package results in a full installation, including the
  configuration files, init scripts and support scripts.
 
+Package: apache2
+Version: 2.4.58-1ubuntu8.18+fp5
+Architecture: amd64
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 457
+Pre-Depends: init-system-helpers (>= 1.54~)
+Depends: apache2-bin (= 2.4.58-1ubuntu8.18+fp5), apache2-data (= 2.4.58-1ubuntu8.18+fp5), apache2-utils (= 2.4.58-1ubuntu8.18+fp5), media-types, perl:any, procps
+Recommends: ssl-cert
+Suggests: apache2-doc, apache2-suexec-pristine | apache2-suexec-custom, www-browser, ufw
+Provides: httpd, httpd-cgi
+Section: httpd
+Priority: optional
+Homepage: https://httpd.apache.org/
+Original-Maintainer: Debian Apache Maintainers <debian-apache@lists.debian.org>
+Filename: pool/main/apache2/apache2_2.4.58-1ubuntu8.18+fp5_amd64.deb
+Size: 104572
+MD5sum: f114b51cb35c42d4593e15d75d648652
+SHA256: d605bccf942fbef91c89fd33bd321742a24f907d6d67ff94729f01e7a7c5a40c
+Description: Apache HTTP Server
+ The Apache HTTP Server Project's goal is to build a secure, efficient and
+ extensible HTTP server as standards-compliant open source software. The
+ result has long been the number one web server on the Internet.
+ .
+ Installing this package results in a full installation, including the
+ configuration files, init scripts and support scripts.
+
 Package: libapache2-mod-md
 Source: apache2
 Version: 2.4.58-1ubuntu8.17+fp5
@@ -249,6 +480,26 @@ Description: transitional package
  This is a transitional package to apache2 for users of libapache2-mod-md.
  It can be safely removed after the installation is complete.
 
+Package: libapache2-mod-md
+Source: apache2
+Version: 2.4.58-1ubuntu8.18+fp5
+Architecture: amd64
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 6
+Depends: apache2 (= 2.4.58-1ubuntu8.18+fp5)
+Section: oldlibs
+Priority: optional
+Multi-Arch: same
+Homepage: https://httpd.apache.org/
+Original-Maintainer: Debian Apache Maintainers <debian-apache@lists.debian.org>
+Filename: pool/main/libapache2-mod-md/libapache2-mod-md_2.4.58-1ubuntu8.18+fp5_amd64.deb
+Size: 806
+MD5sum: dbe8ae7c33dd1a9150c0df448e66e904
+SHA256: 731e73d536e327261772b41353041ed4caf31fb76e7b6e991eb4a19742c1d8ec
+Description: transitional package
+ This is a transitional package to apache2 for users of libapache2-mod-md.
+ It can be safely removed after the installation is complete.
+
 Package: libapache2-mod-proxy-uwsgi
 Source: apache2
 Version: 2.4.58-1ubuntu8.17+fp5
@@ -264,6 +515,26 @@ Filename: pool/main/libapache2-mod-proxy-uwsgi/libapache2-mod-proxy-uwsgi_2.4.58
 Size: 996
 MD5sum: 1d525bbc90b61fc433a58982b6a29ac3
 SHA256: 66d0132a23c0e5accbc29f0c27a2e3fe80789e2a0a4702fd40613b4e80978dcd
+Description: transitional package
+ This is a transitional package to apache2 for users of
+ libapache2-mod-proxy-uwsgi.
+ It can be safely removed after the installation is complete.
+
+Package: libapache2-mod-proxy-uwsgi
+Source: apache2
+Version: 2.4.58-1ubuntu8.18+fp5
+Architecture: amd64
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 10
+Depends: apache2 (= 2.4.58-1ubuntu8.18+fp5)
+Section: oldlibs
+Priority: optional
+Homepage: https://httpd.apache.org/
+Original-Maintainer: Debian Apache Maintainers <debian-apache@lists.debian.org>
+Filename: pool/main/libapache2-mod-proxy-uwsgi/libapache2-mod-proxy-uwsgi_2.4.58-1ubuntu8.18+fp5_amd64.deb
+Size: 998
+MD5sum: c14ae3d1acc3f56ac0f5e13f32f7ceea
+SHA256: 4c5b11b1380d7744d74c25ecc3e9d61989846176d70e5dccdf1f16b7681b0ab6
 Description: transitional package
  This is a transitional package to apache2 for users of
  libapache2-mod-proxy-uwsgi.

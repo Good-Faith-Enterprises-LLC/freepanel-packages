@@ -5,28 +5,28 @@ Origin: freePanel
 Label: freePanel
 Suite: resolute
 Codename: resolute
-Date: Mon, 09 Nov 2026 04:58:54 UTC
+Date: Tue, 10 Nov 2026 22:35:41 UTC
 Architectures: amd64
 Components: main
 Description: freePanel packages for Ubuntu 26.04
 Acquire-By-Hash: no
 SHA256:
- 6180d6096d87aadad7a09d2f4510f1e84f5d00605c4709ab60408e907c6e2b6b 19746 main/binary-amd64/Packages
- e11c7d6ea97f7d1d3b4ba4dda679c4f49f640d921e5a271ac985b9e135f29003 7125 main/binary-amd64/Packages.gz
+ 63f29f5558ebf190ef8807574b5561abd826b5e5431b23082f378028d24cedcb 38665 main/binary-amd64/Packages
+ 3d85433ad842e83e68cc801e189f586886fd0b80c7fd7d9743ea09d972a5951e 11553 main/binary-amd64/Packages.gz
  d3b68d33a28585b0c280bd2dfe2e8b0ca5dc59fe78256b4b77e0c29604330ad1 89 main/binary-amd64/Release
 -----BEGIN PGP SIGNATURE-----
 
-iQIzBAEBCgAdFiEEQ533bDstW8zqJfZS+7kTCOyPYakFAmrxUw4ACgkQ+7kTCOyP
-YamIxRAAmKQRpSxjE0Igpgv6nOgLqwTnD5Xk1cwbkkVR0Z1yUQZ92rR/OCDOZomt
-wDaf7sulVJjUJ/6p6aXEwEtFKxYGXvluV/g9vQDXy+efv2UU391NlYjHxSwkZh05
-lE7qNb5o3TVYy/nx9iSrH1ucplQ/BbLnJ5E0gZMBq3xL20kTWh2iTNcw9OMxlmnl
-F8Kjs9dvHbkS+onyPj+M/XnDgLdzcS0fHZNYCw9ixhIvAQ3yiALxBjQ5rb0lpuHI
-bHqQCL4fJvVZBoFSI4BhRYA27bJFnrjemszgytN+TYYFg5oi0lSUa5emVzcqK/fS
-0T+gGmFSv2N9lacJqkOw3BqcH+qI6yo3l93OONAxG1MD5zwN7wSvtNJORK6fszZZ
-FbXHKPd8O4vR/Ce/+7UxtIh3Ck2J7PbrHjQlBmDvps1hmrSIA8crUFa4OK8U3S5k
-6Y2otbSQLwOpIrql0+a5zcdq61dutSibv7/V9roAHo0xkozdKohcm1WLRWmWKhht
-Q0WwIYRZy37rKvJN7cAMLAsQ7MTBFOdVKH+Hrw3HcxQZR8t9bB1nRYvGIMX1fjB8
-QFmyKlxtL1htjEoYbI6eo/nOfHAybnQsfvbGxauVY3sGeTczecYkC8uyf5z9UUkz
-sZwwf9d0J4zxwjej0B6DSXYHVVnbIDhfdo3sFd9Ges2EkT9aXcM=
-=lnq4
+iQIzBAEBCgAdFiEEQ533bDstW8zqJfZS+7kTCOyPYakFAmrznD0ACgkQ+7kTCOyP
+YakYNg//SD4TnktFjnuiWGEkI6HjsFKLljUEC2ztwg1VdPZXQ/0Lykfmrc6FLdFq
+LSRdG4vy78GZtKQZz3CZHgpnrEzn9d2Xcm8ac8QWMBoqgE2uS4Hd7FbVea+WgRKH
+cOc0QI4sP2+r0Rpu9m8+70vUWSNvqNwV8IYkDf9vZUIeGeCFb/3/Q5gM6z9wFG0v
+kK+F9sm4i8O6RDiKoyp0wDH8ON4swfQVQ+jQfN7Hvc6Gzi3pTAj0l2caSyx0UFMM
+2fgBEcz4czvZEhHRiEITqH/1b8xM8eLHxBT7jF6sd+yS29xyp0MMnEEh7dSor+Yj
+dYPzo6w6RKJP8ueITfTFZMDz8zM/p/+zVl8ZmPIdF4csCIUNj3CEREJ/ot1glaTa
+H1YpkhgnBMRnDGwTDV2kdzCaU7SQWFIga55YQ7pAmjyFGRrw/bDlc7xDgSNvbbPP
+zoU9KR0Jl2MnDW0DBzOz0bUF7yk1sbS34adYt5DqmdOg/WkHqhRQCvJgyKVcHwZ/
+stH1UTtylp5mc+XiRj+ANFYE/QMfHSnjx6hRJRsJa5/6c7HPgSOZNuKuy9ChQm/x
+E6wS7cxab7LpYRm17btVmGuYd3lwJfpHQ5gkxPieyF8rrHsRfZoQqgKxgukcrQEL
+jqhK4lP2F3FUg/Q03faLM1a4nXmegF/+YG4LYn2iGdrDe9fb3mc=
+=vc7W
 -----END PGP SIGNATURE-----

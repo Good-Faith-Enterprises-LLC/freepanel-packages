@@ -16,6 +16,24 @@ MD5sum: c98723a9abdec5d9a05d111dbaf4e275
 SHA256: acc3dd37a5e97c9fd557e72fb1440385be4a3bf2654932dcfb1ddb6a70025bd4
 Description: debug symbols for apache2-bin
 
+Package: apache2-bin-dbgsym
+Source: apache2
+Version: 2.4.66-2ubuntu2.7+fp5
+Architecture: amd64
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 6164
+Depends: apache2-bin (= 2.4.66-2ubuntu2.7+fp5)
+Section: debug
+Priority: optional
+Auto-Built-Package: debug-symbols
+Build-Ids: 0045c34d13e6ca7836741e342873731758e51373 058b3811e8c31ec843faba5556a5f37bba4ed7fe 0792b1424bff5fe391292469e262802d9d67cd77 0a64cbd8c3c77fac428273806b55f92ebf529619 0aaa3fc37b89d6f3b07cc0c6a5399368e1ff422f 0af465c9f025fbd3b7053901f6f7d8a7fdad6744 0c2cf2045c95b58bd2a9e90d844f5ae847446358 0d92c265acb9a2819bb2a26714a14c71815f6255 10501d76605744ebb3ffeeef7478ce21a778d99a 117563497584d02e0ffe7b1bc8c69fdab5d13c7e 175912c0d089aa93c4a44b0f2a55bf31352fe2e4 1d68da7dddd601fc047dc4cc4b9789c0c853de3c 262ef94208734c1b53d9be7f7628e67bfce15ca5 29f4498c7649362e8c323e7e412a4077ec5111b4 2edab7f65860a1ad6a7a48cd64f9fbc6d3d9f0a8 2f029210ff9a9eddb5236450bcc61bc2a92593ff 30071dd9e4a2bd0e46a0bce08259f4e80578ec0d 3597bd9db746e691e2958ef6b0832f08f1504905 379522bd226f6c575da11b3c3e8f118f1a7304e4 3b54f5a70a56dc9d2fe15be98abb1c4aa93508ff 3f879c687beb7469944c67d38979c7e943797ce6 427883e69bad00db8f7df890be04e30f1f183d20 43c4b7185f99a9d00a9c5ee72a95ca68d05a2d56 44dd7ac4439f054ad95a94f7128eec538042fc03 45f1df6d9cbfb63bea36a30286c9b5a8452c95b8 46cd3df9a986a62a56fcd1d9ce1962e0bc8b1544 46e61b16abfb97c287f125580a3b5059932f0ddc 4a8ed94774602c2c755610d623d7b5c349f9dd61 4c7f52f6b8f230fce6091e7d55a195a304f77745 5150bd2ad87e9d1c876fffbd2e77dd11aedc75bf 52c88d3eb4c2f74badd9331c65ff694215768a6a 570db304c209f414d66a9c7c2eb7569b0f0fc167 57a2ebf70b0666d88d81e1320e4c100e817b2da0 580234122d63a6a610946410dfefc3aa1e920b18 58b63b7cb4eb3b5d9a90645211e01e0c14e28583 5a3cfa0bdf5dd84378b478e8e2d352d65404ecec 5b3babd0ee650d306f4e139adc760b7aaa8e59d3 5d77229da63708336e5d3250381b659401ab381b 5e48ed718d2ab59321f82cb3e4c06c6823d63577 5f48d886bde6b4318ddde636428b333b67209719 607369d5db680af59f89f7f5f752b6327bd90ba6 6099096db6ddcd6ca418404bd9c6aaaad55e0729 6183e69273795fb4e4b327cb60234d951f1c6fe8 62987adf49de4f1d7156bc420a9b12d72fb18a9b 652cdfcedf55011798e3c84cf2e93ac475120f5a 672774b4cec66a9b66b65e57869ee8c7a35cdfcf 683ee5d3f61c6ff49a3819d7b8e8a8b8cf8e3fe8 686eadb8cf186b5d9426a11bd8b4e3545d8b97ec 6da5cee858f50d3d71fe15f94af14927848d1393 6ec59eb6d1dceb8462a2a5de5e432d8a9326fa4f 727c84c60199f7e6a197c840e7be37c7e9963c1d 77d1938109bfcdcc75ea1c94205f402d907a0e2b 78be6a7c2725ddea664bca6d163cf8c7b8c16c66 7d7dedd659dd81c0b60daaecb3fb34e2365321f5 82b86e3aedbbe031f9fa9458551edcde51e9619d 830b14a04c8f45b26fd396989d98751e1705c7c9 83a9e4436a685017c8fe216c1528f61ff9113199 83ad7eeae00258b3888feb032a4133b1a3c9a198 84428e875de230247264cf30b4b4fbc4a7ba3e24 84a414a9e62c5d2baf0f1f737a95e72bbe155ebf 855d1debe7c31643da0067476e4b4979ba548699 85e9ba26eb8376b9531b275d15c4267860841825 8901df79a6b0df507982187e2767159afdbe408f 8917646c69cc4437e7822a2e939c566f78ce3b39 8a122e73ba1b4e03808e27c139a26509e8651b36 8dc00607edabed1d08a05d1108537cc7d9b17827 8de391ed1538fcf6121a735d73eff823b25fe568 8e04f4562b1a9a7c86f38d1661b45c15fa783c22 8e36d82fddd643912ae73f479cec303fe7b3b0ab 8ee523295599092c39c65f8c9ea8176e8b37c0d1 9021f60c36aba52b83c74e18c7ead908263c44a0 906ebe208ee566a56c20c367596d16ff27eaad70 964a6a125981190f649943e45fd459550cba0039 9eca3512e270bf32c23c4897aff47baa94f0208d 9f2c800acbe0e0f5d79fbc15924e63fd550673fe a08438ed393b644c81c926ccd219dacbd6f661b1 a6cf8765b7e127f509212d06c5972fee27f405ab a7d4849e4ac9b194c1e147afb090078089213a74 ada63824ac74e3ee8f1f01d2f62f520d12c345d3 b49bf683f805edf4ef7b53315a357b01a15af37d b659191656a377bfde920285d21a9031448072ee b7ed398e3dde56c35393ee999035b378e019a223 b7fdcce50f3613c003ec0b3ea3548d2c9cc15eca b8294b8bf578572f19cd1d82e018341ef9863240 bb20e96b7bc7c24c5278d974aedd2e2d1777f7b9 bb3d0430a77806fd10df853bb1f62e36a45964b9 be1d546465b2b3c355c49d79ce796100e4145eab c27368ee7b70ddccf34c2b451d63459f3c91f3f3 c3f44e36d463c7e48582ab300b33ec511e3d9e3a c44fbe96e163483041697c78806ba759343079c0 c52f1d4ee2dd3eb7f380bba8d7de1574c86219cb c7c3cdb7a7a6693fe1eca456625bea0fa75b3a6e c9c6fa1e6b62def76a5f8e2a32ac0afddaec222c cad56d7fbc089cffe37bfca45e7cc128c9b59471 cf200c07b66b0dc96ed41cf946f7be76e20b50a7 d101936d853f2c256b03254e37576b06b001b3e7 d561dd32fbde43871eb4c4ca751717c9897597f6 d5959015a7d92f38d2619b2b074f5581920323f6 d5b6f3c5f3cd639b3cd51949feede01b3713784a da16b1544cf0c6210561010334e460e6daa9bac9 de5741896c510665659c3a34744a5c3005a8bf35 e0b2a9a10d55caaa68619218e10ed36931d66334 e24117b2b594e2c7dd252bac223cbb5e6677bff7 e4ca98d09a22b6ee134ba13e5dac4f603e528a53 e4ee665ac03e753eecf2922cb8714e65cfe01597 e5980c0c05bc866fce93c9cfd2942efeff5aa691 e5ca6be729a0696d7d49a39ac8d14e7a581617e2 e73de3a9e230c84df5c43f2e1f5dc13f7c63e9e2 ea88fa36eaa7c2ed4ca78ac280168ab25d3f62fb eb51084d5aec4ee9182a3ca69a713bef32f39468 eb608ff5675d2106bf051b055bc360efe1024f60 eb9dbdc0e37a66f26c05f8fca1b23ba0f303581b eed1ef62a37bdbb805676eaab408a402dbc4d0fe efaaf211f03c62dbfea8342b46584a57c27435c1 effd0cf2388e1524a871d06ee968127b759ae542 f38169c2752beeb14fcd365bdd6d1bd93c175614 f498c49de48fc70e94d7b992f2e0e9b934da9f85 fa7f5904aadded009699e20308ffdf7917b30221 facd28c58f1176a328649f756e5390f13f9ac11a
+Original-Maintainer: Debian Apache Maintainers <debian-apache@lists.debian.org>
+Filename: pool/resolute/main/apache2-bin-dbgsym/apache2-bin-dbgsym_2.4.66-2ubuntu2.7+fp5_amd64.deb
+Size: 3544568
+MD5sum: 3b79a2e99a4d527f5f9c2645e895a516
+SHA256: 46a7f4be9f3b55bdb66e8688e28a19927a68a492ca487c55330ac59d2c80bb61
+Description: debug symbols for apache2-bin
+
 Package: apache2-bin
 Source: apache2
 Version: 2.4.66-2ubuntu2.6+fp5
@@ -43,6 +61,33 @@ Description: Apache HTTP Server (modules and other binary files)
  web-server instance. Install the "apache2" package to get a fully working
  instance.
 
+Package: apache2-bin
+Source: apache2
+Version: 2.4.66-2ubuntu2.7+fp5
+Architecture: amd64
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 5103
+Depends: perl:any, libapr1t64 (>= 1.7.0), libaprutil1-dbd-sqlite3 | libaprutil1-dbd-mysql | libaprutil1-dbd-odbc | libaprutil1-dbd-pgsql | libaprutil1-dbd-freetds, libaprutil1-ldap, libaprutil1t64 (>= 1.6.0), libbrotli1 (>= 0.6.0), libc6 (>= 2.38), libcrypt1 (>= 1:4.1.0), libcurl4t64 (>= 7.28.0), libjansson4 (>= 2.14), libldap2 (>= 2.6.2), liblua5.4-0 (>= 5.4.6), libnghttp2-14 (>= 1.50.0), libpcre2-8-0 (>= 10.22), libssl3t64 (>= 3.0.0), libsystemd0, libxml2-16 (>= 2.14.1), zlib1g (>= 1:1.1.4)
+Suggests: apache2-doc, apache2-suexec-pristine | apache2-suexec-custom, www-browser
+Breaks: fossil (<< 1:2.24-5~)
+Provides: apache2-api-20120211, apache2-api-20120211-openssl1.1
+Section: httpd
+Priority: optional
+Homepage: https://httpd.apache.org/
+Original-Maintainer: Debian Apache Maintainers <debian-apache@lists.debian.org>
+Filename: pool/resolute/main/apache2-bin/apache2-bin_2.4.66-2ubuntu2.7+fp5_amd64.deb
+Size: 1358560
+MD5sum: a71d2db05088df8092284ac85d9f012b
+SHA256: 62cd70fcc25be4b12caa877b5aa22880ac1c0c125cc00f804d199406b78004c5
+Description: Apache HTTP Server (modules and other binary files)
+ The Apache HTTP Server Project's goal is to build a secure, efficient and
+ extensible HTTP server as standards-compliant open source software. The
+ result has long been the number one web server on the Internet.
+ .
+ This package contains the binaries only and does not set up a working
+ web-server instance. Install the "apache2" package to get a fully working
+ instance.
+
 Package: apache2-data
 Source: apache2
 Version: 2.4.66-2ubuntu2.6+fp5
@@ -58,6 +103,29 @@ Filename: pool/resolute/main/apache2-data/apache2-data_2.4.66-2ubuntu2.6+fp5_all
 Size: 172130
 MD5sum: 8e9abdd6e31ed3aa6acb4971b81eaf2f
 SHA256: f45e1ff14bc881c147e2cab6f49132f5f4da383395ebf0e68d8bb3f03bd4494c
+Description: Apache HTTP Server (common files)
+ The Apache HTTP Server Project's goal is to build a secure, efficient and
+ extensible HTTP server as standards-compliant open source software. The
+ result has long been the number one web server on the Internet.
+ .
+ This package contains architecture-independent common files such as icons,
+ error pages and static index files.
+
+Package: apache2-data
+Source: apache2
+Version: 2.4.66-2ubuntu2.7+fp5
+Architecture: all
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 857
+Section: httpd
+Priority: optional
+Multi-Arch: foreign
+Homepage: https://httpd.apache.org/
+Original-Maintainer: Debian Apache Maintainers <debian-apache@lists.debian.org>
+Filename: pool/resolute/main/apache2-data/apache2-data_2.4.66-2ubuntu2.7+fp5_all.deb
+Size: 172084
+MD5sum: 6a54527728ef46c9d76fb97095a6cd67
+SHA256: 87fe573d1e450006ce0aeb3c74da6139e3e6634cba5adb888486948c5c09e45e
 Description: Apache HTTP Server (common files)
  The Apache HTTP Server Project's goal is to build a secure, efficient and
  extensible HTTP server as standards-compliant open source software. The
@@ -97,6 +165,37 @@ Description: Apache HTTP Server (development headers)
   - Site configuration files
   - Global configuration files
 
+Package: apache2-dev
+Source: apache2
+Version: 2.4.66-2ubuntu2.7+fp5
+Architecture: amd64
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 1002
+Depends: debhelper (>= 10), libapr1-dev, libaprutil1-dev, libpcre2-dev, openssl, perl:any
+Provides: dh-apache2, dh-sequence-apache2
+Section: httpd
+Priority: optional
+Homepage: https://httpd.apache.org/
+Original-Maintainer: Debian Apache Maintainers <debian-apache@lists.debian.org>
+Filename: pool/resolute/main/apache2-dev/apache2-dev_2.4.66-2ubuntu2.7+fp5_amd64.deb
+Size: 199858
+MD5sum: 49d8ac0e7d9b85fc7abb6baa470f5eac
+SHA256: 8aa2000118fc5a18d5dda21929fa122c97df7569a8ba5bfaa26e6efc57b7ef1d
+Description: Apache HTTP Server (development headers)
+ The Apache HTTP Server Project's goal is to build a secure, efficient and
+ extensible HTTP server as standards-compliant open source software. The
+ result has long been the number one web server on the Internet.
+ .
+ This package provides development headers and the apxs2 binary for the Apache
+ 2 HTTP server, useful to develop and link third party additions to the Debian
+ Apache HTTP server package.
+ .
+ It also provides dh_apache2 and dh sequence addons useful to install various
+ Debian Apache2 extensions with debhelper. It supports
+  - Apache 2 module configurations and shared objects
+  - Site configuration files
+  - Global configuration files
+
 Package: apache2-doc
 Source: apache2
 Version: 2.4.66-2ubuntu2.6+fp5
@@ -112,6 +211,30 @@ Filename: pool/resolute/main/apache2-doc/apache2-doc_2.4.66-2ubuntu2.6+fp5_all.d
 Size: 3892778
 MD5sum: 0b632fdc8b78e148d592f18cec5f78d0
 SHA256: 9af309f188c5fd63344aed94fd2f937e4208a2c2db4920f416bff5c023c728de
+Description: Apache HTTP Server (on-site documentation)
+ The Apache HTTP Server Project's goal is to build a secure, efficient and
+ extensible HTTP server as standards-compliant open source software. The
+ result has long been the number one web server on the Internet.
+ .
+ This package provides the documentation for the Apache 2 HTTP server. The
+ documentation is shipped in HTML format and can be accessed from a local
+ running Apache HTTP server instance or by browsing the file system directly.
+
+Package: apache2-doc
+Source: apache2
+Version: 2.4.66-2ubuntu2.7+fp5
+Architecture: all
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 25142
+Recommends: apache2
+Section: doc
+Priority: optional
+Homepage: https://httpd.apache.org/
+Original-Maintainer: Debian Apache Maintainers <debian-apache@lists.debian.org>
+Filename: pool/resolute/main/apache2-doc/apache2-doc_2.4.66-2ubuntu2.7+fp5_all.deb
+Size: 3893244
+MD5sum: 2ec56714b7103a985479749d91f2e426
+SHA256: ac1a82b59468a298544510b2401953b7f142e2366ae1a2d45b175372eb19fc3b
 Description: Apache HTTP Server (on-site documentation)
  The Apache HTTP Server Project's goal is to build a secure, efficient and
  extensible HTTP server as standards-compliant open source software. The
@@ -145,6 +268,30 @@ Description: Apache HTTP Server (mod_ssl development headers)
  This package provides the development header and the dependencies for
  modules that interact with mod_ssl's internal openssl state.
 
+Package: apache2-ssl-dev
+Source: apache2
+Version: 2.4.66-2ubuntu2.7+fp5
+Architecture: amd64
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 13
+Depends: apache2-dev (= 2.4.66-2ubuntu2.7+fp5), libssl-dev
+Section: httpd
+Priority: optional
+Multi-Arch: same
+Homepage: https://httpd.apache.org/
+Original-Maintainer: Debian Apache Maintainers <debian-apache@lists.debian.org>
+Filename: pool/resolute/main/apache2-ssl-dev/apache2-ssl-dev_2.4.66-2ubuntu2.7+fp5_amd64.deb
+Size: 3008
+MD5sum: 31f41178b972bf3b7f292c5656132b13
+SHA256: 638a93c5100925650470c904e44b59f099c811ac6a1908e82e12860b969d2adc
+Description: Apache HTTP Server (mod_ssl development headers)
+ The Apache HTTP Server Project's goal is to build a secure, efficient and
+ extensible HTTP server as standards-compliant open source software. The
+ result has long been the number one web server on the Internet.
+ .
+ This package provides the development header and the dependencies for
+ modules that interact with mod_ssl's internal openssl state.
+
 Package: apache2-suexec-custom-dbgsym
 Source: apache2
 Version: 2.4.66-2ubuntu2.6+fp5
@@ -161,6 +308,24 @@ Filename: pool/resolute/main/apache2-suexec-custom-dbgsym/apache2-suexec-custom-
 Size: 12974
 MD5sum: 4d26a887e0ae24f96db4da3aaa61465b
 SHA256: 90f5dacd660c434c93e88604ec5eb9325bf4a176898ce86a34559605f06aa230
+Description: debug symbols for apache2-suexec-custom
+
+Package: apache2-suexec-custom-dbgsym
+Source: apache2
+Version: 2.4.66-2ubuntu2.7+fp5
+Architecture: amd64
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 35
+Depends: apache2-suexec-custom (= 2.4.66-2ubuntu2.7+fp5)
+Section: debug
+Priority: optional
+Auto-Built-Package: debug-symbols
+Build-Ids: 9b58838864694f6ae42cd988331cc49705e455a5
+Original-Maintainer: Debian Apache Maintainers <debian-apache@lists.debian.org>
+Filename: pool/resolute/main/apache2-suexec-custom-dbgsym/apache2-suexec-custom-dbgsym_2.4.66-2ubuntu2.7+fp5_amd64.deb
+Size: 12974
+MD5sum: 9ca062eea14ab9de53d5064f68375ef7
+SHA256: 46efaa27f80a9f633a89d5a091167d95a0c612ec9876b219f4dd100d085ed60e
 Description: debug symbols for apache2-suexec-custom
 
 Package: apache2-suexec-custom
@@ -188,6 +353,31 @@ Description: Apache HTTP Server configurable suexec program for mod_suexec
  recommended that you use the standard suexec helper program from the
  apache2-suexec-pristine package instead.
 
+Package: apache2-suexec-custom
+Source: apache2
+Version: 2.4.66-2ubuntu2.7+fp5
+Architecture: amd64
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 76
+Depends: apache2-bin, libc6 (>= 2.38)
+Provides: apache2-suexec
+Section: httpd
+Priority: optional
+Homepage: https://httpd.apache.org/
+Original-Maintainer: Debian Apache Maintainers <debian-apache@lists.debian.org>
+Filename: pool/resolute/main/apache2-suexec-custom/apache2-suexec-custom_2.4.66-2ubuntu2.7+fp5_amd64.deb
+Size: 23712
+MD5sum: 0de059457f80d6690b75c929c024da13
+SHA256: 9f915553ec59df000de734e250a21b7172508086a9370d976987f38d1c914c54
+Description: Apache HTTP Server configurable suexec program for mod_suexec
+ Provides a customizable version of the suexec helper program for mod_suexec.
+ This is not the version from upstream, but can be configured with a
+ configuration file.
+ .
+ If you do not need non-standard document root or userdir settings, it is
+ recommended that you use the standard suexec helper program from the
+ apache2-suexec-pristine package instead.
+
 Package: apache2-suexec-pristine-dbgsym
 Source: apache2
 Version: 2.4.66-2ubuntu2.6+fp5
@@ -204,6 +394,24 @@ Filename: pool/resolute/main/apache2-suexec-pristine-dbgsym/apache2-suexec-prist
 Size: 11642
 MD5sum: d1945bb282cb5283fdfa2c5cadf30610
 SHA256: bda990073fc65f5e9324cacf1b6e64557a317c94f7e3a00989cd639ac2d66d2f
+Description: debug symbols for apache2-suexec-pristine
+
+Package: apache2-suexec-pristine-dbgsym
+Source: apache2
+Version: 2.4.66-2ubuntu2.7+fp5
+Architecture: amd64
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 34
+Depends: apache2-suexec-pristine (= 2.4.66-2ubuntu2.7+fp5)
+Section: debug
+Priority: optional
+Auto-Built-Package: debug-symbols
+Build-Ids: 911da12eb47a4f5efb90a007e73ecd3183841b46
+Original-Maintainer: Debian Apache Maintainers <debian-apache@lists.debian.org>
+Filename: pool/resolute/main/apache2-suexec-pristine-dbgsym/apache2-suexec-pristine-dbgsym_2.4.66-2ubuntu2.7+fp5_amd64.deb
+Size: 11646
+MD5sum: 61b4e0100849cc8936f52aeb8b699795
+SHA256: b21e0317b6edb0ebfb8a3c7edfc4a175830b2b16e70d702f9c349bf2917ca252
 Description: debug symbols for apache2-suexec-pristine
 
 Package: apache2-suexec-pristine
@@ -227,6 +435,27 @@ Description: Apache HTTP Server standard suexec program for mod_suexec
  compiled with document root /var/www and userdir suffix public_html. If you
  need different settings, use the package apache2-suexec-custom.
 
+Package: apache2-suexec-pristine
+Source: apache2
+Version: 2.4.66-2ubuntu2.7+fp5
+Architecture: amd64
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 66
+Depends: apache2-bin, libc6 (>= 2.38)
+Provides: apache2-suexec
+Section: httpd
+Priority: optional
+Homepage: https://httpd.apache.org/
+Original-Maintainer: Debian Apache Maintainers <debian-apache@lists.debian.org>
+Filename: pool/resolute/main/apache2-suexec-pristine/apache2-suexec-pristine_2.4.66-2ubuntu2.7+fp5_amd64.deb
+Size: 22152
+MD5sum: ff9607268ea43e8fef3847e4a6b33320
+SHA256: 634f1e2c03385d988119b1b277ae2d193e695068c0df9dbcad471d1ba6dfcb11
+Description: Apache HTTP Server standard suexec program for mod_suexec
+ Provides the standard suexec helper program for mod_suexec. This version is
+ compiled with document root /var/www and userdir suffix public_html. If you
+ need different settings, use the package apache2-suexec-custom.
+
 Package: apache2-utils-dbgsym
 Source: apache2
 Version: 2.4.66-2ubuntu2.6+fp5
@@ -243,6 +472,24 @@ Filename: pool/resolute/main/apache2-utils-dbgsym/apache2-utils-dbgsym_2.4.66-2u
 Size: 120192
 MD5sum: 3770c106d7d7464b86e3c16d2dc68f21
 SHA256: f64ea9639a1d3b0d3c7b515471b241fa05a6259d5c94297e38b39214c55bbd36
+Description: debug symbols for apache2-utils
+
+Package: apache2-utils-dbgsym
+Source: apache2
+Version: 2.4.66-2ubuntu2.7+fp5
+Architecture: amd64
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 297
+Depends: apache2-utils (= 2.4.66-2ubuntu2.7+fp5)
+Section: debug
+Priority: optional
+Auto-Built-Package: debug-symbols
+Build-Ids: 124f41035732c2734ce04468c5f9ecaaf6abd518 15bf6bd774ddc9237dad43d13e022b0c4d684b16 33c4d4d8b172312a9dce624b2df41d28f036660c 4d8a74ecba046c21519d7b6a5ce3d3b7c8d3521f 5695d0bf88e1b65b04ee40949ac8988f87210717 744b579a54d040020a382510148f2258067e683a a2cc21c660e6a99042f2b439413eabc5f22c1b61 d4612bf3c73ce6d65e4d471da204481442994d6e e3d741777647312d53f9310a64fa4c8e4515d16e f2eadeeb3b0cae2887d9e40297aaac493ba9cdc5
+Original-Maintainer: Debian Apache Maintainers <debian-apache@lists.debian.org>
+Filename: pool/resolute/main/apache2-utils-dbgsym/apache2-utils-dbgsym_2.4.66-2ubuntu2.7+fp5_amd64.deb
+Size: 120100
+MD5sum: 1cddca28df53dde557edb1cb90035e67
+SHA256: d0bf60583074be381c71b59e1e0da6ff5b2f78e0d63ea2f2ea72a267dd39eab6
 Description: debug symbols for apache2-utils
 
 Package: apache2-utils
@@ -276,6 +523,37 @@ Description: Apache HTTP Server (utility programs for web servers)
   - check_forensic (Extract mod_log_forensic output from Apache log files)
   - httxt2dbm (Generate dbm files for use with RewriteMap)
 
+Package: apache2-utils
+Source: apache2
+Version: 2.4.66-2ubuntu2.7+fp5
+Architecture: amd64
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 325
+Depends: libapr1t64 (>= 1.4.8-2~), libaprutil1t64 (>= 1.5.0), libc6 (>= 2.38), libcrypt1 (>= 1:4.1.0), libssl3t64 (>= 3.0.0)
+Section: httpd
+Priority: optional
+Multi-Arch: foreign
+Homepage: https://httpd.apache.org/
+Original-Maintainer: Debian Apache Maintainers <debian-apache@lists.debian.org>
+Filename: pool/resolute/main/apache2-utils/apache2-utils_2.4.66-2ubuntu2.7+fp5_amd64.deb
+Size: 95648
+MD5sum: 2facdfb95f1a3d77e26ac6bfd00dff8c
+SHA256: a1f75c4cff05f77719eac3e233f92787255d54443427a2bc9f21d6879bc42bef
+Description: Apache HTTP Server (utility programs for web servers)
+ Provides some add-on programs useful for any web server.  These include:
+  - ab (Apache benchmark tool)
+  - fcgistarter (Start a FastCGI program)
+  - logresolve (Resolve IP addresses to hostnames in logfiles)
+  - htpasswd (Manipulate basic authentication files)
+  - htdigest (Manipulate digest authentication files)
+  - htdbm (Manipulate basic authentication files in DBM format, using APR)
+  - htcacheclean (Clean up the disk cache)
+  - rotatelogs (Periodically stop writing to a logfile and open a new one)
+  - split-logfile (Split a single log including multiple vhosts)
+  - checkgid (Checks whether the caller can setgid to the specified group)
+  - check_forensic (Extract mod_log_forensic output from Apache log files)
+  - httxt2dbm (Generate dbm files for use with RewriteMap)
+
 Package: apache2
 Version: 2.4.66-2ubuntu2.6+fp5
 Architecture: amd64
@@ -293,6 +571,31 @@ Filename: pool/resolute/main/apache2/apache2_2.4.66-2ubuntu2.6+fp5_amd64.deb
 Size: 101856
 MD5sum: 3315d6bebd3723b348037a9733bb0af7
 SHA256: b9aecacdda09ffb536ce92dd2c07cf4be2571425a7667a9154c459223cdfd236
+Description: Apache HTTP Server
+ The Apache HTTP Server Project's goal is to build a secure, efficient and
+ extensible HTTP server as standards-compliant open source software. The
+ result has long been the number one web server on the Internet.
+ .
+ Installing this package results in a full installation, including the
+ configuration files, init scripts and support scripts.
+
+Package: apache2
+Version: 2.4.66-2ubuntu2.7+fp5
+Architecture: amd64
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 462
+Depends: apache2-bin (= 2.4.66-2ubuntu2.7+fp5), apache2-data (= 2.4.66-2ubuntu2.7+fp5), apache2-utils (= 2.4.66-2ubuntu2.7+fp5), media-types, procps, perl:any
+Recommends: ssl-cert
+Suggests: apache2-doc, apache2-suexec-pristine | apache2-suexec-custom, ufw, www-browser
+Provides: httpd, httpd-cgi
+Section: httpd
+Priority: optional
+Homepage: https://httpd.apache.org/
+Original-Maintainer: Debian Apache Maintainers <debian-apache@lists.debian.org>
+Filename: pool/resolute/main/apache2/apache2_2.4.66-2ubuntu2.7+fp5_amd64.deb
+Size: 102036
+MD5sum: 1566c871fa8e011f57c88865199820e7
+SHA256: 77797ad1d8200fb4bb119c59bb73010e5d59ceb7eb80345eac7703731d87cfe0
 Description: Apache HTTP Server
  The Apache HTTP Server Project's goal is to build a secure, efficient and
  extensible HTTP server as standards-compliant open source software. The

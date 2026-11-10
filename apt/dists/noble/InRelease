@@ -5,28 +5,28 @@ Origin: freePanel
 Label: freePanel
 Suite: noble
 Codename: noble
-Date: Sun, 08 Nov 2026 01:17:25 UTC
+Date: Tue, 10 Nov 2026 22:35:40 UTC
 Architectures: amd64
 Components: main
 Description: freePanel packages for Ubuntu 24.04
 Acquire-By-Hash: no
 SHA256:
- 5d54cd30ad7d29a0c3700127f104f66738078f95344bfafd900edbc12891c865 13123 main/binary-amd64/Packages
- 283fbcbf325641126cf21ec1758468ee0397ee8b5ae271fe25d20170cbd5fd51 3584 main/binary-amd64/Packages.gz
+ d0d86eefb316d684c0c7aea6e8d9c7646cff0a81f6e8d855579f6c3d39b51804 25431 main/binary-amd64/Packages
+ 3192992d2234dfc8260eadc9dda8097870ee59f2e6e3fbd2674641e6cee991c6 4562 main/binary-amd64/Packages.gz
  80a55364eba102ceb9553c88bfa9cf21f5c2eb5e9e4e848e75fe873703544f34 86 main/binary-amd64/Release
 -----BEGIN PGP SIGNATURE-----
 
-iQIzBAEBCgAdFiEEQ533bDstW8zqJfZS+7kTCOyPYakFAmrvzaUACgkQ+7kTCOyP
-YanerRAAlaVuHShXD3+w/2mB10ib2PMyHSF3JGO+ROe3b8HvctWV9b/DHREJq+jK
-M8IllQpp8IOGnZJO+p3dO1l8QJoMhlgWoF2zirYB0P/H/PxNFmGCveUQW5iuS0+p
-WqTY/v6GLLRQJGS1ubl+3b4d1buNG6lFAZSR0zPJnDZs7nu9ejnZ5FQ3VncMp5Ys
-BZS/Jp1zg4OVHnmiWjbkKe30OWB3f9M0BZcF8CNRCk/kfIa1J3M4ftxRjoRwS6rW
-7Nqgn7xTXJwUDMvfQEcDzqDZ/13xXtIJWnHOT8VrU9SnFmKfGFQRjUXjriREAkNs
-0dWPnCFt7+ay7EsExuS3eLF8Ck41hC9J4d4sPErV1OJEse6sGSi8AgdHLmcHB4lB
-qM0RAmJzw/SiBiZySm3MabN0xLCWPDBQ6WiZoBRyiNnOBx/NJeZWqGr70gwVPBSn
-nHOAsuhWm4gjNdAn1qXnPMVRG7VFkrZbyMDuXjNyrSWk+cutk9ldKT0xcWIkS7OT
-t1wFTuMovwc5B5eRBAm8BoiK7wpfPCqYTl4C+1gDo5cmu4S2x/hwijfvfNkhn0sE
-1pJIRhDPaVKC+G0ZaQjnN8eqt7yLwmjxcD1l9sTso549exOqKSKaA3QA1Xwz0CDX
-r6ynk3+w9UPtdjjCyR5zlHw8wysfOoYyEV01GuAQ8qspGTn1ujc=
-=Iuw4
+iQIzBAEBCgAdFiEEQ533bDstW8zqJfZS+7kTCOyPYakFAmrznDwACgkQ+7kTCOyP
+YanONA//VS/ufutmnHe7AzzkWRjRI52ri+Gg0G5WcwFCbb6Hn0Zi569nTibvdyLg
+unU5wqEFSwUKau8KFL+9QpjEdX88rDGHq5FQC5RvZpctbYozjgiHJj7WWWLtpy/Y
+yYmYXoX6qSxUyu4dBYKDroeslYFDzpBmMl9GR5gm21Qe4F2x5gUTItjo3GVBwvXw
+UF3oLrfM6cgT1MbDziHhfFCZ8RQUEQm+CSz2+BZrO4vxRZwa9puaYPzRMVjA9QPx
+wWnNzT7iMiq2DfqPyyicswkUCbGKJK5+stF5Q2W5TA2SpiZHSUL4AqChpcO9NAFu
+rJS8+X19CuJPk2yDFvaXK4QQedAB+t6zKpUynvqXYoA3+kP3zOVZjkoIS6Fi6Xt5
+rfCRuUbifJgnOH4loL6l9WulyPYAAvIqugY1hdQoMIwtNF5MYdZL7G9QfytB/kAG
+WvyFAyp1xNW0x8a4LA8dTvuBqPgWpEU2bIHE46pmH2zzffSmKel6vho1mA/w9WHH
+YSqd3kdMgBqWhacqzk9qScFAyqtjs2cXooav224IuPAKBColqm6gPfd4C9Gv8g0T
+z9bcAbiYLFTt/l54EDz5Pu0KccZWAGweTYE3YpLcCTOmdmMv4sev6nV2ad4x8L0O
+qWRiQIpvWDec5nYld/Bzg/XgxhvSztPoeVU12xaiuskJi9gYnIM=
+=QdXL
 -----END PGP SIGNATURE-----
