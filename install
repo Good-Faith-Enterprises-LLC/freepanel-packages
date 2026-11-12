@@ -173,6 +173,47 @@ PINNED_KEY_BLOCK
 }
 
 say() { printf '  - %s\n' "$*"; }
+
+# banner: the title above the summary. On a terminal at least 32 columns wide
+# it is the logo (four rising bars, amber when colour is allowed) with the name
+# beside it; drawn with block characters when the locale is UTF-8 and with
+# plain ones otherwise. Anywhere else (piped, saved to a file, TERM=dumb or a
+# narrow terminal) it is the one plain line it has always been.
+banner() {
+  local cols="" amber="" bold="" off="" l1 l2 l3
+  if [ -t 1 ] && [ -n "${TERM:-}" ] && [ "$TERM" != dumb ]; then
+    # Not /dev/tty: with no controlling terminal opening it fails, and the
+    # shell says so.
+    { cols="$(stty size <&3 2>/dev/null | awk '{print $2}')"; } 3>&1
+    [[ $cols =~ ^[0-9]+$ ]] || cols=80
+  fi
+  if [ -z "$cols" ] || [ "$cols" -lt 32 ]; then
+    printf '\nfreePanel installer\n'
+    return
+  fi
+  if [ -z "${NO_COLOR:-}" ]; then
+    case "$TERM" in
+      *256color* | *truecolor* | *direct*) amber=$'\033[38;5;214m' ;;
+      *) amber=$'\033[33m' ;;
+    esac
+    bold=$'\033[1m'
+    off=$'\033[0m'
+  fi
+  case "${LC_ALL:-${LC_CTYPE:-${LANG:-}}}" in
+    *[Uu][Tt][Ff]-8* | *[Uu][Tt][Ff]8*)
+      l1='      ▄▄ ██'
+      l2='   ▄▄ ██ ██'
+      l3='██ ██ ██ ██'
+      ;;
+    *)
+      l1='      .. ##'
+      l2='   .. ## ##'
+      l3='## ## ## ##'
+      ;;
+  esac
+  printf '\n  %s%s%s\n  %s%s%s   %sfreePanel%s\n  %s%s%s   installer\n\n' \
+    "$amber" "$l1" "$off" "$amber" "$l2" "$off" "$bold" "$off" "$amber" "$l3" "$off"
+}
 die() {
   printf 'freePanel installer: %s\n' "$*" >&2
   exit 1
@@ -594,7 +635,8 @@ main() {
   need_gpg
   plan "$@"
 
-  printf '\nfreePanel installer\n  Server:      %s\n  Installing:  %s\n  Log:         %s\n\n' "$HOST" "$WHAT" "$LOG_FILE"
+  banner
+  printf '  Server:      %s\n  Installing:  %s\n  Log:         %s\n\n' "$HOST" "$WHAT" "$LOG_FILE"
 
   # Everything this script makes is for root alone; the installer gets the
   # umask it would have had if it had been run by hand.
