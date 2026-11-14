@@ -49,6 +49,11 @@ bad=$(printf '%s\n' "$list" | awk -v p="freepanel-$version" '$0 != p && substr($
 [ -z "$bad" ] || fail "$tarball holds entries outside freepanel-$version/: $(printf '%s' "$bad" | head -n 3 | tr '\n' ' ')"
 if printf '%s\n' "$list" | grep -qE '(^|/)\.\.(/|$)'; then fail "$tarball holds a .. entry"; fi
 printf '%s\n' "$list" | grep -qx "freepanel-$version/installer/install.sh" || fail "$tarball has no installer/install.sh"
+# A proof build (build tag selfupdateproof, modules/selfupdate/selfupdated/proof.go) trusts a key and site a
+# test server names, so it is never published.
+if tar -xzOf "$IN/$tarball" "freepanel-$version/bin/freepanel-privd" | grep -aq 'PROOF BUILD'; then
+    fail "$tarball is a self-update proof build (make release GOTAGS=selfupdateproof): never publish it"
+fi
 [ "$(stat -c %s "$IN/$tarball")" -lt $((95 * 1024 * 1024)) ] || fail "$tarball is too large for GitHub Pages (under 95 MB)"
 
 work=$(mktemp -d)
