@@ -13,13 +13,17 @@ from and their checksums.
 
 - `.github/workflows/publish.yml`: by hand, with the IDs of successful runs
   on main in the freePanel repository: `httpd_run` (httpd-build),
-  `radicale_run` (radicale-build) and `release_run` (release-build), any of
-  them. It checks each run, signs the RPMs with the signing subkey and adds
-  them to `gh-pages`; a release run adds `install`, `install.asc`,
+  `radicale_run` (radicale-build), `opendkim_run` (opendkim-build),
+  `dovecot_run` (dovecot-build), `modsecurity_run` (modsecurity-build),
+  `libxml2_run` (libxml2-build), `libgd_run` (libgd-build) and `release_run`
+  (release-build), any of them. It checks each run, signs the packages with
+  the signing subkey and adds them to `gh-pages`; a release run adds `install`, `install.asc`,
   `releases/freepanel-VERSION-linux-amd64.tar.gz`, its `.asc` and
   `releases/latest`, signed by the same subkey. A package or tarball that is
   already published is never replaced. It needs the owner's approval on the
-  `publish` environment every time.
+  `publish` environment every time. It runs on GitHub's own runner
+  (`ubuntu-24.04`, a fresh machine for every run) in an AlmaLinux 9 container
+  pinned by digest: the one freePanel job that does, by the owner's decision.
 - Do not edit `gh-pages` by hand. Each commit on it should be a `publish`
   run's; after a leaked key, check that before trusting it.
 
