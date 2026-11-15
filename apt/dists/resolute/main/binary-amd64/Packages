@@ -34,6 +34,24 @@ MD5sum: 3b79a2e99a4d527f5f9c2645e895a516
 SHA256: 46a7f4be9f3b55bdb66e8688e28a19927a68a492ca487c55330ac59d2c80bb61
 Description: debug symbols for apache2-bin
 
+Package: apache2-bin-dbgsym
+Source: apache2
+Version: 2.4.66-2ubuntu2.8+fp7
+Architecture: amd64
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 6164
+Depends: apache2-bin (= 2.4.66-2ubuntu2.8+fp7)
+Section: debug
+Priority: optional
+Auto-Built-Package: debug-symbols
+Build-Ids: 031e704f3b6dd33328babe0544d255568ab14f74 033768f9c2fb6a9e6d1e04752bdaf947588a4c91 04ae1371c6090b5276cf3dc11e4329f9a5a7fe56 0a6db2ffd8e636d0b6bf3b8b37d156e17ee6eae8 0cc5533167c628a632bf7acb5464cdf577e676bd 1475028bb5dd5aa909d451194b10ac4ff81ad24b 15011c79cd98653ed0d370b88919939ac239b799 18ed5d97e27e6c03a900113d9e188c6ac4abf4b7 1b1d2c4cff1098aa3c6a38dbe2c98bd617b5f8bb 1bbda7f187c10107ee75ef1e0309482626822fd1 1c520939f5e8829df7861d408efadc76a0af8df2 1cd99018098578eea996671ca2e4a0fec4d9099d 1d419bb2f61235e66a00aca8c2297788ecca97a3 1d6523fc90967897e3269c7257ca6b362a97f0bd 21af9f4938ef599dc01389cb85018de8a12c7762 22dadbd103d1caaf905c584800fa4ec9d7c4b54f 23d32646b658735109140b5a29360efd6aae67d0 257a48b1da8965cb8072b4b3cfd464608a9b1f42 2656cbbf9ac7ae3b38de304d9eb74df2080a2f69 269085fa048ccb9ebea53eeefab5e65aa7a66108 2851e4325a53952e75dabdbaa28b2825bb687533 29337257194d3f761d11d77c0e92c397e0771ebf 29352e6d237d6978780ad986d872982577dd55b6 2b031cdf7a763a5c34aae8d3a1e2c555bf36712a 2f582952ef039686b019893fb389f435de4db5ee 3a9c016221a4de4192514709f80f9b88f8cb7cbf 3b759dd502d40461b3e69633f612fb7f1ae31a12 3db03e8b7b86d288d40cf5e2295b5f46c5ab457a 3dc5dc1bc0509a4fdb1233945346413e602f9115 3f6fc747f825aea7770618aa85c4cd237992a177 443a1f835f00172f9ce6a966e232b6fc977c9d60 44e5e4ba8502a015d30ad3873c7722d1f7743331 460ea821253299e41b38e26ef53e3370d0dea178 491a9d8d57b849a2d95cc87a15d45a9307845ad9 4ae6d3eabe146bbfc25fe77fccfb6e30320c794c 53b8132ce1081b9a7493ff29df0c786d6fc60c67 53fef29b19f8185d8f3a5418609e3f39bcd27336 5748103e438bd0c59f31fecfa881a63348ebb2b4 57f3aa45635350cd3f8151bcd78777659925e0d3 59dcf95705dbfdf9c7f7fc977880350b04494679 5a83239d70dc58619ab522a58c61a31f252cc58a 5c02c5d34beb0a5a2532d47fed8dabf276bf7583 5c03abf76582d90b091107599df6e1dcb63be3e6 5d9b427cc32b07c32c7c5d73c107b1d750dde3c3 5e40ead03d544d2f6db644bb6d525d0a7805d52d 629f74706fc66327c8f784314eda534ba72a468b 63226c48957c491e39dba530a3de9b85cf9b6eb7 64a54dbd044378aec826cc5fe8531dd1fba842b4 65399a5ba0a60b13bedf34a33f06fc845a743d59 657e75076644d86ba457a52cdaf1519a8d135c91 680cf49133fc825edb4d16cf26ad189db0466196 6891d7dc09e266f59ad8329783e70abcfefa0912 6b2d3e9b2ae43821309cf84f61cc0f0c6db5e3f9 6d156748a0b6ea79f38c536d84b41b35a5b7e22e 6ffd2699c7d72efffa95486effd1781a6dab068c 72f8c7c0f113dc8a3eed76a6a2a08452be4ddd43 730120d8220e416c3f8d3a654c581266b1dd9282 74472b03acf11773f737df6cd2617be6eef9837a 744cde655447d9557dfe938d58e3acdfd42a822c 77155f56eb0c01a495286f895a8f2d63032ad2c6 7bef5531929a70e2bd8cd25fd3d3ad651ffcf21b 801ffdc8a3bd0dae6a41c5b49b32b8b756719a23 8179939afcecd826144e75fbdc5e035f883b1201 8196ca4f2e9b4dac1f9662c25f4852b053edeb61 855c2bcb9cb8ecd29f2e292d0a7af8d5241590cd 863e47c6359e382998ffe1339b4c4e5a294e5163 86d959d5d22c652022e237acf8f54dff20c20e83 8db7996ec843f8e472155c4612c1682a2851fa3d 96187d2519cafeccb670975c3fb7adbb4c689e53 96bc175e353e8667cb6fe2d9d03f9429240086da 9dfa87ed115d0ecf6f9fc6520d63ff65e0fcc9c1 a130247560399c236045d016e9fcb20e0a57dab9 a1a16687e20872fb6fec28bf8bc52e494a5fa53e a558b84eabc7324bca254d577bfadab7adc6b9e1 a8b94327f92345966a65b0f65f5a51d2308af702 a8fe88ceb5a8b4a5509d6ba17497238370b25020 ac7c8f78503e0e81c6b614a6db10bf77f5b8f088 adc7ee4d54c1fb8da97f921385417bf1c54fcda0 aea9634a7fb31b8e8940dd9ec1e3d2379b576ac2 afe1c2292a3a436b747ae2d32a32d40534ec8b22 b12516c5fd4ff49f1c0e78902e8fe2809c933a53 b3098e975922d595d259f3242da4ee54aa72e4ba b3378aea09936ce9834cbb17b2e852405946a1fd b52213608fdc7990ffa82de2f756c3aa1d8ee724 b787a92d0d47a16b12918c407e5fe905e0ddb305 b88748d661799565647af7dade2e40c0f31fb987 baa5a6fb0d797e3e4150aad7ce20e2b7cdcd1826 bbecef71ae70a14a03daeb7b1ba4aa5e0dfd2f48 bcabd4103923b46f53d5d87e56ba75ad1d3d8e20 bcce0e99ec0da5e2a06271a624751b735bd28910 c04ad3b07cf7e47d810cd7aad928cb4822d74cb3 c45e6d36044ede26396386b3588397af7fdcaffe c6dee8eb23835120240ec4348ade6e0d87f1c8ea cb26c679698fe577040ab28cf7afedd2d99dd512 cc6eee6be67e6f51c7f0ee167ca1b19b74d2c1b1 cf87d7fe197a56d1f3054bd9708bf688492efa6c cfc571fd83612c21e61023c82996d7d345eb1c9d d222103eea54042e1951adaf7ba947117044ffac d28fed64b233b3d5c3824e32f6ff6cd8fc1297ab dac7b681ac7e34a6278961e7f1ad0be5f07ba42d dadf5e2dbce72c9ad6b6f6e2f08b9d9658d007c3 db39e971f69024581de3b00690642c6b275bdc02 db939fae4e5d7bf7db602493264cdadd51cc0fd6 ddf4032f5b4b23230617256663fa1b731e5622ad df86caf7ee19ee64f1cac150a7775548ffd831c6 dfa1e711af6060f748697463d05be9ac69c6e5f3 e0fa6cdd8ec71aa717960642c048b5f1c319f62a e11b8e238ced7832b786446475e986502193738a e47bc28c0d0d14881458d5b3a562f2b80c96e5d9 eada003166e48ff286ad2eb517d7079d4f1eff2a eae0b699043abbd5bcbf58ae53066241f54d07ea eee8b8a3269a526f87f4f5b66880157f25268d51 f452229ca19175e663455136f17b4fe17ac07fbd f543493e980e45c5ecbf7b230bce3fc02c453f5e f6379e43ec6491da827ad55e6f9142f318b1e247 f9eb71bd0789b6180b58c4c42d9bba2319b43009 fa75c62b0a7f5c5f0d4b61955399f80e9cbe1fc5 fe0c59fc696ea8a56dd75167c8857b4392f884e4 fffa39aebe0637c74321898d146a4ee4d2d3d440
+Original-Maintainer: Debian Apache Maintainers <debian-apache@lists.debian.org>
+Filename: pool/resolute/main/apache2-bin-dbgsym/apache2-bin-dbgsym_2.4.66-2ubuntu2.8+fp7_amd64.deb
+Size: 3544408
+MD5sum: 16cda49d74beb70a5f02dbb8669f0b6f
+SHA256: 46c94ca1f2fb98b23c56566b851bd18fd22141fb7a9860bbb73ed7f007232953
+Description: debug symbols for apache2-bin
+
 Package: apache2-bin
 Source: apache2
 Version: 2.4.66-2ubuntu2.6+fp5
@@ -88,6 +106,33 @@ Description: Apache HTTP Server (modules and other binary files)
  web-server instance. Install the "apache2" package to get a fully working
  instance.
 
+Package: apache2-bin
+Source: apache2
+Version: 2.4.66-2ubuntu2.8+fp7
+Architecture: amd64
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 5104
+Depends: perl:any, libapr1t64 (>= 1.7.0), libaprutil1-dbd-sqlite3 | libaprutil1-dbd-mysql | libaprutil1-dbd-odbc | libaprutil1-dbd-pgsql | libaprutil1-dbd-freetds, libaprutil1-ldap, libaprutil1t64 (>= 1.6.0), libbrotli1 (>= 0.6.0), libc6 (>= 2.38), libcrypt1 (>= 1:4.1.0), libcurl4t64 (>= 7.28.0), libjansson4 (>= 2.14), libldap2 (>= 2.6.2), liblua5.4-0 (>= 5.4.6), libnghttp2-14 (>= 1.50.0), libpcre2-8-0 (>= 10.22), libssl3t64 (>= 3.0.0), libsystemd0, libxml2-16 (>= 2.14.1), zlib1g (>= 1:1.1.4)
+Suggests: apache2-doc, apache2-suexec-pristine | apache2-suexec-custom, www-browser
+Breaks: fossil (<< 1:2.24-5~)
+Provides: apache2-api-20120211, apache2-api-20120211-openssl1.1
+Section: httpd
+Priority: optional
+Homepage: https://httpd.apache.org/
+Original-Maintainer: Debian Apache Maintainers <debian-apache@lists.debian.org>
+Filename: pool/resolute/main/apache2-bin/apache2-bin_2.4.66-2ubuntu2.8+fp7_amd64.deb
+Size: 1358876
+MD5sum: 856b37c5b50cb44098f92e69797f11b4
+SHA256: 32c4469c2c9fc62df35351f67e21458f726fde3913af6b2b2dd7575153fb6bad
+Description: Apache HTTP Server (modules and other binary files)
+ The Apache HTTP Server Project's goal is to build a secure, efficient and
+ extensible HTTP server as standards-compliant open source software. The
+ result has long been the number one web server on the Internet.
+ .
+ This package contains the binaries only and does not set up a working
+ web-server instance. Install the "apache2" package to get a fully working
+ instance.
+
 Package: apache2-data
 Source: apache2
 Version: 2.4.66-2ubuntu2.6+fp5
@@ -126,6 +171,29 @@ Filename: pool/resolute/main/apache2-data/apache2-data_2.4.66-2ubuntu2.7+fp5_all
 Size: 172084
 MD5sum: 6a54527728ef46c9d76fb97095a6cd67
 SHA256: 87fe573d1e450006ce0aeb3c74da6139e3e6634cba5adb888486948c5c09e45e
+Description: Apache HTTP Server (common files)
+ The Apache HTTP Server Project's goal is to build a secure, efficient and
+ extensible HTTP server as standards-compliant open source software. The
+ result has long been the number one web server on the Internet.
+ .
+ This package contains architecture-independent common files such as icons,
+ error pages and static index files.
+
+Package: apache2-data
+Source: apache2
+Version: 2.4.66-2ubuntu2.8+fp7
+Architecture: all
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 857
+Section: httpd
+Priority: optional
+Multi-Arch: foreign
+Homepage: https://httpd.apache.org/
+Original-Maintainer: Debian Apache Maintainers <debian-apache@lists.debian.org>
+Filename: pool/resolute/main/apache2-data/apache2-data_2.4.66-2ubuntu2.8+fp7_all.deb
+Size: 172090
+MD5sum: 6eb2906a5dae89ca796cd846016e73f1
+SHA256: 41a942ae9ecce862538f537effe9ccc01961d910faf492553d6a309eea29e51f
 Description: Apache HTTP Server (common files)
  The Apache HTTP Server Project's goal is to build a secure, efficient and
  extensible HTTP server as standards-compliant open source software. The
@@ -196,6 +264,37 @@ Description: Apache HTTP Server (development headers)
   - Site configuration files
   - Global configuration files
 
+Package: apache2-dev
+Source: apache2
+Version: 2.4.66-2ubuntu2.8+fp7
+Architecture: amd64
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 1003
+Depends: debhelper (>= 10), libapr1-dev, libaprutil1-dev, libpcre2-dev, openssl, perl:any
+Provides: dh-apache2, dh-sequence-apache2
+Section: httpd
+Priority: optional
+Homepage: https://httpd.apache.org/
+Original-Maintainer: Debian Apache Maintainers <debian-apache@lists.debian.org>
+Filename: pool/resolute/main/apache2-dev/apache2-dev_2.4.66-2ubuntu2.8+fp7_amd64.deb
+Size: 200180
+MD5sum: cb4e490888be92bc568eb8479e794205
+SHA256: 4469e269453e2bdd16fba4cf8440f10dc336360c6ebb7fd50ddb21a04ae89323
+Description: Apache HTTP Server (development headers)
+ The Apache HTTP Server Project's goal is to build a secure, efficient and
+ extensible HTTP server as standards-compliant open source software. The
+ result has long been the number one web server on the Internet.
+ .
+ This package provides development headers and the apxs2 binary for the Apache
+ 2 HTTP server, useful to develop and link third party additions to the Debian
+ Apache HTTP server package.
+ .
+ It also provides dh_apache2 and dh sequence addons useful to install various
+ Debian Apache2 extensions with debhelper. It supports
+  - Apache 2 module configurations and shared objects
+  - Site configuration files
+  - Global configuration files
+
 Package: apache2-doc
 Source: apache2
 Version: 2.4.66-2ubuntu2.6+fp5
@@ -235,6 +334,30 @@ Filename: pool/resolute/main/apache2-doc/apache2-doc_2.4.66-2ubuntu2.7+fp5_all.d
 Size: 3893244
 MD5sum: 2ec56714b7103a985479749d91f2e426
 SHA256: ac1a82b59468a298544510b2401953b7f142e2366ae1a2d45b175372eb19fc3b
+Description: Apache HTTP Server (on-site documentation)
+ The Apache HTTP Server Project's goal is to build a secure, efficient and
+ extensible HTTP server as standards-compliant open source software. The
+ result has long been the number one web server on the Internet.
+ .
+ This package provides the documentation for the Apache 2 HTTP server. The
+ documentation is shipped in HTML format and can be accessed from a local
+ running Apache HTTP server instance or by browsing the file system directly.
+
+Package: apache2-doc
+Source: apache2
+Version: 2.4.66-2ubuntu2.8+fp7
+Architecture: all
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 25143
+Recommends: apache2
+Section: doc
+Priority: optional
+Homepage: https://httpd.apache.org/
+Original-Maintainer: Debian Apache Maintainers <debian-apache@lists.debian.org>
+Filename: pool/resolute/main/apache2-doc/apache2-doc_2.4.66-2ubuntu2.8+fp7_all.deb
+Size: 3894040
+MD5sum: 43a4ca7ef040a1ca134ab8a3e8351c94
+SHA256: e0d5317179b4455ef7af590cf682685c5e427f6b1dd3ae650e11fda53ce552db
 Description: Apache HTTP Server (on-site documentation)
  The Apache HTTP Server Project's goal is to build a secure, efficient and
  extensible HTTP server as standards-compliant open source software. The
@@ -292,6 +415,30 @@ Description: Apache HTTP Server (mod_ssl development headers)
  This package provides the development header and the dependencies for
  modules that interact with mod_ssl's internal openssl state.
 
+Package: apache2-ssl-dev
+Source: apache2
+Version: 2.4.66-2ubuntu2.8+fp7
+Architecture: amd64
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 13
+Depends: apache2-dev (= 2.4.66-2ubuntu2.8+fp7), libssl-dev
+Section: httpd
+Priority: optional
+Multi-Arch: same
+Homepage: https://httpd.apache.org/
+Original-Maintainer: Debian Apache Maintainers <debian-apache@lists.debian.org>
+Filename: pool/resolute/main/apache2-ssl-dev/apache2-ssl-dev_2.4.66-2ubuntu2.8+fp7_amd64.deb
+Size: 3012
+MD5sum: 72807f3207189cbfb9bdbe4fc042f5c9
+SHA256: b214a0d995a37a960499dc28f0c552764915d8a53cd95541ac0306fd734e1391
+Description: Apache HTTP Server (mod_ssl development headers)
+ The Apache HTTP Server Project's goal is to build a secure, efficient and
+ extensible HTTP server as standards-compliant open source software. The
+ result has long been the number one web server on the Internet.
+ .
+ This package provides the development header and the dependencies for
+ modules that interact with mod_ssl's internal openssl state.
+
 Package: apache2-suexec-custom-dbgsym
 Source: apache2
 Version: 2.4.66-2ubuntu2.6+fp5
@@ -326,6 +473,24 @@ Filename: pool/resolute/main/apache2-suexec-custom-dbgsym/apache2-suexec-custom-
 Size: 12974
 MD5sum: 9ca062eea14ab9de53d5064f68375ef7
 SHA256: 46efaa27f80a9f633a89d5a091167d95a0c612ec9876b219f4dd100d085ed60e
+Description: debug symbols for apache2-suexec-custom
+
+Package: apache2-suexec-custom-dbgsym
+Source: apache2
+Version: 2.4.66-2ubuntu2.8+fp7
+Architecture: amd64
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 35
+Depends: apache2-suexec-custom (= 2.4.66-2ubuntu2.8+fp7)
+Section: debug
+Priority: optional
+Auto-Built-Package: debug-symbols
+Build-Ids: 47e6a835c499d07871d1028342d07a9715f81c28
+Original-Maintainer: Debian Apache Maintainers <debian-apache@lists.debian.org>
+Filename: pool/resolute/main/apache2-suexec-custom-dbgsym/apache2-suexec-custom-dbgsym_2.4.66-2ubuntu2.8+fp7_amd64.deb
+Size: 12976
+MD5sum: bf2436877be75f0d991ba22f93e318d0
+SHA256: 03fdff6560987f42cbe82d1bc18a4169f1c8b0a7e19eed4378eeb8f1bea23751
 Description: debug symbols for apache2-suexec-custom
 
 Package: apache2-suexec-custom
@@ -378,6 +543,31 @@ Description: Apache HTTP Server configurable suexec program for mod_suexec
  recommended that you use the standard suexec helper program from the
  apache2-suexec-pristine package instead.
 
+Package: apache2-suexec-custom
+Source: apache2
+Version: 2.4.66-2ubuntu2.8+fp7
+Architecture: amd64
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 77
+Depends: apache2-bin, libc6 (>= 2.38)
+Provides: apache2-suexec
+Section: httpd
+Priority: optional
+Homepage: https://httpd.apache.org/
+Original-Maintainer: Debian Apache Maintainers <debian-apache@lists.debian.org>
+Filename: pool/resolute/main/apache2-suexec-custom/apache2-suexec-custom_2.4.66-2ubuntu2.8+fp7_amd64.deb
+Size: 24008
+MD5sum: 9357ea166426f70e72cc80ff0630383e
+SHA256: 866cc83381e6935fd638886e548e047216390feead38f3af6bf096931c9da4eb
+Description: Apache HTTP Server configurable suexec program for mod_suexec
+ Provides a customizable version of the suexec helper program for mod_suexec.
+ This is not the version from upstream, but can be configured with a
+ configuration file.
+ .
+ If you do not need non-standard document root or userdir settings, it is
+ recommended that you use the standard suexec helper program from the
+ apache2-suexec-pristine package instead.
+
 Package: apache2-suexec-pristine-dbgsym
 Source: apache2
 Version: 2.4.66-2ubuntu2.6+fp5
@@ -412,6 +602,24 @@ Filename: pool/resolute/main/apache2-suexec-pristine-dbgsym/apache2-suexec-prist
 Size: 11646
 MD5sum: 61b4e0100849cc8936f52aeb8b699795
 SHA256: b21e0317b6edb0ebfb8a3c7edfc4a175830b2b16e70d702f9c349bf2917ca252
+Description: debug symbols for apache2-suexec-pristine
+
+Package: apache2-suexec-pristine-dbgsym
+Source: apache2
+Version: 2.4.66-2ubuntu2.8+fp7
+Architecture: amd64
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 34
+Depends: apache2-suexec-pristine (= 2.4.66-2ubuntu2.8+fp7)
+Section: debug
+Priority: optional
+Auto-Built-Package: debug-symbols
+Build-Ids: 9b0de688ada79a6d5b3948a895b7d0e652c83c8b
+Original-Maintainer: Debian Apache Maintainers <debian-apache@lists.debian.org>
+Filename: pool/resolute/main/apache2-suexec-pristine-dbgsym/apache2-suexec-pristine-dbgsym_2.4.66-2ubuntu2.8+fp7_amd64.deb
+Size: 11642
+MD5sum: 380affd9d144122981e94535f197401a
+SHA256: db2a6d05cdbcce6b593e23e4ace0d7c69066dcc75331da01785fa1061b73b335
 Description: debug symbols for apache2-suexec-pristine
 
 Package: apache2-suexec-pristine
@@ -456,6 +664,27 @@ Description: Apache HTTP Server standard suexec program for mod_suexec
  compiled with document root /var/www and userdir suffix public_html. If you
  need different settings, use the package apache2-suexec-custom.
 
+Package: apache2-suexec-pristine
+Source: apache2
+Version: 2.4.66-2ubuntu2.8+fp7
+Architecture: amd64
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 67
+Depends: apache2-bin, libc6 (>= 2.38)
+Provides: apache2-suexec
+Section: httpd
+Priority: optional
+Homepage: https://httpd.apache.org/
+Original-Maintainer: Debian Apache Maintainers <debian-apache@lists.debian.org>
+Filename: pool/resolute/main/apache2-suexec-pristine/apache2-suexec-pristine_2.4.66-2ubuntu2.8+fp7_amd64.deb
+Size: 22452
+MD5sum: c4ddaaccd69307fd033e667b31f11ce0
+SHA256: 6061b894a80a19be6fcbbeb7af17e250aece6b7112cfbffc6d55fef68818ad1c
+Description: Apache HTTP Server standard suexec program for mod_suexec
+ Provides the standard suexec helper program for mod_suexec. This version is
+ compiled with document root /var/www and userdir suffix public_html. If you
+ need different settings, use the package apache2-suexec-custom.
+
 Package: apache2-utils-dbgsym
 Source: apache2
 Version: 2.4.66-2ubuntu2.6+fp5
@@ -490,6 +719,24 @@ Filename: pool/resolute/main/apache2-utils-dbgsym/apache2-utils-dbgsym_2.4.66-2u
 Size: 120100
 MD5sum: 1cddca28df53dde557edb1cb90035e67
 SHA256: d0bf60583074be381c71b59e1e0da6ff5b2f78e0d63ea2f2ea72a267dd39eab6
+Description: debug symbols for apache2-utils
+
+Package: apache2-utils-dbgsym
+Source: apache2
+Version: 2.4.66-2ubuntu2.8+fp7
+Architecture: amd64
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 297
+Depends: apache2-utils (= 2.4.66-2ubuntu2.8+fp7)
+Section: debug
+Priority: optional
+Auto-Built-Package: debug-symbols
+Build-Ids: 2579bcdae4fa569307d1b23d055f28aea55e9a6e 3de3c93d7393a62ad51730fd6fe29636e8345f17 4158e63952e44625b6738b78d7022d4379c82b55 574f7266da27dc3b133f0f77b703cd83c176fceb 701e9d49caabccf535b7a45a2f011803e55c89cd 8868e8152b0c4d94b411f9084e9cb7fafabd0f1d 9b8c47bf4c33a41d8cd77f8fc047a8ca3ae8949b a218dce4366b91ce1d453c7d2a43dee3b53581b5 c572b53b75da62cf4e08f1c60610d40a98f35ff6 e418cc68b250dc2b7ea7f6b6688bb8ad49155684
+Original-Maintainer: Debian Apache Maintainers <debian-apache@lists.debian.org>
+Filename: pool/resolute/main/apache2-utils-dbgsym/apache2-utils-dbgsym_2.4.66-2ubuntu2.8+fp7_amd64.deb
+Size: 120144
+MD5sum: 50441378ae53face9e6567267f8a66cf
+SHA256: b708b8fe1375dfa6e4b0660b68c28b39aa65a89e1e782109c088cafb7c86ef2f
 Description: debug symbols for apache2-utils
 
 Package: apache2-utils
@@ -539,6 +786,37 @@ Filename: pool/resolute/main/apache2-utils/apache2-utils_2.4.66-2ubuntu2.7+fp5_a
 Size: 95648
 MD5sum: 2facdfb95f1a3d77e26ac6bfd00dff8c
 SHA256: a1f75c4cff05f77719eac3e233f92787255d54443427a2bc9f21d6879bc42bef
+Description: Apache HTTP Server (utility programs for web servers)
+ Provides some add-on programs useful for any web server.  These include:
+  - ab (Apache benchmark tool)
+  - fcgistarter (Start a FastCGI program)
+  - logresolve (Resolve IP addresses to hostnames in logfiles)
+  - htpasswd (Manipulate basic authentication files)
+  - htdigest (Manipulate digest authentication files)
+  - htdbm (Manipulate basic authentication files in DBM format, using APR)
+  - htcacheclean (Clean up the disk cache)
+  - rotatelogs (Periodically stop writing to a logfile and open a new one)
+  - split-logfile (Split a single log including multiple vhosts)
+  - checkgid (Checks whether the caller can setgid to the specified group)
+  - check_forensic (Extract mod_log_forensic output from Apache log files)
+  - httxt2dbm (Generate dbm files for use with RewriteMap)
+
+Package: apache2-utils
+Source: apache2
+Version: 2.4.66-2ubuntu2.8+fp7
+Architecture: amd64
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 326
+Depends: libapr1t64 (>= 1.4.8-2~), libaprutil1t64 (>= 1.5.0), libc6 (>= 2.38), libcrypt1 (>= 1:4.1.0), libssl3t64 (>= 3.0.0)
+Section: httpd
+Priority: optional
+Multi-Arch: foreign
+Homepage: https://httpd.apache.org/
+Original-Maintainer: Debian Apache Maintainers <debian-apache@lists.debian.org>
+Filename: pool/resolute/main/apache2-utils/apache2-utils_2.4.66-2ubuntu2.8+fp7_amd64.deb
+Size: 95942
+MD5sum: b655c6e6c5aa160a6156e1838286b0cb
+SHA256: 825524f18d9c3f850fc02b3498a54ec2056bda7e4c9b5a3eb0a212b226ab5f5b
 Description: Apache HTTP Server (utility programs for web servers)
  Provides some add-on programs useful for any web server.  These include:
   - ab (Apache benchmark tool)
@@ -604,6 +882,797 @@ Description: Apache HTTP Server
  Installing this package results in a full installation, including the
  configuration files, init scripts and support scripts.
 
+Package: apache2
+Version: 2.4.66-2ubuntu2.8+fp7
+Architecture: amd64
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 463
+Depends: apache2-bin (= 2.4.66-2ubuntu2.8+fp7), apache2-data (= 2.4.66-2ubuntu2.8+fp7), apache2-utils (= 2.4.66-2ubuntu2.8+fp7), media-types, procps, perl:any
+Recommends: ssl-cert
+Suggests: apache2-doc, apache2-suexec-pristine | apache2-suexec-custom, ufw, www-browser
+Provides: httpd, httpd-cgi
+Section: httpd
+Priority: optional
+Homepage: https://httpd.apache.org/
+Original-Maintainer: Debian Apache Maintainers <debian-apache@lists.debian.org>
+Filename: pool/resolute/main/apache2/apache2_2.4.66-2ubuntu2.8+fp7_amd64.deb
+Size: 102312
+MD5sum: f85260eb751f8082cccac1365052f288
+SHA256: 5f8226c1bc48a81c83bdc448c7bd66296e60a5a7822f28ec77095e4b6ee31515
+Description: Apache HTTP Server
+ The Apache HTTP Server Project's goal is to build a secure, efficient and
+ extensible HTTP server as standards-compliant open source software. The
+ result has long been the number one web server on the Internet.
+ .
+ Installing this package results in a full installation, including the
+ configuration files, init scripts and support scripts.
+
+Package: dovecot-auth-lua
+Source: dovecot
+Version: 1:2.4.5+dfsg1-4+fp1~resolute
+Architecture: amd64
+Maintainer: Dovecot Maintainers <dovecot@packages.debian.org>
+Installed-Size: 70
+Depends: dovecot-core (= 1:2.4.5+dfsg1-4+fp1~resolute), libc6 (>= 2.4)
+Section: mail
+Priority: optional
+Homepage: https://dovecot.org/
+Filename: pool/resolute/main/dovecot-auth-lua/dovecot-auth-lua_2.4.5+dfsg1-4+fp1~resolute_amd64.deb
+Size: 22868
+MD5sum: 82f8828295cc8302aea44cfafa48825a
+SHA256: 860635ca5c701f48ef139c9b1ed8c7df6583cad437bba3aa41095ac11bc1333f
+Description: secure POP3/IMAP server - Lua authentication plugin
+ Dovecot is a mail server whose major goals are security and extreme
+ reliability. It tries very hard to handle all error conditions and verify
+ that all data is valid, making it nearly impossible to crash. It supports
+ mbox/Maildir and its own dbox/mdbox formats, and should also be pretty
+ fast, extensible, and portable.
+ .
+ This package contains an authentication plugin allowing password and user
+ databases to be implemented in Lua.
+
+Package: dovecot-core
+Source: dovecot
+Version: 1:2.4.5+dfsg1-4+fp1~resolute
+Architecture: amd64
+Maintainer: Dovecot Maintainers <dovecot@packages.debian.org>
+Installed-Size: 11940
+Depends: libpam-runtime, openssl, ssl-cert, ucf, systemd | systemd-standalone-sysusers | systemd-sysusers, dovecot-sieve (>= 1:2.4.5+dfsg1), libapparmor1 (>= 2.7.0~beta1+bzr1772), libbz2-1.0, libc6 (>= 2.36), libcap2 (>= 1:2.10), libcrypt1 (>= 1:4.1.0), libexttextcat-2.0-0 (>= 3.3.0), libgssapi-krb5-2 (>= 1.17), libicu78 (>= 78.1-1~), libkrb5-3 (>= 1.6.dfsg.2), liblua5.4-0 (>= 5.4.6), liblz4-1 (>= 0.0~r130), libpam0g (>= 0.99.7.1), libpcre2-32-0 (>= 10.34), libsodium23 (>= 1.0.13), libssl3t64 (>= 3.0.0), libstemmer0d (>= 0+svn527), libsystemd0, libtirpc3t64 (>= 1.0.2), libunwind8, libzstd1 (>= 1.5.5), zlib1g (>= 1:1.2.11)
+Suggests: dovecot-flatcurve, dovecot-gssapi, dovecot-imapd, dovecot-ldap, dovecot-lmtpd, dovecot-managesieved, dovecot-mariadb, dovecot-pgsql, dovecot-pop3d, dovecot-solr, dovecot-sqlite, dovecot-submissiond, systemd-timesyncd | time-daemon
+Breaks: dovecot-common (<< 1:2.0.14-2~), mailavenger (<< 0.8.1-4)
+Replaces: dovecot-common (<< 1:2.0.14-2~), mailavenger (<< 0.8.1-4)
+Provides: dovecot-abi-2.4.abiv5, dovecot-common
+Section: mail
+Priority: optional
+Homepage: https://dovecot.org/
+Filename: pool/resolute/main/dovecot-core/dovecot-core_2.4.5+dfsg1-4+fp1~resolute_amd64.deb
+Size: 3130040
+MD5sum: 7e851c1c9071d85c00ab75e2ebf0da3d
+SHA256: c347fc399e2db0802371b5e1065b8bca48d1a314a08014326c714d1f3e6637bd
+Description: secure POP3/IMAP server - core files
+ Dovecot is a mail server whose major goals are security and extreme
+ reliability. It tries very hard to handle all error conditions and verify
+ that all data is valid, making it nearly impossible to crash. It supports
+ mbox/Maildir and its own dbox/mdbox formats, and should also be pretty
+ fast, extensible, and portable.
+ .
+ This package contains the Dovecot main server and its command line utility.
+
+Package: dovecot-dev
+Source: dovecot
+Version: 1:2.4.5+dfsg1-4+fp1~resolute
+Architecture: amd64
+Maintainer: Dovecot Maintainers <dovecot@packages.debian.org>
+Installed-Size: 2639
+Breaks: dovecot-common (<< 1:2.0.14-2~), dovecot-core (<< 1:2.2.26.0-1~)
+Replaces: dovecot-common (<< 1:2.0.14-2~), dovecot-core (<< 1:2.2.26.0-1~)
+Section: mail
+Priority: optional
+Homepage: https://dovecot.org/
+Filename: pool/resolute/main/dovecot-dev/dovecot-dev_2.4.5+dfsg1-4+fp1~resolute_amd64.deb
+Size: 470176
+MD5sum: cd4066d6c17f0ca900dddb5ed4704217
+SHA256: 5eacd9c80d16ea92d12366f28c9596dda84e05a3d51463eb1af88dfe8093d8a8
+Description: secure POP3/IMAP server - header files
+ Dovecot is a mail server whose major goals are security and extreme
+ reliability. It tries very hard to handle all error conditions and verify
+ that all data is valid, making it nearly impossible to crash. It supports
+ mbox/Maildir and its own dbox/mdbox formats, and should also be pretty
+ fast, extensible, and portable.
+ .
+ This package contains header files needed to compile plugins for the Dovecot
+ mail server.
+
+Package: dovecot-flatcurve
+Source: dovecot
+Version: 1:2.4.5+dfsg1-4+fp1~resolute
+Architecture: amd64
+Maintainer: Dovecot Maintainers <dovecot@packages.debian.org>
+Installed-Size: 130
+Depends: dovecot-core (= 1:2.4.5+dfsg1-4+fp1~resolute), ucf, libc6 (>= 2.33), libgcc-s1 (>= 3.3.1), libstdc++6 (>= 5.2), libxapian30 (>= 1.4.28~)
+Conflicts: dovecot-fts-flatcurve
+Replaces: dovecot-fts-flatcurve
+Section: mail
+Priority: optional
+Homepage: https://dovecot.org/
+Filename: pool/resolute/main/dovecot-flatcurve/dovecot-flatcurve_2.4.5+dfsg1-4+fp1~resolute_amd64.deb
+Size: 45204
+MD5sum: ca8ec94b06d3c5d9f6729d3ef87cca61
+SHA256: ff31bb9ea2d1effcde9f0401f18e17f6d7b4d531ef419cfb435fd0ca946f4500
+Description: secure POP3/IMAP server - Flatcurve support
+ Dovecot is a mail server whose major goals are security and extreme
+ reliability. It tries very hard to handle all error conditions and verify
+ that all data is valid, making it nearly impossible to crash. It supports
+ mbox/Maildir and its own dbox/mdbox formats, and should also be pretty
+ fast, extensible, and portable.
+ .
+ This package provides Flatcurve full text search support for Dovecot.
+
+Package: dovecot-gssapi
+Source: dovecot
+Version: 1:2.4.5+dfsg1-4+fp1~resolute
+Architecture: amd64
+Maintainer: Dovecot Maintainers <dovecot@packages.debian.org>
+Installed-Size: 48
+Depends: dovecot-core (= 1:2.4.5+dfsg1-4+fp1~resolute), libc6 (>= 2.4)
+Section: mail
+Priority: optional
+Homepage: https://dovecot.org/
+Filename: pool/resolute/main/dovecot-gssapi/dovecot-gssapi_2.4.5+dfsg1-4+fp1~resolute_amd64.deb
+Size: 14686
+MD5sum: 862ef06d9e064dddf023c548c71e2c4a
+SHA256: b583109c09f815cdbef4303d82fda8c7b52b59b17e3c0bbb105e83f7ce1a4d84
+Description: secure POP3/IMAP server - GSSAPI support
+ Dovecot is a mail server whose major goals are security and extreme
+ reliability. It tries very hard to handle all error conditions and verify
+ that all data is valid, making it nearly impossible to crash. It supports
+ mbox/Maildir and its own dbox/mdbox formats, and should also be pretty
+ fast, extensible, and portable.
+ .
+ This package provides GSSAPI authentication support for Dovecot.
+
+Package: dovecot-imapd
+Source: dovecot
+Version: 1:2.4.5+dfsg1-4+fp1~resolute
+Architecture: amd64
+Maintainer: Dovecot Maintainers <dovecot@packages.debian.org>
+Installed-Size: 738
+Depends: dovecot-core (= 1:2.4.5+dfsg1-4+fp1~resolute), ucf, libbz2-1.0, libc6 (>= 2.34), liblz4-1 (>= 0.0~r130), libzstd1 (>= 1.5.5), zlib1g (>= 1:1.1.4)
+Suggests: ufw
+Provides: imap-server
+Section: mail
+Priority: optional
+Homepage: https://dovecot.org/
+Filename: pool/resolute/main/dovecot-imapd/dovecot-imapd_2.4.5+dfsg1-4+fp1~resolute_amd64.deb
+Size: 215302
+MD5sum: fad4557e8ff7832c9f87f40fe9aadd43
+SHA256: 1ae93088adb27820e4d535ebf18ecf7458769bd8280bb5fec17c59a262bb8b4d
+Description: secure POP3/IMAP server - IMAP daemon
+ Dovecot is a mail server whose major goals are security and extreme
+ reliability. It tries very hard to handle all error conditions and verify
+ that all data is valid, making it nearly impossible to crash. It supports
+ mbox/Maildir and its own dbox/mdbox formats, and should also be pretty
+ fast, extensible, and portable.
+ .
+ This package contains the Dovecot IMAP server.
+
+Package: dovecot-ldap
+Source: dovecot
+Version: 1:2.4.5+dfsg1-4+fp1~resolute
+Architecture: amd64
+Maintainer: Dovecot Maintainers <dovecot@packages.debian.org>
+Installed-Size: 225
+Depends: dovecot-core (= 1:2.4.5+dfsg1-4+fp1~resolute), ucf, libc6 (>= 2.4), libldap2 (>= 2.6.2)
+Breaks: dovecot-core (<< 1:2.2.26.0-1~)
+Replaces: dovecot-core (<< 1:2.2.26.0-1~)
+Section: mail
+Priority: optional
+Homepage: https://dovecot.org/
+Filename: pool/resolute/main/dovecot-ldap/dovecot-ldap_2.4.5+dfsg1-4+fp1~resolute_amd64.deb
+Size: 59122
+MD5sum: 835357a68719c3c6a78a7adbab0fce24
+SHA256: 25f8a683714e4b989934542290878d09ab75b1af602e0957649f02713a0a5bf3
+Description: secure POP3/IMAP server - LDAP support
+ Dovecot is a mail server whose major goals are security and extreme
+ reliability. It tries very hard to handle all error conditions and verify
+ that all data is valid, making it nearly impossible to crash. It supports
+ mbox/Maildir and its own dbox/mdbox formats, and should also be pretty
+ fast, extensible, and portable.
+ .
+ This package provides LDAP support for Dovecot.
+
+Package: dovecot-lmtpd
+Source: dovecot
+Version: 1:2.4.5+dfsg1-4+fp1~resolute
+Architecture: amd64
+Maintainer: Dovecot Maintainers <dovecot@packages.debian.org>
+Installed-Size: 118
+Depends: dovecot-core (= 1:2.4.5+dfsg1-4+fp1~resolute), ucf, libc6 (>= 2.34)
+Breaks: dovecot-common (<< 1:2.0.14-2~)
+Replaces: dovecot-common (<< 1:2.0.14-2~)
+Section: mail
+Priority: optional
+Homepage: https://dovecot.org/
+Filename: pool/resolute/main/dovecot-lmtpd/dovecot-lmtpd_2.4.5+dfsg1-4+fp1~resolute_amd64.deb
+Size: 39316
+MD5sum: 8e7fc288500cb13783fb778bfb776fac
+SHA256: 9bd632adebf9c83d1a50d2265f44ea1d90aeb11534a86351ebfba518fe8941ca
+Description: secure POP3/IMAP server - LMTP server
+ Dovecot is a mail server whose major goals are security and extreme
+ reliability. It tries very hard to handle all error conditions and verify
+ that all data is valid, making it nearly impossible to crash. It supports
+ mbox/Maildir and its own dbox/mdbox formats, and should also be pretty
+ fast, extensible, and portable.
+ .
+ This package contains the Dovecot LMTP server.
+
+Package: dovecot-managesieved
+Source: dovecot
+Version: 1:2.4.5+dfsg1-4+fp1~resolute
+Architecture: amd64
+Maintainer: Dovecot Maintainers <dovecot@packages.debian.org>
+Installed-Size: 184
+Depends: dovecot-core (= 1:2.4.5+dfsg1-4+fp1~resolute), dovecot-sieve (= 1:2.4.5+dfsg1-4+fp1~resolute), ucf, libc6 (>= 2.34)
+Breaks: dovecot-common (<< 1:2.0.14-2~)
+Replaces: dovecot-common (<< 1:2.0.14-2~)
+Section: mail
+Priority: optional
+Homepage: https://dovecot.org/
+Filename: pool/resolute/main/dovecot-managesieved/dovecot-managesieved_2.4.5+dfsg1-4+fp1~resolute_amd64.deb
+Size: 51978
+MD5sum: 623b00012914b203525e2504fcceac83
+SHA256: c626605f4297b68949011bf91999b9c4b0b43b749887f1b481ec23763376d0b0
+Description: secure POP3/IMAP server - ManageSieve server
+ Dovecot is a mail server whose major goals are security and extreme
+ reliability. It tries very hard to handle all error conditions and verify
+ that all data is valid, making it nearly impossible to crash. It supports
+ mbox/Maildir and its own dbox/mdbox formats, and should also be pretty
+ fast, extensible, and portable.
+ .
+ This package contains the Dovecot ManageSieve server.
+
+Package: dovecot-mariadb
+Source: dovecot
+Version: 1:2.4.5+dfsg1-4+fp1~resolute
+Architecture: amd64
+Maintainer: Dovecot Maintainers <dovecot@packages.debian.org>
+Installed-Size: 72
+Depends: dovecot-core (= 1:2.4.5+dfsg1-4+fp1~resolute), libc6 (>= 2.4), libmariadb3 (>= 3.0.0)
+Conflicts: dovecot-mysql (<< 1:2.4.4+dfsg1-2~)
+Section: mail
+Priority: optional
+Homepage: https://dovecot.org/
+Filename: pool/resolute/main/dovecot-mariadb/dovecot-mariadb_2.4.5+dfsg1-4+fp1~resolute_amd64.deb
+Size: 21588
+MD5sum: 2b1290ac6c46377f2b76e5d2e01a968d
+SHA256: e69ca88ba9382ae8e58edd4f9656cdc8ca1268a3e2e281d6e2387d6cab4b34b6
+Description: secure POP3/IMAP server - MySQL support
+ Dovecot is a mail server whose major goals are security and extreme
+ reliability. It tries very hard to handle all error conditions and verify
+ that all data is valid, making it nearly impossible to crash. It supports
+ mbox/Maildir and its own dbox/mdbox formats, and should also be pretty
+ fast, extensible, and portable.
+ .
+ This package provides MariaDB support for Dovecot.
+
+Package: dovecot-mysql
+Source: dovecot
+Version: 1:2.4.5+dfsg1-4+fp1~resolute
+Architecture: amd64
+Maintainer: Dovecot Maintainers <dovecot@packages.debian.org>
+Installed-Size: 27
+Depends: dovecot-mariadb
+Section: oldlibs
+Priority: optional
+Homepage: https://dovecot.org/
+Filename: pool/resolute/main/dovecot-mysql/dovecot-mysql_2.4.5+dfsg1-4+fp1~resolute_amd64.deb
+Size: 12414
+MD5sum: eecd5fb5dad1f5b0d1b78b56b2f189f6
+SHA256: 85e660e1956687a98727db0d3c53ddedd26ca79f367bbcee1ba16e9858d92431
+Description: Transitional package to facilitate upgrades to dovecot-mariadb
+ This is a transtional package to facilitate smooth upgrades on
+ systems previously using the dovecot-mysql package. It ensures that
+ the replacement dovecot-mariadb package is installed, and otherwise
+ may be safely removed.
+
+Package: dovecot-pgsql
+Source: dovecot
+Version: 1:2.4.5+dfsg1-4+fp1~resolute
+Architecture: amd64
+Maintainer: Dovecot Maintainers <dovecot@packages.debian.org>
+Installed-Size: 84
+Depends: dovecot-core (= 1:2.4.5+dfsg1-4+fp1~resolute), libc6 (>= 2.4), libpq5 (>= 9.0~)
+Section: mail
+Priority: optional
+Homepage: https://dovecot.org/
+Filename: pool/resolute/main/dovecot-pgsql/dovecot-pgsql_2.4.5+dfsg1-4+fp1~resolute_amd64.deb
+Size: 26172
+MD5sum: 9556336001e4d4e6314fa08496f935d2
+SHA256: 521a2fec6c10141ad8f841e783d3e5d273b69a0f69a645a1b135905e35a92bc6
+Description: secure POP3/IMAP server - PostgreSQL support
+ Dovecot is a mail server whose major goals are security and extreme
+ reliability. It tries very hard to handle all error conditions and verify
+ that all data is valid, making it nearly impossible to crash. It supports
+ mbox/Maildir and its own dbox/mdbox formats, and should also be pretty
+ fast, extensible, and portable.
+ .
+ This package provides PostgreSQL support for Dovecot.
+
+Package: dovecot-pop3d
+Source: dovecot
+Version: 1:2.4.5+dfsg1-4+fp1~resolute
+Architecture: amd64
+Maintainer: Dovecot Maintainers <dovecot@packages.debian.org>
+Installed-Size: 154
+Depends: dovecot-core (= 1:2.4.5+dfsg1-4+fp1~resolute), ucf, libc6 (>= 2.34)
+Suggests: ufw
+Provides: pop3-server
+Section: mail
+Priority: optional
+Homepage: https://dovecot.org/
+Filename: pool/resolute/main/dovecot-pop3d/dovecot-pop3d_2.4.5+dfsg1-4+fp1~resolute_amd64.deb
+Size: 47698
+MD5sum: c9258769dfa036f84d2b35d1e24b922e
+SHA256: 25c4dd25fedc7519eaeab988fa7c11c4e68f86e97368a1099d5daf214259e269
+Description: secure POP3/IMAP server - POP3 daemon
+ Dovecot is a mail server whose major goals are security and extreme
+ reliability. It tries very hard to handle all error conditions and verify
+ that all data is valid, making it nearly impossible to crash. It supports
+ mbox/Maildir and its own dbox/mdbox formats, and should also be pretty
+ fast, extensible, and portable.
+ .
+ This package contains the Dovecot POP3 server.
+
+Package: dovecot-sieve
+Source: dovecot
+Version: 1:2.4.5+dfsg1-4+fp1~resolute
+Architecture: amd64
+Maintainer: Dovecot Maintainers <dovecot@packages.debian.org>
+Installed-Size: 1392
+Depends: dovecot-core (= 1:2.4.5+dfsg1-4+fp1~resolute), ucf, libc6 (>= 2.34), libldap2 (>= 2.6.2)
+Breaks: dovecot-core (<= 1:2.2.13-6), dovecot-imapd (<< 1:2.2.26.0-1~)
+Replaces: dovecot-core (<= 1:2.2.13-6), dovecot-imapd (<< 1:2.2.26.0-1~)
+Section: mail
+Priority: optional
+Homepage: https://dovecot.org/
+Filename: pool/resolute/main/dovecot-sieve/dovecot-sieve_2.4.5+dfsg1-4+fp1~resolute_amd64.deb
+Size: 412398
+MD5sum: 9f2bb65a6d3cb56ebe60b91e53ddefd4
+SHA256: c8c7ab0cace83e3a34f240de9b2fc986dcaee10cfe637ecc01377d28831ff038
+Description: secure POP3/IMAP server - Sieve filters support
+ Dovecot is a mail server whose major goals are security and extreme
+ reliability. It tries very hard to handle all error conditions and verify
+ that all data is valid, making it nearly impossible to crash. It supports
+ mbox/Maildir and its own dbox/mdbox formats, and should also be pretty
+ fast, extensible, and portable.
+ .
+ This package provides Sieve filters support for Dovecot.
+
+Package: dovecot-solr
+Source: dovecot
+Version: 1:2.4.5+dfsg1-4+fp1~resolute
+Architecture: amd64
+Maintainer: Dovecot Maintainers <dovecot@packages.debian.org>
+Installed-Size: 131
+Depends: dovecot-core (= 1:2.4.5+dfsg1-4+fp1~resolute), libc6 (>= 2.4), libexpat1 (>= 2.0.1)
+Section: mail
+Priority: optional
+Homepage: https://dovecot.org/
+Filename: pool/resolute/main/dovecot-solr/dovecot-solr_2.4.5+dfsg1-4+fp1~resolute_amd64.deb
+Size: 39294
+MD5sum: 762b8c116cb88e3e274fc13efd7b2880
+SHA256: b136eb0a5e75ef2aa4844bed4af1a8efdb15f8a5e308e46ed428609e9e9405ec
+Description: secure POP3/IMAP server - Solr support
+ Dovecot is a mail server whose major goals are security and extreme
+ reliability. It tries very hard to handle all error conditions and verify
+ that all data is valid, making it nearly impossible to crash. It supports
+ mbox/Maildir and its own dbox/mdbox formats, and should also be pretty
+ fast, extensible, and portable.
+ .
+ This package provides Solr full text search support for Dovecot.
+
+Package: dovecot-sqlite
+Source: dovecot
+Version: 1:2.4.5+dfsg1-4+fp1~resolute
+Architecture: amd64
+Maintainer: Dovecot Maintainers <dovecot@packages.debian.org>
+Installed-Size: 76
+Depends: dovecot-core (= 1:2.4.5+dfsg1-4+fp1~resolute), libc6 (>= 2.33), libsqlite3-0 (>= 3.12.0)
+Section: mail
+Priority: optional
+Homepage: https://dovecot.org/
+Filename: pool/resolute/main/dovecot-sqlite/dovecot-sqlite_2.4.5+dfsg1-4+fp1~resolute_amd64.deb
+Size: 24978
+MD5sum: f5aa1fa303bde1973d5dc679ab9e3f6a
+SHA256: 495fcd56e5aa57813de7a85efd77d68a136f4040b41858d342ac222c1fda4a1e
+Description: secure POP3/IMAP server - SQLite support
+ Dovecot is a mail server whose major goals are security and extreme
+ reliability. It tries very hard to handle all error conditions and verify
+ that all data is valid, making it nearly impossible to crash. It supports
+ mbox/Maildir and its own dbox/mdbox formats, and should also be pretty
+ fast, extensible, and portable.
+ .
+ This package provides SQLite support for Dovecot.
+
+Package: dovecot-submissiond
+Source: dovecot
+Version: 1:2.4.5+dfsg1-4+fp1~resolute
+Architecture: amd64
+Maintainer: Dovecot Maintainers <dovecot@packages.debian.org>
+Installed-Size: 211
+Depends: dovecot-core (= 1:2.4.5+dfsg1-4+fp1~resolute), ucf, libc6 (>= 2.34)
+Breaks: dovecot-submission (<< 1:2.3.1-2~)
+Replaces: dovecot-submission (<< 1:2.3.1-2~)
+Section: mail
+Priority: optional
+Homepage: https://dovecot.org/
+Filename: pool/resolute/main/dovecot-submissiond/dovecot-submissiond_2.4.5+dfsg1-4+fp1~resolute_amd64.deb
+Size: 66430
+MD5sum: 45b07407225fb3ac4dc88d8e160f9548
+SHA256: c74d97c042823a0ffb0821dbf42ad07c38e6d8ae0d64e65a58b648cf1e881d82
+Description: secure POP3/IMAP server - mail submission agent
+ Dovecot is a mail server whose major goals are security and extreme
+ reliability. It tries very hard to handle all error conditions and verify
+ that all data is valid, making it nearly impossible to crash. It supports
+ mbox/Maildir and its own dbox/mdbox formats, and should also be pretty
+ fast, extensible, and portable.
+ .
+ This package contains the Dovecot Mail Submission Agent which implements a
+ basic SMTP submission service with BURL support.
+
+Package: libapache2-mod-security2
+Source: modsecurity-apache
+Version: 2.9.15-0+fp1~resolute
+Architecture: amd64
+Maintainer: Ervin Hegedus <airween@gmail.com>
+Installed-Size: 1137
+Depends: libapr1t64 (>= 1.2.7), libaprutil1t64 (>= 1.4.0), libc6 (>= 2.38), libcurl3t64-gnutls (>= 7.16.2), liblua5.1-0 (>= 5.1.3), libpcre2-8-0 (>= 10.32), libxml2-16 (>= 2.14.1), libyajl2 (>= 2.0.4), apache2-api-20120211, apache2-bin (>= 2.4.16)
+Recommends: modsecurity-crs
+Section: httpd
+Priority: optional
+Homepage: https://github.com/SpiderLabs/ModSecurity
+Filename: pool/resolute/main/libapache2-mod-security2/libapache2-mod-security2_2.9.15-0+fp1~resolute_amd64.deb
+Size: 301502
+MD5sum: 2621fac4b50f635abaca79eefd9b5eb3
+SHA256: 36aca9327f57259f432d201e940bacdb9ebb2852f9d8a8e3ea1812d410598b5b
+Description: Tighten web applications security for Apache
+ Modsecurity is an Apache module whose purpose is to tighten the Web
+ application security. Effectively, it is an intrusion detection and prevention
+ system for the web server.
+ .
+ At the moment its main features are:
+   * Audit log; store full request details in a separate file, including POST
+     payloads.
+   * Request filtering; incoming requests can be analysed and offensive requests
+     can be rejected (or simply logged, if that is what you want). This feature
+     can be used to prevent many types of attacks (e.g. XSS attacks, SQL
+     injection, ...) and even allow you to run insecure applications on your
+     servers (if you have no other choice, of course).
+
+Package: libgd-dev
+Source: libgd2
+Version: 2.3.3-13ubuntu2+fp1
+Architecture: amd64
+Maintainer: GD Team <team+gd@tracker.debian.org>
+Installed-Size: 816
+Depends: libfontconfig-dev, libfreetype6-dev, libgd3 (= 2.3.3-13ubuntu2+fp1), libheif-dev | base-files (<< 11.1~), libimagequant-dev, libjpeg-dev, libpng-dev, libtiff-dev, libvpx-dev, libwebp-dev, libx11-dev, libxpm-dev, libz-dev
+Section: libdevel
+Priority: optional
+Multi-Arch: same
+Homepage: http://www.libgd.org/
+Filename: pool/resolute/main/libgd-dev/libgd-dev_2.3.3-13ubuntu2+fp1_amd64.deb
+Size: 269626
+MD5sum: 646264cc9fa31cdec56389ebb75961da
+SHA256: 43e2211628df35c1fecc0ff3c07ea44144e8069d8bde0d5269277d617f3e3814
+Description: GD Graphics Library (development version)
+ GD is a graphics library. It allows your code to quickly draw images
+ complete with lines, arcs, text, multiple colours, cut and paste from
+ other images, flood fills, and write out the result as a PNG file.
+ This is particularly useful in World Wide Web applications, where PNG is
+ one of the formats accepted for inline images by most browsers.
+ .
+ This is the full development version of the library.
+
+Package: libgd-tools
+Source: libgd2
+Version: 2.3.3-13ubuntu2+fp1
+Architecture: amd64
+Maintainer: GD Team <team+gd@tracker.debian.org>
+Installed-Size: 199
+Depends: perl:any, libc6 (>= 2.38), libgd3 (>= 2.1.0~alpha~)
+Suggests: libgd-dev
+Section: graphics
+Priority: optional
+Homepage: http://www.libgd.org/
+Filename: pool/resolute/main/libgd-tools/libgd-tools_2.3.3-13ubuntu2+fp1_amd64.deb
+Size: 20126
+MD5sum: 58be3e197cf2631d80866f09b38f85fe
+SHA256: 8776700df9d004f61ccd9df60a69df02932405bf26594af59b5202ca4ca0fdf7
+Description: GD command line tools and example code
+ GD is a graphics library. It allows your code to quickly draw images
+ complete with lines, arcs, text, multiple colours, cut and paste from
+ other images, flood fills, and write out the result as a PNG file.
+ This is particularly useful in World Wide Web applications, where PNG is
+ one of the formats accepted for inline images by most browsers.
+ .
+ This is some simple command line tools and example code that use the GD
+ graphics library.
+
+Package: libgd3
+Source: libgd2
+Version: 2.3.3-13ubuntu2+fp1
+Architecture: amd64
+Maintainer: GD Team <team+gd@tracker.debian.org>
+Installed-Size: 440
+Depends: libc6 (>= 2.38), libfontconfig1 (>= 2.12.6), libfreetype6 (>= 2.2.1), libheif1 (>= 1.3.2), libimagequant0 (>= 2.11.10), libjpeg8 (>= 8c), libpng16-16t64 (>= 1.6.46), libtiff6 (>= 4.0.3), libwebp7 (>= 1.5.0), libxpm4
+Suggests: libgd-tools
+Section: libs
+Priority: optional
+Multi-Arch: same
+Homepage: http://www.libgd.org/
+Filename: pool/resolute/main/libgd3/libgd3_2.3.3-13ubuntu2+fp1_amd64.deb
+Size: 128660
+MD5sum: c5e29c4950f5b373aed8a1c514f9d39f
+SHA256: f87e4b3a121b7859929e0447af945e552e7e71d4a6486ed9df13a6ae580cc169
+Description: GD Graphics Library
+ GD is a graphics library. It allows your code to quickly draw images
+ complete with lines, arcs, text, multiple colours, cut and paste from
+ other images, flood fills, and write out the result as a PNG file.
+ This is particularly useful in World Wide Web applications, where PNG is
+ one of the formats accepted for inline images by most browsers.
+ .
+ This is the runtime package of the library.
+
+Package: libopendkim-dev
+Source: opendkim
+Version: 2.11.0~beta2-9.2build1+fp1
+Architecture: amd64
+Maintainer: David Bürgin <dbuergin@gluet.ch>
+Installed-Size: 769
+Depends: libopendkim11 (= 2.11.0~beta2-9.2build1+fp1)
+Section: libdevel
+Priority: optional
+Multi-Arch: same
+Homepage: http://www.opendkim.org/
+Filename: pool/resolute/main/libopendkim-dev/libopendkim-dev_2.11.0~beta2-9.2build1+fp1_amd64.deb
+Size: 148604
+MD5sum: 68db3de91ac5b3a9006c19a6574aa803
+SHA256: 5e1daa15f667af43c4b9d84d54fde1f802392170940c6ad6faffadb3fba8f522
+Description: DomainKeys Identified Mail (DKIM) library (development files)
+ The OpenDKIM Project is a community effort to develop and maintain a C library
+ for producing DKIM-aware applications and an open source milter for providing
+ DomainKeys Identified Mail (DKIM) service.
+ .
+ This package provides the required header files and development libraries for
+ developing against the OpenDKIM library.
+
+Package: libopendkim11
+Source: opendkim
+Version: 2.11.0~beta2-9.2build1+fp1
+Architecture: amd64
+Maintainer: David Bürgin <dbuergin@gluet.ch>
+Installed-Size: 191
+Depends: libc6 (>= 2.38), libdb5.3t64, libssl3t64 (>= 3.0.0)
+Section: libs
+Priority: optional
+Multi-Arch: same
+Homepage: http://www.opendkim.org/
+Filename: pool/resolute/main/libopendkim11/libopendkim11_2.11.0~beta2-9.2build1+fp1_amd64.deb
+Size: 88864
+MD5sum: a82676d9b0ca7a910e239f545f9ddff3
+SHA256: 519dbb87ce770aef39801a4a50f119b9e4c1b73bd3b14968ea0bf0273095b9bf
+Description: DomainKeys Identified Mail (DKIM) library
+ The OpenDKIM Project is a community effort to develop and maintain a C library
+ for producing DKIM-aware applications and an open source milter for providing
+ DomainKeys Identified Mail (DKIM) service.
+ .
+ This package provides library for implementing signing and verification of the
+ DomainKeys Identified Mail (DKIM) standard. This library provides support for
+ signing and verifying signatures according to RFC 4871, and supports both
+ DomainKeys signing policy and DKIM ADSP.
+
+Package: librbl-dev
+Source: opendkim
+Version: 2.11.0~beta2-9.2build1+fp1
+Architecture: amd64
+Maintainer: David Bürgin <dbuergin@gluet.ch>
+Installed-Size: 89
+Depends: librbl1 (= 2.11.0~beta2-9.2build1+fp1)
+Section: libdevel
+Priority: optional
+Multi-Arch: same
+Homepage: http://www.opendkim.org/
+Filename: pool/resolute/main/librbl-dev/librbl-dev_2.11.0~beta2-9.2build1+fp1_amd64.deb
+Size: 45008
+MD5sum: 9867cdf82f3facc3e203d7d1ebec7cd6
+SHA256: 26380f4740c5cab70737a8524764146397806dcdb48b779b917a5c9d2f93acba
+Description: Real-time Blacklist (RBL) query library (development files)
+ The OpenDKIM Project is a community effort to develop and maintain a C library
+ for producing DKIM-aware applications and an open source milter for providing
+ DomainKeys Identified Mail (DKIM) service.
+ .
+ This package provides the required header files and development libraries for
+ developing against the OpenDKIM project RBL library.
+
+Package: librbl1
+Source: opendkim
+Version: 2.11.0~beta2-9.2build1+fp1
+Architecture: amd64
+Maintainer: David Bürgin <dbuergin@gluet.ch>
+Installed-Size: 70
+Depends: libc6 (>= 2.34)
+Section: libs
+Priority: optional
+Multi-Arch: same
+Homepage: http://www.opendkim.org/
+Filename: pool/resolute/main/librbl1/librbl1_2.11.0~beta2-9.2build1+fp1_amd64.deb
+Size: 39764
+MD5sum: 11464ed5d6415c37d6ea2cc60486c9fd
+SHA256: 330cfaa8c67ce997673a0cfec81e528e7efa4124fa2cd4542f4784ff237b5622
+Description: Real-time Blacklist (RBL) query library
+ The OpenDKIM Project is a community effort to develop and maintain a C library
+ for producing DKIM-aware applications and an open source milter for providing
+ DomainKeys Identified Mail (DKIM) service.
+ .
+ This package provides library for implementing OpenDKIM's RBL system.
+
+Package: libvbr-dev
+Source: opendkim
+Version: 2.11.0~beta2-9.2build1+fp1
+Architecture: amd64
+Maintainer: David Bürgin <dbuergin@gluet.ch>
+Installed-Size: 93
+Depends: libvbr2 (= 2.11.0~beta2-9.2build1+fp1)
+Section: libdevel
+Priority: optional
+Multi-Arch: same
+Homepage: http://www.opendkim.org/
+Filename: pool/resolute/main/libvbr-dev/libvbr-dev_2.11.0~beta2-9.2build1+fp1_amd64.deb
+Size: 47156
+MD5sum: 96cecc997c62b1ff1e6e3952a829a8d1
+SHA256: 9446c4c959f09eb4f32dfa016e1cfd82aef2cdb0e5cbf8469756a075ab1f8ca7
+Description: Vouch By Reference (VBR) library (development files)
+ The OpenDKIM Project is a community effort to develop and maintain a C library
+ for producing DKIM-aware applications and an open source milter for providing
+ DomainKeys Identified Mail (DKIM) service.
+ .
+ This package provides the required header files and development libraries for
+ developing against the OpenDKIM project VBR library.
+
+Package: libvbr2
+Source: opendkim
+Version: 2.11.0~beta2-9.2build1+fp1
+Architecture: amd64
+Maintainer: David Bürgin <dbuergin@gluet.ch>
+Installed-Size: 74
+Depends: libc6 (>= 2.34)
+Section: libs
+Priority: optional
+Multi-Arch: same
+Homepage: http://www.opendkim.org/
+Filename: pool/resolute/main/libvbr2/libvbr2_2.11.0~beta2-9.2build1+fp1_amd64.deb
+Size: 41098
+MD5sum: 0a43f6767a41d989bd21d7bf7430ab06
+SHA256: bfa8993b8f87348e20b01594660bd99e415bdb8dca4eb80b8dfd72badfbc11b2
+Description: Vouch By Reference (VBR) library
+ The OpenDKIM Project is a community effort to develop and maintain a C library
+ for producing DKIM-aware applications and an open source milter for providing
+ DomainKeys Identified Mail (DKIM) service.
+ .
+ This package provides library for implementing RFC 5518 Vouch By Reference
+ (VBR), a peer-to-peer domain reputation service protocol based on DKIM signed
+ domains.
+ .
+ Vouch By Reference, or VBR, is a protocol for adding third-party
+ certification to email.  Specifically, VBR permits independent third parties
+ to certify the owner of a domain name that is associated with received mail.
+ VBR may be performed anywhere along the email transit path, by any capable
+ receiving module, either within the handling service or by end-user software.
+
+Package: miltertest
+Source: opendkim
+Version: 2.11.0~beta2-9.2build1+fp1
+Architecture: amd64
+Maintainer: David Bürgin <dbuergin@gluet.ch>
+Installed-Size: 113
+Depends: libc6 (>= 2.38), liblua5.3-0
+Breaks: opendkim-tools (<< 2.11.0~beta2-3)
+Replaces: opendkim-tools (<< 2.11.0~beta2-3)
+Section: devel
+Priority: optional
+Homepage: http://www.opendkim.org/
+Filename: pool/resolute/main/miltertest/miltertest_2.11.0~beta2-9.2build1+fp1_amd64.deb
+Size: 59502
+MD5sum: 69b96677fde2f7be41d6403055135759
+SHA256: 6aff4682c74987b9c8e17ccefbdd47bdbf6a66d75c86d4b27eca21f188c26e8c
+Description: utility for testing milter applications
+ The OpenDKIM Project is a community effort to develop and maintain a C library
+ for producing DKIM-aware applications and an open source milter for providing
+ DomainKeys Identified Mail (DKIM) service.
+ .
+ This package contains the miltertest program, a utility that serves as a test
+ driver for milter application tests. miltertest executes milter test scripts
+ written in the Lua programming language.
+
+Package: modsecurity-crs
+Version: 4.25.2-0fp1
+Architecture: all
+Maintainer: freePanel <packages@atlantishosting.net>
+Installed-Size: 1116
+Depends: libapache2-mod-security2 (>= 2.9.6)
+Section: httpd
+Priority: optional
+Multi-Arch: foreign
+Homepage: https://coreruleset.org
+Filename: pool/resolute/main/modsecurity-crs/modsecurity-crs_4.25.2-0fp1_all.deb
+Size: 158508
+MD5sum: 48290ebe736fd4c2c3825fc55f9d68a7
+SHA256: 83ac3b5cc455c7fcea77e4a294dda78437ea55f89e5d7235c275c6cd404ca778
+Description: OWASP CRS 4.25.2 for ModSecurity 2, as freePanel packages it
+ The OWASP Core Rule Set 4.25.2 (LTS) laid out as the distributions'
+ modsecurity-crs package lays it out, built by freePanel because the
+ distributions ship CRS 3.3, which has open security issues fixed only in 4.x.
+
+Package: opendkim-tools
+Source: opendkim
+Version: 2.11.0~beta2-9.2build1+fp1
+Architecture: amd64
+Maintainer: David Bürgin <dbuergin@gluet.ch>
+Installed-Size: 355
+Depends: libc6 (>= 2.38), libdb5.3t64, libldap2 (>= 2.6.2), liblua5.3-0, libmemcached11t64 (>= 1.1.4), libopendbx1t64 (>= 1.4.6), libopendkim11 (>= 2.11.0~alpha), libssl3t64 (>= 3.0.0), perl:any
+Breaks: opendkim (<< 2.5.2+dfsg-2~)
+Replaces: opendkim (<< 2.5.2+dfsg-2~)
+Section: mail
+Priority: optional
+Homepage: http://www.opendkim.org/
+Filename: pool/resolute/main/opendkim-tools/opendkim-tools_2.11.0~beta2-9.2build1+fp1_amd64.deb
+Size: 111120
+MD5sum: 8461d408f5ba8d6e41cd8640108f29a9
+SHA256: f1f5e20bb4b0fbe821b4d6a77aa27ec3cc251d3a647ecdf24f429f79d821edc5
+Description: utilities for administering the OpenDKIM milter
+ The OpenDKIM Project is a community effort to develop and maintain a C library
+ for producing DKIM-aware applications and an open source milter for providing
+ DomainKeys Identified Mail (DKIM) service.
+ .
+ This package contains command line tools for the OpenDKIM mail filter
+ (Milter).  The following tools are included:
+   - opendkim-genkey
+   - opendkim-genzone
+   - opendkim-atpszone
+   - opendkim-testkey
+   - opendkim-testmsg
+   - opendkim-spam
+   - opendkim-stats
+   - opendkim-gengraphs
+   - opendkim-genstats
+   - opendkim-importstats
+   - opendkim-expire
+
+Package: opendkim
+Version: 2.11.0~beta2-9.2build1+fp1
+Architecture: amd64
+Maintainer: David Bürgin <dbuergin@gluet.ch>
+Installed-Size: 434
+Depends: libopendkim11 (= 2.11.0~beta2-9.2build1+fp1), libc6 (>= 2.38), libdb5.3t64, libldap2 (>= 2.6.2), liblua5.3-0, libmemcached11t64 (>= 1.1.4), libmilter1.0.1 (>= 8.14.1), libopendbx1t64 (>= 1.4.6), librbl1 (>= 2.7.2), libssl3t64 (>= 3.0.0), libvbr2 (>= 2.7.2), adduser, dns-root-data
+Recommends: opendkim-tools
+Section: mail
+Priority: optional
+Homepage: http://www.opendkim.org/
+Filename: pool/resolute/main/opendkim/opendkim_2.11.0~beta2-9.2build1+fp1_amd64.deb
+Size: 201060
+MD5sum: a6918620fe779d19420150a419defeba
+SHA256: ef3952c6cff764f7b8a38b00c98cd02495cac2abca341c9a7c7117c0aac94628
+Description: DomainKeys Identified Mail (DKIM) signing and verifying milter
+ The OpenDKIM Project is a community effort to develop and maintain a C library
+ for producing DKIM-aware applications and an open source milter for providing
+ DomainKeys Identified Mail (DKIM) service.
+ .
+ DKIM provides a way for senders to confirm their identity when sending email
+ by adding a cryptographic signature to the headers of the message.
+ .
+ This package contains the OpenDKIM mail filter (Milter) for plugging into
+ Milter-aware MTAs. It implements both signing and verification.
+
 Package: radicale
 Version: 3.5.4-1+fp1~ubuntu26.04
 Architecture: all
@@ -621,3 +1690,21 @@ SHA256: f920df4ad6cc1c4eba359aa149b8f2b6cb0af2b16549ccfcd85a3e92c9a0a8be
 Description: CalDAV and CardDAV server (freePanel's build)
  Radicale 3.5.4 with the pure-Python libraries it imports when freePanel
  sets it up bundled in /usr/lib/freepanel-radicale: defusedxml (0.7.1), passlib (1.7.4), vobject (0.9.9), python-dateutil (3.0.0), six (1.17.0), pytz (2026.6), tzdata (2026.6).
+
+Package: radicale
+Version: 3.9.1-1+fp2~ubuntu26.04
+Architecture: all
+Maintainer: freePanel <support@atlantishosting.net>
+Depends: python3 (>= 3.14), python3 (<< 3.15), python3-bcrypt, adduser
+Conflicts: python3-radicale
+Replaces: python3-radicale
+Section: net
+Priority: optional
+Homepage: https://radicale.org/
+Filename: pool/resolute/main/radicale/radicale_3.9.1-1+fp2~ubuntu26.04_all.deb
+Size: 1394528
+MD5sum: 0ceeca66a3f6824f02f9858ea3dfe3f1
+SHA256: d0c4e29340fcfc59c526d54ce60f8f95f2ee878e3c36c6ea8049b6545c409446
+Description: CalDAV and CardDAV server (freePanel's build)
+ Radicale 3.9.1 with the pure-Python libraries it imports when freePanel
+ sets it up bundled in /usr/lib/freepanel-radicale: defusedxml (0.7.1), libpass (1.9.4), vobject (0.9.9), python-dateutil (3.0.0), six (1.17.0), pytz (2026.6), tzdata (2026.6).

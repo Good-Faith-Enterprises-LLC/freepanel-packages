@@ -2,12 +2,12 @@ Origin: freePanel
 Label: freePanel
 Suite: noble
 Codename: noble
-Date: Tue, 10 Nov 2026 22:35:40 UTC
+Date: Sun, 15 Nov 2026 19:55:10 UTC
 Architectures: amd64
 Components: main
 Description: freePanel packages for Ubuntu 24.04
 Acquire-By-Hash: no
 SHA256:
- d0d86eefb316d684c0c7aea6e8d9c7646cff0a81f6e8d855579f6c3d39b51804 25431 main/binary-amd64/Packages
- 3192992d2234dfc8260eadc9dda8097870ee59f2e6e3fbd2674641e6cee991c6 4562 main/binary-amd64/Packages.gz
+ f386d6f91b99e91096c1fd3c0e30f14ce9c3c4241314ead295d88ea4d67d93e9 72278 main/binary-amd64/Packages
+ f5465d71e3d8865b0ba8100208c0e07886111453d8d9017c712c0bf2640df585 11997 main/binary-amd64/Packages.gz
  80a55364eba102ceb9553c88bfa9cf21f5c2eb5e9e4e848e75fe873703544f34 86 main/binary-amd64/Release

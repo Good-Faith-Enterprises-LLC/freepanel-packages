@@ -2,12 +2,12 @@ Origin: freePanel
 Label: freePanel
 Suite: resolute
 Codename: resolute
-Date: Tue, 10 Nov 2026 22:35:41 UTC
+Date: Sun, 15 Nov 2026 19:55:13 UTC
 Architectures: amd64
 Components: main
 Description: freePanel packages for Ubuntu 26.04
 Acquire-By-Hash: no
 SHA256:
- 63f29f5558ebf190ef8807574b5561abd826b5e5431b23082f378028d24cedcb 38665 main/binary-amd64/Packages
- 3d85433ad842e83e68cc801e189f586886fd0b80c7fd7d9743ea09d972a5951e 11553 main/binary-amd64/Packages.gz
+ 4fe79a82536523657cc36a7fc8d3f3481bef41515077fa023643459b668ae70d 92245 main/binary-amd64/Packages
+ 5c008181ed5aa90cef32338a6229aa81f88b9ece7c50d2c95a548a9bacf2d083 23037 main/binary-amd64/Packages.gz
  d3b68d33a28585b0c280bd2dfe2e8b0ca5dc59fe78256b4b77e0c29604330ad1 89 main/binary-amd64/Release
