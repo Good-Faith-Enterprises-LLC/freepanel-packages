@@ -22,6 +22,11 @@ import urllib.request
 WORKFLOWS = {
     "httpd-build": ("push", "workflow_dispatch"),
     "radicale-build": ("push", "workflow_dispatch"),
+    "opendkim-build": ("push", "workflow_dispatch"),
+    "dovecot-build": ("push", "workflow_dispatch"),
+    "libxml2-build": ("push", "workflow_dispatch"),
+    "modsecurity-build": ("push", "workflow_dispatch"),
+    "libgd-build": ("push", "workflow_dispatch"),
     # A release is made by hand, with a name for it.
     "release-build": ("workflow_dispatch",),
 }
