@@ -5,10 +5,18 @@
 #
 # By hand only, with the IDs of the runs (in Good-Faith-Enterprises-LLC/freepanel) whose output to
 # publish, any of them, at least one:
-#   httpd_run     an httpd-build run: the Apache RPMs (dnf, el9/) and .debs
+#   httpd_run     an httpd-build run: the Apache and OWASP CRS RPMs (dnf, el9/) and .debs
 #                 (apt, apt/ for Ubuntu 24.04);
 #   radicale_run  a radicale-build run: the Radicale (calendar and contacts) RPM
 #                 and .deb;
+#   opendkim_run  an opendkim-build run: OpenDKIM with freePanel's fixes, RPMs
+#                 and .debs for every system;
+#   dovecot_run   a dovecot-build run: Dovecot's .debs for Ubuntu 24.04 and 26.04
+#                 and RPMs for EL9 (and EL10 with el10);
+#   modsecurity_run a modsecurity-build run: ModSecurity 2.9.15 (the web
+#                 firewall's engine), RPMs and .debs for every system;
+#   libxml2_run   a libxml2-build run: libxml2's .debs for Debian 12;
+#   libgd_run     a libgd-build run: libgd's .debs for Ubuntu 24.04 and 26.04;
 #   release_run   a release-build run: the production tarball customers'
 #                 one-line installer downloads, and the installer script.
 # With el10 set, the httpd and radicale runs' EL10 RPMs (artifacts
@@ -31,7 +39,12 @@
 # has access to it, so nothing that runs here with the subkey comes from a
 # branch or a pull request.
 #
-# Cost: one standard runner for a few minutes per publish.
+# Runs on freePanel's own runners, never GitHub's: one with the label
+# freepanel-publish, registered to this repository only, on a host that runs
+# no other job (the test runners run every branch's code with sudo, and the
+# signing subkey must never be on a machine that does). The steps run in an
+# AlmaLinux 9 container under Podman (publisher/podman-start, -shell, -stop);
+# the host needs sudo and apt, and Podman is installed if missing.
 name: publish
 on:
   workflow_dispatch:
@@ -44,6 +57,26 @@ on:
         description: ID of the radicale-build run in Good-Faith-Enterprises-LLC/freepanel whose package to publish (or empty)
         type: string
         default: ""
+      opendkim_run:
+        description: ID of the opendkim-build run in Good-Faith-Enterprises-LLC/freepanel whose packages to publish (or empty)
+        type: string
+        default: ""
+      dovecot_run:
+        description: ID of the dovecot-build run in Good-Faith-Enterprises-LLC/freepanel whose packages to publish (or empty)
+        type: string
+        default: ""
+      libxml2_run:
+        description: ID of the libxml2-build run in Good-Faith-Enterprises-LLC/freepanel whose packages to publish (or empty)
+        type: string
+        default: ""
+      modsecurity_run:
+        description: ID of the modsecurity-build run in Good-Faith-Enterprises-LLC/freepanel whose packages to publish (or empty)
+        type: string
+        default: ""
+      libgd_run:
+        description: ID of the libgd-build run in Good-Faith-Enterprises-LLC/freepanel whose packages to publish (or empty)
+        type: string
+        default: ""
       release_run:
         description: ID of the release-build run in Good-Faith-Enterprises-LLC/freepanel whose tarball and installer script to publish (or empty)
         type: string
@@ -53,7 +86,7 @@ on:
         type: boolean
         default: false
       el10:
-        description: Also publish the runs' EL10 RPMs (httpd-rpms-el10, crs-rpms-el10, radicale-rpms-el10) into el10/
+        description: Also publish the runs' EL10 RPMs (httpd-rpms-el10, crs-rpms-el10, radicale-rpms-el10, opendkim-rpms-el10, dovecot-rpms-el10, modsecurity-rpms-el10) into el10/
         type: boolean
         default: false
 
@@ -73,19 +106,26 @@ jobs:
     environment: publish
     permissions:
       contents: write
-    runs-on: ubuntu-24.04
-    timeout-minutes: 15
-    container:
-      image: almalinux:9@sha256:9819dc675b67b595c2b59e42be7763fca1a8bb217fa5944e04daa22e9a64db16
+    runs-on: [self-hosted, freepanel-publish]
+    timeout-minutes: 30
+    defaults:
+      run:
+        shell: bash publisher/podman-shell {0}
     steps:
       - name: Check the run IDs
+        shell: bash
         env:
           HTTPD_RUN: ${{ inputs.httpd_run }}
           RADICALE_RUN: ${{ inputs.radicale_run }}
+          OPENDKIM_RUN: ${{ inputs.opendkim_run }}
+          DOVECOT_RUN: ${{ inputs.dovecot_run }}
+          LIBXML2_RUN: ${{ inputs.libxml2_run }}
+          MODSECURITY_RUN: ${{ inputs.modsecurity_run }}
+          LIBGD_RUN: ${{ inputs.libgd_run }}
           RELEASE_RUN: ${{ inputs.release_run }}
         run: |
-          [ -n "$HTTPD_RUN$RADICALE_RUN$RELEASE_RUN" ] || { echo "give at least one run ID" >&2; exit 1; }
-          for id in "$HTTPD_RUN" "$RADICALE_RUN" "$RELEASE_RUN"; do
+          [ -n "$HTTPD_RUN$RADICALE_RUN$OPENDKIM_RUN$DOVECOT_RUN$LIBXML2_RUN$MODSECURITY_RUN$LIBGD_RUN$RELEASE_RUN" ] || { echo "give at least one run ID" >&2; exit 1; }
+          for id in "$HTTPD_RUN" "$RADICALE_RUN" "$OPENDKIM_RUN" "$DOVECOT_RUN" "$LIBXML2_RUN" "$MODSECURITY_RUN" "$LIBGD_RUN" "$RELEASE_RUN"; do
             case "$id" in
               *[!0-9]*) echo "a run ID is digits only" >&2; exit 1 ;;
             esac
@@ -93,6 +133,9 @@ jobs:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
         with:
           persist-credentials: false
+      - name: Build container
+        shell: bash
+        run: bash publisher/podman-start docker.io/library/almalinux:9@sha256:9819dc675b67b595c2b59e42be7763fca1a8bb217fa5944e04daa22e9a64db16
       - run: dnf -y -q install rpm-build rpm-sign createrepo_c gnupg2 git-core tar findutils python3 zstd
       # Only output of runs on main gets signed. The fingerprint to sign for
       # is the one in repo.conf at that commit, the one servers pin; runs at
@@ -102,13 +145,18 @@ jobs:
         env:
           HTTPD_RUN: ${{ inputs.httpd_run }}
           RADICALE_RUN: ${{ inputs.radicale_run }}
+          OPENDKIM_RUN: ${{ inputs.opendkim_run }}
+          DOVECOT_RUN: ${{ inputs.dovecot_run }}
+          LIBXML2_RUN: ${{ inputs.libxml2_run }}
+          MODSECURITY_RUN: ${{ inputs.modsecurity_run }}
+          LIBGD_RUN: ${{ inputs.libgd_run }}
           RELEASE_RUN: ${{ inputs.release_run }}
           GITHUB_TOKEN: ${{ secrets.FP_SOURCE_TOKEN }}
         run: |
           fpr_of() { sed -n 's/^fingerprint=//p' "$1" | tail -n 1; }
           conf=""
           shas=""
-          for pair in "release-build:$RELEASE_RUN" "httpd-build:$HTTPD_RUN" "radicale-build:$RADICALE_RUN"; do
+          for pair in "release-build:$RELEASE_RUN" "httpd-build:$HTTPD_RUN" "radicale-build:$RADICALE_RUN" "opendkim-build:$OPENDKIM_RUN" "dovecot-build:$DOVECOT_RUN" "libxml2-build:$LIBXML2_RUN" "modsecurity-build:$MODSECURITY_RUN" "libgd-build:$LIBGD_RUN"; do
             wf=${pair%%:*}
             id=${pair#*:}
             [ -n "$id" ] || continue
@@ -128,7 +176,7 @@ jobs:
         if: inputs.httpd_run != ''
         with:
           name: httpd-rpms
-          path: /tmp/rpms
+          path: ${{ runner.temp }}/rpms
           repository: ${{ env.SOURCE_REPO }}
           run-id: ${{ inputs.httpd_run }}
           github-token: ${{ secrets.FP_SOURCE_TOKEN }}
@@ -136,7 +184,42 @@ jobs:
         if: inputs.httpd_run != ''
         with:
           name: httpd-debs
-          path: /tmp/debs
+          path: ${{ runner.temp }}/debs
+          repository: ${{ env.SOURCE_REPO }}
+          run-id: ${{ inputs.httpd_run }}
+          github-token: ${{ secrets.FP_SOURCE_TOKEN }}
+      # freePanel's OWASP CRS 4 (packaging/crs), from the same httpd-build run:
+      # EL9's RPM beside Apache's, and one .deb (all architectures) for each
+      # apt suite.
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4.3.0
+        if: inputs.httpd_run != ''
+        with:
+          name: crs-rpms
+          path: ${{ runner.temp }}/rpms
+          repository: ${{ env.SOURCE_REPO }}
+          run-id: ${{ inputs.httpd_run }}
+          github-token: ${{ secrets.FP_SOURCE_TOKEN }}
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4.3.0
+        if: inputs.httpd_run != ''
+        with:
+          name: crs-debs
+          path: ${{ runner.temp }}/debs
+          repository: ${{ env.SOURCE_REPO }}
+          run-id: ${{ inputs.httpd_run }}
+          github-token: ${{ secrets.FP_SOURCE_TOKEN }}
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4.3.0
+        if: inputs.httpd_run != ''
+        with:
+          name: crs-debs
+          path: ${{ runner.temp }}/debs-bookworm
+          repository: ${{ env.SOURCE_REPO }}
+          run-id: ${{ inputs.httpd_run }}
+          github-token: ${{ secrets.FP_SOURCE_TOKEN }}
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4.3.0
+        if: inputs.httpd_run != ''
+        with:
+          name: crs-debs
+          path: ${{ runner.temp }}/debs-resolute
           repository: ${{ env.SOURCE_REPO }}
           run-id: ${{ inputs.httpd_run }}
           github-token: ${{ secrets.FP_SOURCE_TOKEN }}
@@ -144,7 +227,7 @@ jobs:
         if: inputs.radicale_run != ''
         with:
           name: radicale-debs
-          path: /tmp/debs
+          path: ${{ runner.temp }}/debs
           repository: ${{ env.SOURCE_REPO }}
           run-id: ${{ inputs.radicale_run }}
           github-token: ${{ secrets.FP_SOURCE_TOKEN }}
@@ -154,7 +237,7 @@ jobs:
         if: inputs.httpd_run != ''
         with:
           name: httpd-debs-bookworm
-          path: /tmp/debs-bookworm
+          path: ${{ runner.temp }}/debs-bookworm
           repository: ${{ env.SOURCE_REPO }}
           run-id: ${{ inputs.httpd_run }}
           github-token: ${{ secrets.FP_SOURCE_TOKEN }}
@@ -162,7 +245,7 @@ jobs:
         if: inputs.radicale_run != ''
         with:
           name: radicale-debs-bookworm
-          path: /tmp/debs-bookworm
+          path: ${{ runner.temp }}/debs-bookworm
           repository: ${{ env.SOURCE_REPO }}
           run-id: ${{ inputs.radicale_run }}
           github-token: ${{ secrets.FP_SOURCE_TOKEN }}
@@ -172,7 +255,7 @@ jobs:
         if: inputs.httpd_run != ''
         with:
           name: httpd-debs-resolute
-          path: /tmp/debs-resolute
+          path: ${{ runner.temp }}/debs-resolute
           repository: ${{ env.SOURCE_REPO }}
           run-id: ${{ inputs.httpd_run }}
           github-token: ${{ secrets.FP_SOURCE_TOKEN }}
@@ -180,7 +263,7 @@ jobs:
         if: inputs.radicale_run != ''
         with:
           name: radicale-debs-resolute
-          path: /tmp/debs-resolute
+          path: ${{ runner.temp }}/debs-resolute
           repository: ${{ env.SOURCE_REPO }}
           run-id: ${{ inputs.radicale_run }}
           github-token: ${{ secrets.FP_SOURCE_TOKEN }}
@@ -188,7 +271,7 @@ jobs:
         if: inputs.radicale_run != ''
         with:
           name: radicale-rpms
-          path: /tmp/rpms
+          path: ${{ runner.temp }}/rpms
           repository: ${{ env.SOURCE_REPO }}
           run-id: ${{ inputs.radicale_run }}
           github-token: ${{ secrets.FP_SOURCE_TOKEN }}
@@ -196,7 +279,7 @@ jobs:
         if: inputs.el10 && inputs.httpd_run != ''
         with:
           name: httpd-rpms-el10
-          path: /tmp/rpms-el10
+          path: ${{ runner.temp }}/rpms-el10
           repository: ${{ env.SOURCE_REPO }}
           run-id: ${{ inputs.httpd_run }}
           github-token: ${{ secrets.FP_SOURCE_TOKEN }}
@@ -205,7 +288,7 @@ jobs:
         if: inputs.el10 && inputs.httpd_run != ''
         with:
           name: crs-rpms-el10
-          path: /tmp/rpms-el10
+          path: ${{ runner.temp }}/rpms-el10
           repository: ${{ env.SOURCE_REPO }}
           run-id: ${{ inputs.httpd_run }}
           github-token: ${{ secrets.FP_SOURCE_TOKEN }}
@@ -213,25 +296,177 @@ jobs:
         if: inputs.el10 && inputs.radicale_run != ''
         with:
           name: radicale-rpms-el10
-          path: /tmp/rpms-el10
+          path: ${{ runner.temp }}/rpms-el10
           repository: ${{ env.SOURCE_REPO }}
           run-id: ${{ inputs.radicale_run }}
+          github-token: ${{ secrets.FP_SOURCE_TOKEN }}
+      # OpenDKIM with freePanel's fixes for CVE-2026-100888 and -100889
+      # (packaging/opendkim), for every system.
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4.3.0
+        if: inputs.opendkim_run != ''
+        with:
+          name: opendkim-rpms
+          path: ${{ runner.temp }}/rpms
+          repository: ${{ env.SOURCE_REPO }}
+          run-id: ${{ inputs.opendkim_run }}
+          github-token: ${{ secrets.FP_SOURCE_TOKEN }}
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4.3.0
+        if: inputs.el10 && inputs.opendkim_run != ''
+        with:
+          name: opendkim-rpms-el10
+          path: ${{ runner.temp }}/rpms-el10
+          repository: ${{ env.SOURCE_REPO }}
+          run-id: ${{ inputs.opendkim_run }}
+          github-token: ${{ secrets.FP_SOURCE_TOKEN }}
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4.3.0
+        if: inputs.opendkim_run != ''
+        with:
+          name: opendkim-debs
+          path: ${{ runner.temp }}/debs
+          repository: ${{ env.SOURCE_REPO }}
+          run-id: ${{ inputs.opendkim_run }}
+          github-token: ${{ secrets.FP_SOURCE_TOKEN }}
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4.3.0
+        if: inputs.opendkim_run != ''
+        with:
+          name: opendkim-debs-bookworm
+          path: ${{ runner.temp }}/debs-bookworm
+          repository: ${{ env.SOURCE_REPO }}
+          run-id: ${{ inputs.opendkim_run }}
+          github-token: ${{ secrets.FP_SOURCE_TOKEN }}
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4.3.0
+        if: inputs.opendkim_run != ''
+        with:
+          name: opendkim-debs-resolute
+          path: ${{ runner.temp }}/debs-resolute
+          repository: ${{ env.SOURCE_REPO }}
+          run-id: ${{ inputs.opendkim_run }}
+          github-token: ${{ secrets.FP_SOURCE_TOKEN }}
+      # Dovecot with the security fixes Ubuntu has not shipped
+      # (packaging/dovecot), for Ubuntu 24.04 and 26.04.
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4.3.0
+        if: inputs.dovecot_run != ''
+        with:
+          name: dovecot-debs
+          path: ${{ runner.temp }}/debs
+          repository: ${{ env.SOURCE_REPO }}
+          run-id: ${{ inputs.dovecot_run }}
+          github-token: ${{ secrets.FP_SOURCE_TOKEN }}
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4.3.0
+        if: inputs.dovecot_run != ''
+        with:
+          name: dovecot-debs-resolute
+          path: ${{ runner.temp }}/debs-resolute
+          repository: ${{ env.SOURCE_REPO }}
+          run-id: ${{ inputs.dovecot_run }}
+          github-token: ${{ secrets.FP_SOURCE_TOKEN }}
+      # Dovecot for AlmaLinux / RHEL 9 and 10 with Debian's DLA-4873-1 fixes
+      # Red Hat has not shipped (packaging/dovecot/build-rpm.sh).
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4.3.0
+        if: inputs.dovecot_run != ''
+        with:
+          name: dovecot-rpms
+          path: ${{ runner.temp }}/rpms
+          repository: ${{ env.SOURCE_REPO }}
+          run-id: ${{ inputs.dovecot_run }}
+          github-token: ${{ secrets.FP_SOURCE_TOKEN }}
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4.3.0
+        if: inputs.el10 && inputs.dovecot_run != ''
+        with:
+          name: dovecot-rpms-el10
+          path: ${{ runner.temp }}/rpms-el10
+          repository: ${{ env.SOURCE_REPO }}
+          run-id: ${{ inputs.dovecot_run }}
+          github-token: ${{ secrets.FP_SOURCE_TOKEN }}
+      # ModSecurity 2.9.15, the web firewall's engine, for every system
+      # (packaging/modsecurity).
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4.3.0
+        if: inputs.modsecurity_run != ''
+        with:
+          name: modsecurity-rpms-el9
+          path: ${{ runner.temp }}/rpms
+          repository: ${{ env.SOURCE_REPO }}
+          run-id: ${{ inputs.modsecurity_run }}
+          github-token: ${{ secrets.FP_SOURCE_TOKEN }}
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4.3.0
+        if: inputs.el10 && inputs.modsecurity_run != ''
+        with:
+          name: modsecurity-rpms-el10
+          path: ${{ runner.temp }}/rpms-el10
+          repository: ${{ env.SOURCE_REPO }}
+          run-id: ${{ inputs.modsecurity_run }}
+          github-token: ${{ secrets.FP_SOURCE_TOKEN }}
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4.3.0
+        if: inputs.modsecurity_run != ''
+        with:
+          name: modsecurity-debs-noble
+          path: ${{ runner.temp }}/debs
+          repository: ${{ env.SOURCE_REPO }}
+          run-id: ${{ inputs.modsecurity_run }}
+          github-token: ${{ secrets.FP_SOURCE_TOKEN }}
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4.3.0
+        if: inputs.modsecurity_run != ''
+        with:
+          name: modsecurity-debs-bookworm
+          path: ${{ runner.temp }}/debs-bookworm
+          repository: ${{ env.SOURCE_REPO }}
+          run-id: ${{ inputs.modsecurity_run }}
+          github-token: ${{ secrets.FP_SOURCE_TOKEN }}
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4.3.0
+        if: inputs.modsecurity_run != ''
+        with:
+          name: modsecurity-debs-resolute
+          path: ${{ runner.temp }}/debs-resolute
+          repository: ${{ env.SOURCE_REPO }}
+          run-id: ${{ inputs.modsecurity_run }}
+          github-token: ${{ secrets.FP_SOURCE_TOKEN }}
+      # libxml2 with the security fixes Debian has not shipped
+      # (packaging/libxml2), for Debian 12.
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4.3.0
+        if: inputs.libxml2_run != ''
+        with:
+          name: libxml2-debs-bookworm
+          path: ${{ runner.temp }}/debs-bookworm
+          repository: ${{ env.SOURCE_REPO }}
+          run-id: ${{ inputs.libxml2_run }}
+          github-token: ${{ secrets.FP_SOURCE_TOKEN }}
+      # libgd with Debian's fix for CVE-2026-9672 (packaging/libgd), for
+      # Ubuntu 24.04 and 26.04.
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4.3.0
+        if: inputs.libgd_run != ''
+        with:
+          name: libgd-debs-noble
+          path: ${{ runner.temp }}/debs
+          repository: ${{ env.SOURCE_REPO }}
+          run-id: ${{ inputs.libgd_run }}
+          github-token: ${{ secrets.FP_SOURCE_TOKEN }}
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4.3.0
+        if: inputs.libgd_run != ''
+        with:
+          name: libgd-debs-resolute
+          path: ${{ runner.temp }}/debs-resolute
+          repository: ${{ env.SOURCE_REPO }}
+          run-id: ${{ inputs.libgd_run }}
           github-token: ${{ secrets.FP_SOURCE_TOKEN }}
       - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4.3.0
         if: inputs.release_run != ''
         with:
           name: freepanel-release
-          path: /tmp/release
+          path: ${{ runner.temp }}/release
           repository: ${{ env.SOURCE_REPO }}
           run-id: ${{ inputs.release_run }}
           github-token: ${{ secrets.FP_SOURCE_TOKEN }}
+      # The armored subkey goes into the container on stdin, never through
+      # the step environment file podman-shell writes.
       - name: Signing subkey
+        shell: bash
         env:
           SUBKEY: ${{ secrets.FP_REPO_SIGNING_SUBKEY }}
         run: |
-          umask 077
-          mkdir -p "$RUNNER_TEMP/gnupg"
-          printf '%s\n' "$SUBKEY" | GNUPGHOME="$RUNNER_TEMP/gnupg" gpg --batch --quiet --import
+          printf '%s\n' "$SUBKEY" | sudo podman exec -i -e RUNNER_TEMP="$RUNNER_TEMP" fpbuild \
+            sh -c 'umask 077 && mkdir -p "$RUNNER_TEMP/gnupg" && GNUPGHOME="$RUNNER_TEMP/gnupg" gpg --batch --quiet --import'
+      - name: Check the subkey
+        run: |
           fpr=$(sed -n 's/^fingerprint=//p' "$RUNNER_TEMP/repo.conf" | tail -n 1)
           [ -n "$fpr" ] || { echo "repo.conf has no fingerprint at that commit: nothing can be signed yet" >&2; exit 1; }
           [ "$(GNUPGHOME="$RUNNER_TEMP/gnupg" gpg --batch --with-colons --list-secret-keys "$fpr" | awk -F: '$1=="sec" {print $15}')" = "#" ] \
@@ -241,6 +476,11 @@ jobs:
           GITHUB_TOKEN: ${{ github.token }}
           HTTPD_RUN: ${{ inputs.httpd_run }}
           RADICALE_RUN: ${{ inputs.radicale_run }}
+          OPENDKIM_RUN: ${{ inputs.opendkim_run }}
+          DOVECOT_RUN: ${{ inputs.dovecot_run }}
+          LIBXML2_RUN: ${{ inputs.libxml2_run }}
+          MODSECURITY_RUN: ${{ inputs.modsecurity_run }}
+          LIBGD_RUN: ${{ inputs.libgd_run }}
           RELEASE_RUN: ${{ inputs.release_run }}
           RUNS: ${{ steps.run.outputs.shas }}
           FP_RESIGN: ${{ inputs.resign && 'yes' || 'no' }}
@@ -262,25 +502,30 @@ jobs:
             git -C "$site" remote add origin "$url"
           fi
           # Packages first: the release step needs the published key.
-          if [ -n "$HTTPD_RUN$RADICALE_RUN" ]; then
-            publisher/publish-repo.sh "$RUNNER_TEMP/repo.conf" /tmp/rpms "$site"
+          if [ -n "$HTTPD_RUN$RADICALE_RUN$OPENDKIM_RUN$DOVECOT_RUN$LIBXML2_RUN$MODSECURITY_RUN$LIBGD_RUN" ]; then
+            # (A dovecot-build, libxml2-build or libgd-build run alone has no RPMs.)
+            if [ -d "$RUNNER_TEMP/rpms" ]; then
+              publisher/publish-repo.sh "$RUNNER_TEMP/repo.conf" "$RUNNER_TEMP/rpms" "$site"
+            fi
             # The same runs' EL10 RPMs, into el10/ (el9/ is left as it is).
-            if [ "$EL10" = yes ]; then
-              FP_EL=10 publisher/publish-repo.sh "$RUNNER_TEMP/repo.conf" /tmp/rpms-el10 "$site"
+            if [ "$EL10" = yes ] && [ -d "$RUNNER_TEMP/rpms-el10" ]; then
+              FP_EL=10 publisher/publish-repo.sh "$RUNNER_TEMP/repo.conf" "$RUNNER_TEMP/rpms-el10" "$site"
             fi
             # The same runs' Ubuntu 24.04 packages, into the apt repository.
-            publisher/publish-apt.py "$RUNNER_TEMP/repo.conf" /tmp/debs "$site"
+            if [ -d "$RUNNER_TEMP/debs" ]; then
+              publisher/publish-apt.py "$RUNNER_TEMP/repo.conf" "$RUNNER_TEMP/debs" "$site"
+            fi
             # And Debian 12's, into the bookworm suite.
-            if [ -d /tmp/debs-bookworm ]; then
-              publisher/publish-apt.py "$RUNNER_TEMP/repo.conf" /tmp/debs-bookworm "$site" bookworm
+            if [ -d "$RUNNER_TEMP/debs-bookworm" ]; then
+              publisher/publish-apt.py "$RUNNER_TEMP/repo.conf" "$RUNNER_TEMP/debs-bookworm" "$site" bookworm
             fi
             # And Ubuntu 26.04's, into the resolute suite.
-            if [ -d /tmp/debs-resolute ]; then
-              publisher/publish-apt.py "$RUNNER_TEMP/repo.conf" /tmp/debs-resolute "$site" resolute
+            if [ -d "$RUNNER_TEMP/debs-resolute" ]; then
+              publisher/publish-apt.py "$RUNNER_TEMP/repo.conf" "$RUNNER_TEMP/debs-resolute" "$site" resolute
             fi
           fi
           if [ -n "$RELEASE_RUN" ]; then
-            publisher/publish-release.sh "$RUNNER_TEMP/repo.conf" /tmp/release "$site"
+            publisher/publish-release.sh "$RUNNER_TEMP/repo.conf" "$RUNNER_TEMP/release" "$site"
           fi
           big=$(find "$site" -path "$site/.git" -prune -o -type f -size +95M -print)
           [ -z "$big" ] || { echo "too large for GitHub Pages: $big" >&2; exit 1; }
@@ -290,7 +535,10 @@ jobs:
             exit 0
           fi
           git -C "$site" -c user.name="freePanel packages" -c user.email="packages@freepanel.invalid" \
-            commit --quiet -m "Publish $RUNS (runs: httpd-build ${HTTPD_RUN:--}, radicale-build ${RADICALE_RUN:--}, release-build ${RELEASE_RUN:--})"
+            commit --quiet -m "Publish $RUNS (runs: httpd-build ${HTTPD_RUN:--}, radicale-build ${RADICALE_RUN:--}, opendkim-build ${OPENDKIM_RUN:--}, dovecot-build ${DOVECOT_RUN:--}, libxml2-build ${LIBXML2_RUN:--}, modsecurity-build ${MODSECURITY_RUN:--}, libgd-build ${LIBGD_RUN:--}, release-build ${RELEASE_RUN:--})"
           git -C "$site" push --quiet origin gh-pages
       - if: always()
-        run: rm -rf "$RUNNER_TEMP/gnupg"
+        shell: bash
+        run: |
+          sudo rm -rf "$RUNNER_TEMP/gnupg"
+          bash publisher/podman-stop

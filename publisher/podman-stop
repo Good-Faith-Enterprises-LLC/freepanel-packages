@@ -1,0 +1,5 @@
+#!/bin/bash
+# Removes the job's build container and gives the runner back the files the
+# container wrote as root in the workspace and RUNNER_TEMP.
+sudo podman rm -f fpbuild >/dev/null 2>&1 || true
+sudo chown -R "$(id -u):$(id -g)" "$GITHUB_WORKSPACE" "$RUNNER_TEMP" 2>/dev/null || true

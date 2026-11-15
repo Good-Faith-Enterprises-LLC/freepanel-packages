@@ -1,0 +1,11 @@
+#!/bin/bash
+# A step's shell inside the job's build container (podman-start): runs the
+# step's script with bash -e, in the same directory, with the step's
+# environment (less the host's own PATH, HOME and the like).
+set -euo pipefail
+envf=$(mktemp "$RUNNER_TEMP/.env.XXXXXX")
+env | grep -E '^[A-Za-z_][A-Za-z0-9_]*=' | grep -vE '^(PATH|HOME|USER|LOGNAME|SHELL|PWD|OLDPWD|SHLVL|_|TMPDIR|HOSTNAME|SUDO_[A-Z]*|LANG|LC_[A-Z]*|XDG_[A-Z_]*|DBUS_[A-Z_]*|MAIL|TERM)=' >"$envf" || true
+rc=0
+sudo podman exec -i --env-file "$envf" -w "$PWD" fpbuild bash -e "$1" || rc=$?
+rm -f "$envf"
+exit $rc

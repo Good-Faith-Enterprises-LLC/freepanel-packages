@@ -1,0 +1,30 @@
+#!/bin/bash
+# Starts the job's build container on one of freePanel's own runners (the
+# freepanel-vm hosts: Ubuntu with sudo), so a package build costs no GitHub
+# minutes. Podman is installed if missing and the container uses the host's
+# network (--network host), so it adds no firewall rules or bridges that
+# the test VMs on the same host could trip over. The workspace and
+# RUNNER_TEMP are mounted at the same paths, so steps run with
+# "shell: bash .github/ci/podman-shell {0}" see the files where the runner put
+# them, and the container's /home is RUNNER_TEMP/home. podman-stop removes it (if: always()).
+#
+#   podman-start IMAGE      (e.g. ubuntu:24.04, almalinux:10)
+set -euo pipefail
+image=$1
+case ${image%%[:@]*} in */*) ;; *) image=docker.io/library/$image ;; esac
+if ! command -v podman >/dev/null; then
+  sudo DEBIAN_FRONTEND=noninteractive apt-get -q update
+  sudo DEBIAN_FRONTEND=noninteractive apt-get -q install -y --no-install-recommends podman
+fi
+sudo podman rm -f fpbuild >/dev/null 2>&1 || true
+# The container's /home (build users' homes) is RUNNER_TEMP/home here, so an
+# upload step on the host finds what a build user made (path: RUNNER_TEMP/home/...).
+mkdir -p "$RUNNER_TEMP/home"
+for try in 1 2 3; do sudo podman pull -q "$image" && break; sleep 10; done
+# --init: tests start and stop daemons, and sleep as PID 1 would not reap them.
+sudo podman run -d --init --name fpbuild --network host --hostname fpbuild \
+  -v "$GITHUB_WORKSPACE:$GITHUB_WORKSPACE" -v "$RUNNER_TEMP:$RUNNER_TEMP" -v "$RUNNER_TEMP/home:/home" \
+  "$image" sleep infinity >/dev/null
+# Steps written for a hosted runner say "sudo"; in the container they are root.
+sudo podman exec fpbuild sh -c 'command -v sudo >/dev/null || { printf "%s\n" "#!/bin/sh" "while [ \"\${1#-}\" != \"\$1\" ]; do shift; done" "exec env \"\$@\"" >/usr/local/bin/sudo; chmod 0755 /usr/local/bin/sudo; }'
+sudo podman exec fpbuild cat /etc/os-release | sed -n 's/^PRETTY_NAME=//p'
