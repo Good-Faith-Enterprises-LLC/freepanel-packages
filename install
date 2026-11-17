@@ -397,6 +397,7 @@ plan() {
       ARGV+=(--protect)
       WHAT="$WHAT, with the firewall and login protection"
     fi
+    no_admin_2fa_said "$@"
     return 0
   fi
   ARGV+=("${FULL_FLAGS[@]}")
@@ -414,6 +415,16 @@ plan() {
   fi
   WHAT="the panel with $wants$skipped"
   [ "$has_fw" = 1 ] || ARGV+=(--open-firewall)
+  no_admin_2fa_said "$@"
+}
+
+# no_admin_2fa_said ARGS...: with --no-admin-two-factor, the first lines say in
+# capitals that admins will not need two-factor sign-in, as for --no-firewall
+# (the installer passes it on; it counts only before the first admin exists).
+no_admin_2fa_said() {
+  if has_arg --no-admin-two-factor "$@"; then
+    WHAT="$WHAT; ADMIN TWO-FACTOR SIGN-IN IS OFF because of --no-admin-two-factor"
+  fi
 }
 
 # has_arg FLAG ARGS...
