@@ -15,7 +15,8 @@ from and their checksums.
   on main in the freePanel repository: `httpd_run` (httpd-build),
   `radicale_run` (radicale-build), `opendkim_run` (opendkim-build),
   `dovecot_run` (dovecot-build), `modsecurity_run` (modsecurity-build),
-  `libxml2_run` (libxml2-build), `libgd_run` (libgd-build) and `release_run`
+  `libxml2_run` (libxml2-build), `libgd_run` (libgd-build), `postfix_run`
+  (postfix-build) and `release_run`
   (release-build), any of them. It checks each run, signs the packages with
   the signing subkey and adds them to `gh-pages`; a release run adds `install`, `install.asc`,
   `releases/freepanel-VERSION-linux-amd64.tar.gz`, its `.asc` and
