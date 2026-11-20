@@ -17,6 +17,7 @@
 #                 firewall's engine), RPMs and .debs for every system;
 #   libxml2_run   a libxml2-build run: libxml2's .debs for Debian 12;
 #   libgd_run     a libgd-build run: libgd's .debs for Ubuntu 24.04 and 26.04;
+#   postfix_run   a postfix-build run: Postfix's .debs for Debian 12;
 #   release_run   a release-build run: the production tarball customers'
 #                 one-line installer downloads, and the installer script.
 # With el10 set, the httpd, radicale, opendkim, dovecot and modsecurity runs'
@@ -80,6 +81,10 @@ on:
         description: ID of the libgd-build run in Good-Faith-Enterprises-LLC/freepanel whose packages to publish (or empty)
         type: string
         default: ""
+      postfix_run:
+        description: ID of the postfix-build run in Good-Faith-Enterprises-LLC/freepanel whose packages to publish (or empty)
+        type: string
+        default: ""
       release_run:
         description: ID of the release-build run in Good-Faith-Enterprises-LLC/freepanel whose tarball and installer script to publish (or empty)
         type: string
@@ -123,10 +128,11 @@ jobs:
           LIBXML2_RUN: ${{ inputs.libxml2_run }}
           MODSECURITY_RUN: ${{ inputs.modsecurity_run }}
           LIBGD_RUN: ${{ inputs.libgd_run }}
+          POSTFIX_RUN: ${{ inputs.postfix_run }}
           RELEASE_RUN: ${{ inputs.release_run }}
         run: |
-          [ -n "$HTTPD_RUN$RADICALE_RUN$OPENDKIM_RUN$DOVECOT_RUN$LIBXML2_RUN$MODSECURITY_RUN$LIBGD_RUN$RELEASE_RUN" ] || { echo "give at least one run ID" >&2; exit 1; }
-          for id in "$HTTPD_RUN" "$RADICALE_RUN" "$OPENDKIM_RUN" "$DOVECOT_RUN" "$LIBXML2_RUN" "$MODSECURITY_RUN" "$LIBGD_RUN" "$RELEASE_RUN"; do
+          [ -n "$HTTPD_RUN$RADICALE_RUN$OPENDKIM_RUN$DOVECOT_RUN$LIBXML2_RUN$MODSECURITY_RUN$LIBGD_RUN$POSTFIX_RUN$RELEASE_RUN" ] || { echo "give at least one run ID" >&2; exit 1; }
+          for id in "$HTTPD_RUN" "$RADICALE_RUN" "$OPENDKIM_RUN" "$DOVECOT_RUN" "$LIBXML2_RUN" "$MODSECURITY_RUN" "$LIBGD_RUN" "$POSTFIX_RUN" "$RELEASE_RUN"; do
             case "$id" in
               *[!0-9]*) echo "a run ID is digits only" >&2; exit 1 ;;
             esac
@@ -148,13 +154,14 @@ jobs:
           LIBXML2_RUN: ${{ inputs.libxml2_run }}
           MODSECURITY_RUN: ${{ inputs.modsecurity_run }}
           LIBGD_RUN: ${{ inputs.libgd_run }}
+          POSTFIX_RUN: ${{ inputs.postfix_run }}
           RELEASE_RUN: ${{ inputs.release_run }}
           GITHUB_TOKEN: ${{ secrets.FP_SOURCE_TOKEN }}
         run: |
           fpr_of() { sed -n 's/^fingerprint=//p' "$1" | tail -n 1; }
           conf=""
           shas=""
-          for pair in "release-build:$RELEASE_RUN" "httpd-build:$HTTPD_RUN" "radicale-build:$RADICALE_RUN" "opendkim-build:$OPENDKIM_RUN" "dovecot-build:$DOVECOT_RUN" "libxml2-build:$LIBXML2_RUN" "modsecurity-build:$MODSECURITY_RUN" "libgd-build:$LIBGD_RUN"; do
+          for pair in "release-build:$RELEASE_RUN" "httpd-build:$HTTPD_RUN" "radicale-build:$RADICALE_RUN" "opendkim-build:$OPENDKIM_RUN" "dovecot-build:$DOVECOT_RUN" "libxml2-build:$LIBXML2_RUN" "modsecurity-build:$MODSECURITY_RUN" "libgd-build:$LIBGD_RUN" "postfix-build:$POSTFIX_RUN"; do
             wf=${pair%%:*}
             id=${pair#*:}
             [ -n "$id" ] || continue
@@ -428,6 +435,16 @@ jobs:
           repository: ${{ env.SOURCE_REPO }}
           run-id: ${{ inputs.libxml2_run }}
           github-token: ${{ secrets.FP_SOURCE_TOKEN }}
+      # Postfix with the fix for CVE-2026-43964 (packaging/postfix), for
+      # Debian 12.
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4.3.0
+        if: inputs.postfix_run != ''
+        with:
+          name: postfix-debs-bookworm
+          path: /tmp/debs-bookworm
+          repository: ${{ env.SOURCE_REPO }}
+          run-id: ${{ inputs.postfix_run }}
+          github-token: ${{ secrets.FP_SOURCE_TOKEN }}
       # libgd with Debian's fix for CVE-2026-9672 (packaging/libgd), for
       # Ubuntu 24.04 and 26.04.
       - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4.3.0
@@ -475,6 +492,7 @@ jobs:
           LIBXML2_RUN: ${{ inputs.libxml2_run }}
           MODSECURITY_RUN: ${{ inputs.modsecurity_run }}
           LIBGD_RUN: ${{ inputs.libgd_run }}
+          POSTFIX_RUN: ${{ inputs.postfix_run }}
           RELEASE_RUN: ${{ inputs.release_run }}
           RUNS: ${{ steps.run.outputs.shas }}
           FP_RESIGN: ${{ inputs.resign && 'yes' || 'no' }}
@@ -496,8 +514,8 @@ jobs:
             git -C "$site" remote add origin "$url"
           fi
           # Packages first: the release step needs the published key.
-          if [ -n "$HTTPD_RUN$RADICALE_RUN$OPENDKIM_RUN$DOVECOT_RUN$LIBXML2_RUN$MODSECURITY_RUN$LIBGD_RUN" ]; then
-            # (A dovecot-build, libxml2-build or libgd-build run alone has no RPMs.)
+          if [ -n "$HTTPD_RUN$RADICALE_RUN$OPENDKIM_RUN$DOVECOT_RUN$LIBXML2_RUN$MODSECURITY_RUN$LIBGD_RUN$POSTFIX_RUN" ]; then
+            # (A dovecot-build, libxml2-build, libgd-build or postfix-build run alone has no RPMs.)
             if [ -d /tmp/rpms ]; then
               publisher/publish-repo.sh "$RUNNER_TEMP/repo.conf" /tmp/rpms "$site"
             fi
@@ -529,7 +547,7 @@ jobs:
             exit 0
           fi
           git -C "$site" -c user.name="freePanel packages" -c user.email="packages@freepanel.invalid" \
-            commit --quiet -m "Publish $RUNS (runs: httpd-build ${HTTPD_RUN:--}, radicale-build ${RADICALE_RUN:--}, opendkim-build ${OPENDKIM_RUN:--}, dovecot-build ${DOVECOT_RUN:--}, libxml2-build ${LIBXML2_RUN:--}, modsecurity-build ${MODSECURITY_RUN:--}, libgd-build ${LIBGD_RUN:--}, release-build ${RELEASE_RUN:--})"
+            commit --quiet -m "Publish $RUNS (runs: httpd-build ${HTTPD_RUN:--}, radicale-build ${RADICALE_RUN:--}, opendkim-build ${OPENDKIM_RUN:--}, dovecot-build ${DOVECOT_RUN:--}, libxml2-build ${LIBXML2_RUN:--}, modsecurity-build ${MODSECURITY_RUN:--}, libgd-build ${LIBGD_RUN:--}, postfix-build ${POSTFIX_RUN:--}, release-build ${RELEASE_RUN:--})"
           git -C "$site" push --quiet origin gh-pages
       - if: always()
         run: rm -rf "$RUNNER_TEMP/gnupg"

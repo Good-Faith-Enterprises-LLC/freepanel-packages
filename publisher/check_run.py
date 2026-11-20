@@ -27,6 +27,7 @@ WORKFLOWS = {
     "libxml2-build": ("push", "workflow_dispatch"),
     "modsecurity-build": ("push", "workflow_dispatch"),
     "libgd-build": ("push", "workflow_dispatch"),
+    "postfix-build": ("push", "workflow_dispatch"),
     # A release is made by hand, with a name for it.
     "release-build": ("workflow_dispatch",),
 }
